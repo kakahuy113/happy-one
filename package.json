@@ -73,7 +73,10 @@
 	},
 	"dependencies": {
 		"@fancyapps/fancybox": "^3.5.7",
+		"animejs": "^3.2.1",
 		"axios": "^0.19.2",
+		"gsap": "^3.5.1",
+		"jquery": "^3.5.1",
 		"lazysizes": "^5.2.2",
 		"nouislider": "^14.6.0",
 		"rxjs": "^6.6.2",

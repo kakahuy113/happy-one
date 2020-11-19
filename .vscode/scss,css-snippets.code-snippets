@@ -19,7 +19,7 @@
 	"get-color": {
 		"scope": "css,less,scss",
 		"prefix": "clg",
-		"body": ["map-get(\\$mau, $0)"]
+		"body": ["map-get(\\$color, $0)"]
 	},
 	"get-font": {
 		"scope": "css,less,scss",

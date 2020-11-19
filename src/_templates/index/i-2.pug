@@ -1,0 +1,21 @@
+.fp-slide#introduce(fp-title="Giới Thiệu")
+	section.setting-section.section-intro(fp-bg="./assets/img/index/bg-2.png")
+		.container.h-100
+			.container-custom.container-1660px.h-100
+				.intro__wrapper
+					.title
+						h1 KHU CĂN HỘ COMPOUND CAO CẤP
+					.sub-title
+						h2 HAPPY ONE CENTRAL
+					.sub-desc
+						p.lcl.lcl-4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos modi praesentium, ex amet nam iusto molestiae neque saepe reprehenderit reiciendis consectetur enim voluptas animi tempora numquam exercitationem natus! Saepe, soluta.
+					.btn--see-more.btn
+						a(href="") Xem Thêm
+							img.svg(src="./assets/img/index/seemore.svg", alt="")
+					.intro--swiper
+						.swiper-container
+							.swiper-wrapper
+								-for(var i = 0; i < 3; i ++)
+									.swiper-slide
+										.img
+											img(src=`./assets/img/index/intro-${i + 1}.png`, alt="")

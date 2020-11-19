@@ -1,0 +1,27 @@
+.fp-slide#news(fp-title="Tin Tức - Sụ Kiện")
+	section.setting-section.section-news(fp-bg="")
+		.container.h-100
+			.container-custom.container-1660px.h-100
+				.utilities__wrapper.h-100
+					.row.h-100
+						.col-5.content-main
+							.title--main
+								p Tin Tức
+								p Sự Kiện
+		.news-swiper
+			.swiper-container
+				.swiper-wrapper
+					-for(var i = 0; i < 3 ; i ++)
+						.swiper-slide
+							.wrapper
+								.img
+									img.object-cover.fullsize(src=`./assets/img/index/news-${i + 1}.png`, alt="")
+								.desc
+									.title
+										p.lcl.lcl-2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem doloribus rem sunt excepturi ratione minima adipisci optio non quo, ea ipsum repellat fugit atque illo, commodi magni deleniti amet quod.
+									.sub-title
+										p.lcl.lcl-3 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum quod quia vitae libero architecto saepe molestiae. Placeat, consequuntur molestiae error officia nihil voluptates ducimus a? Consequuntur fuga fugit ab vero.
+									.btn--see-more.btn
+										a(href="") Xem Thêm
+												img.svg(src="./assets/img/index/seemore.svg", alt="")
+									.btn-arrow.btn

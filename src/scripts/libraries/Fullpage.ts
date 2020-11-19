@@ -92,8 +92,8 @@ export class Fullpage {
 			this.$elWrapper.classList.add("fp-dots");
 			let dotItemString = "";
 			for (let i = 0; i < this.slidesLength; i++) {
-				dotItemString += `<div class="fp-dot" fp-target=${i}>
-					<span class="fp-number">${i + 1}</span>
+				dotItemString += `<div class="fp-dot-item" fp-target=${i}>
+					<span class="fp-number">0${i + 1}</span>
 					<span class="fp-title">${this.titles[i]}</span>
 				</div>`;
 			}
@@ -170,7 +170,7 @@ export class Fullpage {
 
 	private dotsClicked() {
 		const navigationItems = Array.from(
-			this.$elWrapper.querySelectorAll(".fp-dot"),
+			this.$elWrapper.querySelectorAll(".fp-dot-item"),
 		);
 		navigationItems.forEach((navItem) => {
 			navItem.addEventListener("click", () => {
@@ -195,7 +195,7 @@ export class Fullpage {
 	private activeDotWhenChangeSlide() {
 		const currentIndex = this.state.currentIndex;
 		const navigationItems = Array.from(
-			this.$elWrapper.querySelectorAll(".fp-dot"),
+			this.$elWrapper.querySelectorAll(".fp-dot-item"),
 		);
 		navigationItems.forEach((navItem, navItemIndex) => {
 			if (navItemIndex == currentIndex) {

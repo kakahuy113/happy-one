@@ -5,3 +5,36 @@
 	border: 0;
 	appearance: none;
 }
+.btn--see-more {
+	background: #F1BE78;
+	padding-left: 30px;
+
+	a {
+		color:	map-get($color, x-blue);
+		font-family: Avenir-Light-Oblique;
+		font-weight: bold;
+		svg {
+			margin-left: 5px;
+		}
+	}
+}
+
+.btn-arrow {
+	width: 29px;
+	height: 29px;
+	background: #F1BE78;
+	border-radius: 50%;
+	overflow: hidden;
+	position: relative;
+	&::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50% , -50%);
+		width: 12px;
+		height: 12px;
+		background: url(../assets/img/index/arrow.png) no-repeat;
+
+	}
+}
