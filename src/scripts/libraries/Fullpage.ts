@@ -143,8 +143,10 @@ export class Fullpage {
 				}
 				this.changeSlide();
 				setTimeout(() => {
+				
 					this.state.canScroll = true;
-				}, this.options.speed + 400);
+					
+				}, 2000);
 			}
 		});
 	}
@@ -194,6 +196,7 @@ export class Fullpage {
 					this.changeSlide();
 					setTimeout(() => {
 						this.state.canScroll = true;
+						
 					}, this.options.speed + 400);
 				}
 			});
@@ -233,6 +236,7 @@ export class Fullpage {
 					start = timestamp;
 				}
 				const elapsed = timestamp - start;
+				
 				let elementTransformY;
 				let prevElementTransformY;
 				// `Math.min()` is used here to make sure that the element stops at exactly windowHeight.
@@ -243,10 +247,11 @@ export class Fullpage {
 						y: '100%',
 					}, {
 						y: '0%',
-						duration: 0.8,
+						duration: .8,
 						onStart: function() {
 						},
 						onComplete: () => {
+							
 							setTimeout(() => {
 								this.slides.forEach(slide => {
 									if(slide.classList.contains("active")) {
@@ -255,7 +260,8 @@ export class Fullpage {
 										slide.setAttribute("style"  , "transform: translate(0, 100%);")
 									}
 								})
-							}, 1000);
+			
+							}, 800);
 						},
 					})
 				} else {
@@ -264,7 +270,7 @@ export class Fullpage {
 						y: '-100%',
 					}, {
 						y: '0%',
-						duration: 0.8,
+						duration: .8,
 						onStart: function() {
 						},
 						onComplete: () => {
@@ -276,7 +282,8 @@ export class Fullpage {
 										slide.setAttribute("style"  , "transform: translate(0, 100%);")
 									}
 								})
-							}, 1000);
+			
+							}, 800);
 						},
 					})
 				}

@@ -196,24 +196,29 @@ const setBackgroundImageSection = () => {
 
 const swiperIntro = () => {
 	const news = new Swiper('.intro--swiper .swiper-container', {
-		slidesPerView: 3,
 		spaceBetween: 20,
-		
+		autoplay: {
+			delay: 2000,
+		  },
 		speed: 1000,
-		// breakpoints: {
-		// 	575: {
-		// 		slidesPerView: 2,
-		// 		spaceBetween: 5,
-		// 	},
-		// 	767.98: {
-		// 		slidesPerView: 3,
-		// 		spaceBetween: 5,
-		// 	},
-		// 	1025: {
-		// 		slidesPerView: 3,
-		// 		spaceBetween: 27,
-		// 	}
-		// }
+		breakpoints: {
+			300: {
+				slidesPerView: 1,
+				autoplay: {
+					delay: 2000,
+				  },
+				  loop: true,
+			},
+			767.98: {
+				slidesPerView: 3,
+				loop: false,
+				autoplay: false,
+			},
+			1025: {
+				slidesPerView: 3,
+
+			}
+		}
 	})
 }
 
@@ -254,6 +259,14 @@ const toogleMenu = () => {
 	})
 }
 
+const swiperDetailNews = () => {
+	const swiper = new Swiper(".content--slide .swiper-container" , {
+		direction: "vertical ",
+		spaceBetween: 20,
+		speed: 1000
+	})
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
 	getSVGs(".svg");
 	Loading()
@@ -262,4 +275,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 	swiperIntro();
 	swiperNews();
 	toogleMenu();
+	swiperDetailNews();
 });

@@ -1,0 +1,38 @@
+.fp-slide#news-detail--1(fp-title="")
+	section.setting-section.section-introduce--1(fp-bg="./assets/img/detail-news/detail-1.png")
+		.container.h-100
+			.container-custom.container-1365px.h-100
+				.section-news--1__wrapper
+					.row
+						.col-7.content--active
+							.row
+								.col-6
+									.img
+										img(src="./assets/img/index/util.png", alt="")
+								.col-5
+									.desc
+										.title
+											h2.lcl.lcl-2 Lorem ipsum dolor sit, consectetuer adipiscing elit.
+										.date-news
+											span 11.11.2020
+										.sub-title
+											p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+										.btn--see-more.btn
+											a(href="") Xem Thêm
+												img.svg(src="./assets/img/index/seemore.svg", alt="")
+						.col-5.content--slide
+							.swiper-container
+								.swiper-wrapper
+									-for(var i = 0; i < 5; i++)
+										.swiper-slide
+											.item
+												.img
+													img.object-cover.fullsize(src=`./assets/img/detail-news/item-${i + 1}.png`, alt="")
+												.desc
+													.title
+														h2 Lorem ipsum dolor sit, consectetuer adipiscing elit.
+													.data-news
+														span 11.11.2020
+													.btn--see-more.btn
+														a(href="") Xem Thêm
+															img.svg(src="./assets/img/index/seemore.svg", alt="")

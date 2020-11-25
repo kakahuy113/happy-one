@@ -6,10 +6,21 @@
 	appearance: none;
 }
 .btn--see-more {
-	background: #F1BE78;
+	
 	padding-left: 30px;
-
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		width: 80%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: #F1BE78;
+		z-index: 0;
+	}
 	a {
+		z-index: 1;
 		color:	map-get($color, x-blue);
 		font-family: Avenir-Light-Oblique;
 		font-weight: bold;
