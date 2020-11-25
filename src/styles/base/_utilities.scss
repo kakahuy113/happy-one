@@ -118,3 +118,29 @@
 		-webkit-line-clamp: 4;
 	}
 }
+.block-animation-grid  {
+	display: flex;
+	flex-wrap: wrap;
+	position: absolute;
+    top: 50%;
+	width: 950px;
+	height: 565px;
+	transform: translateY(-50%);
+	z-index: 0;
+	overflow: hidden;
+	.square {
+		width: 18px;
+		height: 18px;
+		pointer-events: none;
+		position: relative;
+		&::before {
+			content: "";
+			background: url(../assets/img/index/icon-animation.png) no-repeat;
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 5px;
+			height: 5px;
+		}
+	}
+}

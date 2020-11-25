@@ -1,0 +1,145 @@
+#introduce-detail--1 {
+	.setting-section {
+		background: #08152E;
+		.section-introduce--1__wrapper {
+			display: flex;
+			height: 100%;
+			align-items: center;
+			padding-left: 105px;
+			padding-right: 70px;
+			.row {
+				align-items: center;
+				width: 100%;
+			}
+			.content--desc {
+				.content--desc__wrapper {
+					max-width: 550px;
+				}
+				.title {
+					h2 {
+						color: map-get($color, x-white);
+						font-family: Avenir-Black;
+						font-size: 1.8rem;
+						position: relative;
+						display: inline-block;
+						&::after {
+							content: "";
+							position: absolute;
+							top: 50%;
+							transform: translateY(-50%);
+							left: 105%;
+							width: 65px;
+							background: #fff;
+							height: 1px;
+						}
+					}
+				}
+				.symbol {
+					h1 {
+						color: #F1BE78;
+						font-family: MyriaPro-Bold;
+						font-size: 6.5rem;
+						@media (max-width: 1439.98px) {
+							font-size: 4.5rem;
+							
+						}
+					}
+				}
+				.sub-title {
+					p {
+						&:not(:last-child) {
+							margin-bottom: 20px;
+						}
+					}
+				}
+			}
+			@media (max-width: 1439.98px) {
+				padding: 0;
+				
+			}
+			@media (max-width: 1100px) {
+				padding-top: 110px;
+				.row {
+					> div {
+						-ms-flex: 0 0 100%;
+						flex: 0 0 100%;
+						max-width: 100%;
+						&:first-child {
+							margin-bottom: 20px;
+						}
+						> div {
+							max-width: 700px;
+							margin: 0 auto;
+						}
+					}
+				}
+				
+			}
+		}
+	}
+}
+
+#introduce-detail--2 {
+	.setting-section {
+		background: #08152E;
+	}
+	.section-introduce--2__wrapper {
+		display: flex;
+		height: 100%;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+		max-width: 1100px;
+		margin: 0 auto;
+		.title {
+			h2 {
+				font-family: MyriaPro-Bold;
+				color: #F1BE78;
+				font-size: 6.4rem;
+				position: relative;
+				margin-bottom: 60px;
+				&::after {
+					position: absolute;
+					content: "";
+					background: #F1BE78;
+					width: 122px;
+					height: 3px;
+					bottom: 0;
+					left: 50%;
+					transform: translateX(-50%);
+				}
+			}
+		}
+		.row {
+			.item {
+				height: auto;
+				display: flex;
+				align-items: center;
+				margin-bottom: 60px;
+				.desc {
+					padding-left: 40px;
+				}
+			}
+			
+		}
+		@media (max-width: 1100px) {
+			padding: 50px 0;
+			max-width: 700px;
+			margin: 0 auto;
+			.row {
+				> div {
+					-ms-flex: 0 0 100%;
+					flex: 0 0 100%;
+					max-width: 100%;
+					.item {
+						margin-bottom: 10px;
+					}
+				}
+				.content--img {
+					order: -1;
+				}
+			}
+		}
+	}
+	
+}

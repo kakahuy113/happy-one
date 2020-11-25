@@ -18,8 +18,41 @@ html(lang="en")
 			include _header.pug
 		block banner,breadcrumb
 		main
-			block main
-			#js-page-verify(class=bodyClass hidden)
+			.fp-container
+				block main
+				#js-page-verify(class=bodyClass hidden)
+				.fp-navigations
+					.fp-prev
+					.fp-next
+				.fp-buttons
+					.fp-buttons__wrapper
+						.fp-next
+							span
+							span
+							span
+				.fp-socials
+					.container
+						.container-custom.container-1660px
+							.fp-socials__wrapper
+								.socials__wrapper
+									.socials
+										a(href="#").social__item
+											img.svg(src="./assets/img/index/insta.svg", alt="instagram")
+										a(href="#").social__item
+											img.svg(src="./assets/img/index/facebook.svg", alt="facebook")
+										a(href="#").social__item
+											img.svg(src="./assets/img/index/youtube.svg", alt="youtube")
+								.fp-links__wrapper
+									.fp-link-item
+										a(href="http://hatngoctroi.vn/" target="_blank") 0965.656.587
+									.fp-link-item
+										a(href="http://huongvitroi.vn/" target="_blank") ĐĂNG KÝ NHẬN TIN
+									.fp-link-item
+										a(href="http://nguoiloctroi.vn/" target="_blank")
+											.icon-desc
+												span Căn Hộ 360
+											.icon
+												img(src="./assets/img/index/360.png", alt="")
 		block footer
 			include _footer.pug
 		//- end main content

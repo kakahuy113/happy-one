@@ -1,3 +1,4 @@
+declare var gsap:any;
 interface FullpageCallback {
 	beforeSlideChange: (
 		currentSlide?: HTMLElement,
@@ -79,6 +80,13 @@ export class Fullpage {
 				this.slides[i].classList.add("active");
 			}
 		}
+		this.slides.forEach(slide => {
+			slide.setAttribute("style"  , "transform: translate(0, 100%);")
+			if(slide.classList.contains("active")) {
+				slide.setAttribute("style"  , "transform: translate(0, 0);")
+			}
+		})
+		
 		this.generateDots();
 		this.setStateForButtons();
 		this.mouseOnScroll();
@@ -93,7 +101,7 @@ export class Fullpage {
 			let dotItemString = "";
 			for (let i = 0; i < this.slidesLength; i++) {
 				dotItemString += `<div class="fp-dot-item" fp-target=${i}>
-					<span class="fp-number">0${i + 1}</span>
+					<span class="fp-number">0${i}</span>
 					<span class="fp-title">${this.titles[i]}</span>
 				</div>`;
 			}
@@ -206,7 +214,7 @@ export class Fullpage {
 		});
 	}
 
-	private changeSlide() {
+	private changeSlide() { 
 		if (this.state.currentIndex != this.state.nextIndex) {
 			if (typeof this.beforeSlideChange == "function") {
 				this.beforeSlideChange(
@@ -230,42 +238,59 @@ export class Fullpage {
 				// `Math.min()` is used here to make sure that the element stops at exactly windowHeight.
 				if (this.state.scrollDirection == "down") {
 					// slideUp when scroll down
-					elementTransformY =
-						window.innerHeight -
-						Math.min(
-							(window.innerHeight / this.options.speed) * elapsed,
-							window.innerHeight,
-						);
-
-					prevElementTransformY =
-						-1 *
-						Math.min(
-							(window.innerHeight / this.options.speed) * elapsed,
-							window.innerHeight,
-						);
+					
+					gsap.fromTo(element, {
+						y: '100%',
+					}, {
+						y: '0%',
+						duration: 0.8,
+						onStart: function() {
+						},
+						onComplete: () => {
+							setTimeout(() => {
+								this.slides.forEach(slide => {
+									if(slide.classList.contains("active")) {
+										return;
+									} else {
+										slide.setAttribute("style"  , "transform: translate(0, 100%);")
+									}
+								})
+							}, 1000);
+						},
+					})
 				} else {
 					// slideUp down scroll up
-					elementTransformY =
-						Math.min(
-							(window.innerHeight / this.options.speed) * elapsed,
-							window.innerHeight,
-						) - window.innerHeight;
-
-					prevElementTransformY = Math.min(
-						(window.innerHeight / this.options.speed) * elapsed,
-						window.innerHeight,
-					);
+					gsap.fromTo(element, {
+						y: '-100%',
+					}, {
+						y: '0%',
+						duration: 0.8,
+						onStart: function() {
+						},
+						onComplete: () => {
+							setTimeout(() => {
+								this.slides.forEach(slide => {
+									if(slide.classList.contains("active")) {
+										return;
+									} else {
+										slide.setAttribute("style"  , "transform: translate(0, 100%);")
+									}
+								})
+							}, 1000);
+						},
+					})
 				}
-				prevElement.style.transform = `translateY(${prevElementTransformY}px)`;
-				element.style.transform = `translateY(${elementTransformY}px)`;
-
+				
 				if (elapsed < this.options.speed) {
 					window.requestAnimationFrame(slide);
 				} else {
 					// Stop the animation after 1 seconds
+					
 					element.classList.remove("changing");
-					element.classList.add("active");
 					prevElement.classList.remove("active");
+
+					element.classList.add("active");
+					
 					this.state.currentIndex = this.state.nextIndex;
 					this.setStateForButtons();
 					this.activeDotWhenChangeSlide();
@@ -274,12 +299,16 @@ export class Fullpage {
 						this.afterSlideChange(
 							this.slides[this.state.currentIndex],
 							this.state.currentIndex,
+						
 						);
+					
 					}
+					
 				}
 			};
 			window.requestAnimationFrame(slide);
 		}
+		
 	}
 
 	// method

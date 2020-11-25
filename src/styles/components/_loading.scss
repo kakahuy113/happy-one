@@ -6,7 +6,7 @@
 	left: 0;
 	z-index: 99999;
 	transition: all 0.3s ease-in-out;
-	background-color: #000000;
+	background-color: #08152E;
 
 	.loading-wrapper {
 		position: absolute;
@@ -39,7 +39,7 @@
 		max-width: 100%;
 		width: 0%;
 		height: 100%;
-		background-color: #ff9e0c;
+		background-color: #f1be78;
 		background-image: linear-gradient(
 			45deg,
 			rgba(255, 255, 255, 0.3) 25%,
@@ -63,6 +63,11 @@
 		svg {
 			max-width: 200px;
 			width: 100%;
+			#logo-new {
+				animation-name: DrawStroke;
+				animation-duration: 2s;
+				animation-fill-mode: forwards;
+			}
 		}
 	}
 }
