@@ -122,6 +122,11 @@ if(window.innerWidth > 1100) {
 					if(currentSlide.querySelector(".youtube-video")) {
 						player.pauseVideo();
 					}
+
+					if(currentIndex == 1) {
+						document.querySelector("header").classList.remove("changed")
+						document.querySelector(".fp-socials .fp-links__wrapper").classList.remove("changed")
+					}
 				},
 				// event is fired after slide end transition
 				afterSlideChange: function (currentSlide, currentIndex) {
@@ -148,7 +153,9 @@ if(window.innerWidth > 1100) {
 
 						//
 						if (currentIndex == 0) {
-							animation.allAnimeFullpageIndex__0();
+							setTimeout(() => {
+								animation.allAnimeFullpageIndex__0();
+							},  1500);
 							// anime({
 							// 	targets: '#home .block-animation-grid .square',
 							// 	scale: [
@@ -158,6 +165,10 @@ if(window.innerWidth > 1100) {
 							// 	delay: anime.stagger(200, {grid: [40,40], from: 'center'}),
 							// 	loop:true
 							// });
+						}
+						if(currentIndex == 1) {
+							document.querySelector("header").classList.add("changed")
+							document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
 						}
 					}
 				},

@@ -270,6 +270,19 @@
 			font-family: Avenir-Black;
 			font-weight: 700;
 		}
+		.fp-link-item {
+			a {
+				transition: .3s all ease-in-out;
+			}
+		}
+		&.changed {
+			.fp-link-item:not(:last-child) {
+				a {
+					color: #08152E;
+					transition: .3s all ease-in-out;
+				}
+			}
+		}
 	}
 	.socials {
 		position: relative;
@@ -300,7 +313,7 @@
 		&:after {
 			content: "|";
 			left: 0;
-			top: 42%;
+			top: 50%;
 			transform: translateY(-50%);
 			position: absolute;
 			color: map-get($color, x-white);

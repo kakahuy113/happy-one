@@ -146,7 +146,7 @@ export class Fullpage {
 				
 					this.state.canScroll = true;
 					
-				}, 2000);
+				}, this.options.speed + 1000);
 			}
 		});
 	}
@@ -161,7 +161,7 @@ export class Fullpage {
 				this.changeSlide();
 				setTimeout(() => {
 					this.state.canScroll = true;
-				}, this.options.speed + 400);
+				}, this.options.speed + 1000);
 			}
 		});
 		this.nextEl.addEventListener("click", () => {
@@ -173,7 +173,7 @@ export class Fullpage {
 				this.changeSlide();
 				setTimeout(() => {
 					this.state.canScroll = true;
-				}, this.options.speed + 400);
+				}, this.options.speed + 1000);
 			}
 		});
 	}
@@ -197,7 +197,7 @@ export class Fullpage {
 					setTimeout(() => {
 						this.state.canScroll = true;
 						
-					}, this.options.speed + 400);
+					}, this.options.speed + 1000);
 				}
 			});
 		});
@@ -217,7 +217,7 @@ export class Fullpage {
 		});
 	}
 
-	private changeSlide() { 
+	private changeSlide() {
 		if (this.state.currentIndex != this.state.nextIndex) {
 			if (typeof this.beforeSlideChange == "function") {
 				this.beforeSlideChange(

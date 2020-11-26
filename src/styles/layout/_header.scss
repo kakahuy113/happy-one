@@ -8,6 +8,7 @@ header {
 	transition: 0.5s all ease-in-out;
 	padding-top: 50px;
 	&.show {
+		z-index: 700;
 		.hambuger--menu {
 			z-index: 101;
 			position: fixed;
@@ -36,6 +37,23 @@ header {
 		}
 		.navigation {
 			transform: translateX(0);
+		}
+	}
+	&.changed {
+		.header__wrapper {
+			.language__wrapper {
+				a {
+					transition: .3s all ease-in-out;
+					color: #08152E;
+				}
+				.languages__item + .languages__item {
+					&:after {
+						color: #08152E;
+						transition: .3s all ease-in-out;
+					}
+				
+				}
+			}
 		}
 	}
 }
@@ -74,6 +92,7 @@ header {
 			a {
 				color: map-get($color, x-white);
 				opacity: .38;
+				transition: .3s all ease-in-out;
 			}
 			.languages__item {
 				&.active {
@@ -92,10 +111,11 @@ header {
 				&:after {
 					content: "|";
 					left: 0;
-					top: 42%;
+					top: 50%;
 					transform: translateY(-50%);
 					position: absolute;
 					color: map-get($color, x-white);
+					transition: .3s all ease-in-out;
 				}
 				@media (max-width: 1024.98px) {
 					&:after {
