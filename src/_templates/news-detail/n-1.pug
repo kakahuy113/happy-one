@@ -1,38 +1,64 @@
 .fp-slide#news-detail--1(fp-title="")
 	section.setting-section.section-introduce--1(fp-bg="./assets/img/detail-news/detail-1.png")
-		.container.h-100
-			.container-custom.container-1365px.h-100
-				.section-news--1__wrapper
-					.row
-						.col-7.content--active
-							.row
-								.col-6
-									.img
-										img(src="./assets/img/index/util.png", alt="")
-								.col-5
-									.desc
-										.title
-											h2.lcl.lcl-2 Lorem ipsum dolor sit, consectetuer adipiscing elit.
-										.date-news
-											span 11.11.2020
-										.sub-title
-											p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-										.btn--see-more.btn
-											a(href="") Xem Thêm
-												img.svg(src="./assets/img/index/seemore.svg", alt="")
-						.col-5.content--slide
-							.swiper-container
-								.swiper-wrapper
-									-for(var i = 0; i < 5; i++)
-										.swiper-slide
-											.item
-												.img
-													img.object-cover.fullsize(src=`./assets/img/detail-news/item-${i + 1}.png`, alt="")
-												.desc
-													.title
-														h2 Lorem ipsum dolor sit, consectetuer adipiscing elit.
-													.data-news
-														span 11.11.2020
-													.btn--see-more.btn
-														a(href="") Xem Thêm
-															img.svg(src="./assets/img/index/seemore.svg", alt="")
+		//- .container.h-100
+		//- 	.container-custom.container-1365px.h-100
+		//- 		.section-news--1__wrapper
+		//- 			.row.content__wrapper.align-center
+		//- 				.col-7.content--active
+		//- 					.row.align-center
+		//- 						.col-6
+		//- 							.img
+		//- 								img(src="./assets/img/index/util.png", alt="")
+		//- 						.col-5
+		//- 							.desc
+		//- 								.title
+		//- 									h2.lcl.lcl-2 Lorem ipsum dolor sit, consectetuer adipiscing elit.
+		//- 								.date-news
+		//- 									span 11.11.2020
+		//- 								.sub-title
+		//- 									p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+		//- 								.btn--see-more.btn.cl-white
+		//- 									a(href="") Xem Thêm
+		//- 										img.svg(src="./assets/img/index/seemore.svg", alt="")
+		//- 				.col-5.content--slide
+		//- 					.swiper-container
+		//- 						.swiper-wrapper
+		//- 							-for(var i = 0; i < 5; i++)
+		//- 								.swiper-slide
+		//- 									.item
+		//- 										.img
+		//- 											img.object-cover.fullsize(src=`./assets/img/detail-news/item-${i + 1}.png`, alt="")
+		//- 										.desc
+		//- 											.title
+		//- 												h2 Lorem ipsum dolor sit, consectetuer adipiscing elit.
+		//- 											.date-news
+		//- 												span 11.11.2020
+		//- 											.btn--see-more.btn.cl-white
+		//- 												a(href="") Xem Thêm
+		//- 													img.svg(src="./assets/img/index/seemore.svg", alt="")
+		.column-box-news
+			.container.h-100
+				.scroll-content
+					.news-content
+						a.close-news(href="javascript:;")
+						.new-text
+							.title
+								h3 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+							.date-news
+								.img
+									img.svg(src="./assets/img/detail-news/clock-time.svg", alt="")
+								.time
+									span 11.11.2020
+							.desc
+								img.object-cover.fullsize(src="./assets/img/detail-news/news-detail.png", alt="")
+								p.text-center.italic Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+								p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. An Cum sociis natoque penatibus et magnis dis parturient montes, nascetur and  ridiculus mus. Donec quam felis, m ultricies nec, pellentesque eu, pretium quis, sem. Nulla next  consequat mas sa quis enim. Donec pede justo, sem fringilla vel, aliquet nec, Vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+								p.black Nulla next Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+								p Vivamus Nulla next Crastg elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, viethd eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus a varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. 
+								p Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
+								p Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
+								p Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
+								p Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
+								p Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
+								p Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.
+								p Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.

@@ -261,9 +261,10 @@ const toogleMenu = () => {
 
 const swiperDetailNews = () => {
 	const swiper = new Swiper(".content--slide .swiper-container" , {
-		direction: "vertical ",
+		direction: 'vertical',
 		spaceBetween: 20,
-		speed: 1000
+		speed: 1000,
+		slidesPerView: 5
 	})
 }
 

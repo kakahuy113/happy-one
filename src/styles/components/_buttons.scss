@@ -12,7 +12,7 @@
 	&::before {
 		content: "";
 		position: absolute;
-		width: 80%;
+		width: 85%;
 		height: 100%;
 		top: 0;
 		left: 0;
@@ -23,9 +23,18 @@
 		z-index: 1;
 		color:	map-get($color, x-blue);
 		font-family: Avenir-Light-Oblique;
-		font-weight: bold;
 		svg {
 			margin-left: 5px;
+		}
+	}
+	&.cl-white {
+		a {
+			color: map-get($color, x-white);
+		}
+		svg {
+			path {
+				stroke: map-get($color, x-white);
+			}
 		}
 	}
 }
