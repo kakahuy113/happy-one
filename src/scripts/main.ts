@@ -2,6 +2,7 @@ import { getSVGs, Loading } from "./utilities/util";
 import { Fullpage, FullpageOptions } from "./libraries/Fullpage";
 import Axios from "axios";
 import * as animation from "./animation/animation";
+import { fstat } from "fs";
 
 declare var Swiper:any;
 declare var $:any;
@@ -199,6 +200,18 @@ const initFullpage = () => {
 		if(document.querySelector(".introduce-page")) {
 				document.querySelector(".fp-dots").classList.add("hide")
 		}
+
+		const menuItems = document.querySelectorAll(".navigation .nav-item");
+		menuItems.forEach((item) => {
+			item.addEventListener("click", (e) => {
+				e.preventDefault();
+				const target = item.querySelector("a").getAttribute("fp-target");
+				if(target){
+					fp.scrollToSection(target);
+					document.querySelector("header").classList.toggle("show");
+				}
+			})
+		});
 
 	}
 }
