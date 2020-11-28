@@ -229,12 +229,15 @@ const setBackgroundImageSection = () => {
 };
 
 const swiperIntro = () => {
-	const news = new Swiper('.intro--swiper .swiper-container', {
+	const newsSlider = new Swiper('.intro--swiper .swiper-container', {
 		spaceBetween: 20,
 		autoplay: {
-			delay: 2000,
-		  },
-		speed: 1000,
+			delay: 400,
+			disableOnInteraction: false,
+		},
+		speed: 1500,
+		slidesPerView: 1,
+		loop:true,
 		breakpoints: {
 			300: {
 				slidesPerView: 1,
@@ -253,6 +256,13 @@ const swiperIntro = () => {
 
 			}
 		}
+	});
+
+	$('.intro--swiper .swiper-container').on('mouseenter', function () {
+		newsSlider.autoplay.stop();
+	})
+	$('.intro--swiper .swiper-container').on('mouseleave', function () {
+		newsSlider.autoplay.start();
 	})
 }
 
