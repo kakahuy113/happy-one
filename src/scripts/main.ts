@@ -265,6 +265,12 @@ const toogleMenu = () => {
 				opacity: 1,
 				delay: anime.stagger(100 , {start: 500})
 			})
+			anime({
+				targets: ".navigation .language",
+				translateX: 5,
+				opacity: [0,1],
+				delay: anime.stagger(100 , {start: 500})
+			})
 		}, 300);
 		
 	})

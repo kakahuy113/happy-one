@@ -5,7 +5,7 @@ header {
 	width: 100%;
 	background: transparent;
 	z-index: 600;
-	transition: 0.5s all ease-in-out;
+	transition: 1s all ease-in-out;
 	padding-top: 50px;
 	&.show {
 		z-index: 700;
@@ -172,8 +172,8 @@ header {
 	position: fixed;
 	right: 0;
 	margin: 0;
-	transition: transform .3s ease-in-out;
-	transform: translateX(100%);
+	transition: transform 1.85s cubic-bezier(.2,1,.2,1);
+	transform: translateX(-100%);
 	backface-visibility: hidden;
 	z-index: 100;
 	background-size: cover;
@@ -212,13 +212,30 @@ header {
 			}
 			.nav-item {
 				opacity: 0;
-					transform: translateX(100px);
-				transition: .3s all ease-in;
 				margin-bottom: 10px;
-				
 				a {
 					color: map-get($color, x-white);
 					font-size: 2.5rem;
+					transition: .3s all ease-in;
+					position: relative;
+					&::before{
+						content: "";
+						position: absolute;
+						left: 0px;
+						top: 50%;
+						transform: translateY(-50%);;
+						width: 0px;
+						height: 1px;
+						border-radius:8px;
+						background-color: #FFFFFF;
+						transition: width 0.4s linear;
+					}
+					&:hover{
+						padding-left: 34px;
+					}
+					&:hover::before{
+						width: 26px;
+					}
 				}
 				&.active {
 					a {
