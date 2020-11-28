@@ -101,8 +101,12 @@ const initFullpage = () => {
 	}
 
 	// INIT FULLPAGE
-if(window.innerWidth > 1100) {
-
+	if(window.innerWidth > 1100) {				
+		let homePattern = document.querySelector("#home");
+		if(homePattern){
+			translateHomeText();
+			gridPattern(homePattern, 40, 20);			
+		}
 		const fpOptions: FullpageOptions = {
 			prevEl: ".fp-prev",
 			nextEl: ".fp-buttons__wrapper",
@@ -165,12 +169,15 @@ if(window.innerWidth > 1100) {
 							// 	delay: anime.stagger(200, {grid: [40,40], from: 'center'}),
 							// 	loop:true
 							// });
+							translateHomeText();
 						}
 						if(currentIndex == 1) {
 							document.querySelector("header").classList.add("changed")
 							document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
 						}
 					}
+
+					showPattern(currentIndex);
 				},
 			},
 		};
@@ -192,8 +199,24 @@ if(window.innerWidth > 1100) {
 		if(document.querySelector(".introduce-page")) {
 				document.querySelector(".fp-dots").classList.add("hide")
 		}
+
 	}
 }
+
+function showPattern (currentIndex:Number) { 
+	switch (currentIndex) {
+		case 0:					
+			let homePattern = document.querySelector("#home");
+			if(homePattern){
+				gridPattern(homePattern, 40, 20);
+			}
+			break;
+	
+		default:
+			break;
+	}
+}
+
 // SETBACKGROUND IMAGE
 const setBackgroundImageSection = () => {
 	// PARAMS HERE !!!
@@ -285,18 +308,99 @@ const swiperDetailNews = () => {
 	})
 }
 
-const translateText = () => {
+const translateHomeText = () => {
 	if(document.querySelector("#home .title")){
-		anime.timeline()
+		anime.timeline({
+			easing: 'easeOutExpo',
+		})
 			.add({
-				targets: '#home .title p',
+				targets: '#home .title',
+				opacity: [0,1],
+				duration: 1000,
+				easing: "easeOutExpo",
+				delay: 400
+			})
+			.add({
+				targets: '#home .title p:first-child',
 				translateX: [-40,40],
 				translateZ: 0,
 				opacity: [0,1],
 				easing: "easeOutExpo",
 				duration: 1200,
-				delay: (el:any, i:any) => 150 + 25 * i
-			});
+				delay: 400
+			})
+			.add({
+				targets: '#home .title p:last-child',
+				translateX: [-40,40],
+				translateZ: 0,
+				opacity: [0,1],
+				easing: "easeOutExpo",
+				duration: 1000,
+				delay: 100
+			})
+	}
+}
+
+const gridPattern = (sectionEl: any, col:Number, row:Number) => {  
+	var gridPatternEl = sectionEl.querySelector('.grid-pattern');
+	var dotsGridPatternEl = gridPatternEl.querySelector('.block-animation-grid');
+	var squareFragment = document.createDocumentFragment();
+	var grid: any = [col, row];
+	var numberOfElements = grid[0] * grid[1];
+	var animation:any;
+	var paused = true;
+
+	if(!dotsGridPatternEl.querySelector('.square')){
+	  
+		for (var i = 0; i < numberOfElements; i++) {
+		  var squareEl = document.createElement('div');
+		  squareEl.classList.add('square');
+		  squareFragment.appendChild(squareEl);
+		}
+	  
+		dotsGridPatternEl.appendChild(squareFragment);
+	  
+		var index = anime.random(0, numberOfElements-1);
+		var nextIndex = 0;
+	  
+		const play = () => {
+	  
+		  paused = false;
+		  if (animation) animation.pause();
+	  
+		  nextIndex = anime.random(0, numberOfElements-1);
+	  
+		  animation = anime.timeline({
+			easing: 'easeInOutQuad',
+			complete: play
+		  })
+		  .add({
+			targets: '.block-animation-grid .square',
+			keyframes: [
+			  {
+				translateX: anime.stagger('-2px', {grid: grid, from: index, axis: 'x'}),
+				translateY: anime.stagger('-2px', {grid: grid, from: index, axis: 'y'}),
+				duration: 100
+			  }, {
+				translateX: anime.stagger('4px', {grid: grid, from: index, axis: 'x'}),
+				translateY: anime.stagger('4px', {grid: grid, from: index, axis: 'y'}),
+				scale: anime.stagger([2.6, 1], {grid: grid, from: index}),
+				duration: 225
+			  }, {
+				translateX: 0,
+				translateY: 0,
+				scale: 1,
+				duration: 1200,
+			  }
+			],
+			delay: anime.stagger(80, {grid: grid, from: index})
+		  }, 30)
+	  
+		  index = nextIndex;
+	  
+		}
+	  
+		play();
 	}
 }
 
@@ -309,5 +413,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 	swiperNews();
 	toogleMenu();
 	swiperDetailNews(); 
-	translateText();
 });
