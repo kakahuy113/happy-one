@@ -279,6 +279,21 @@ const swiperDetailNews = () => {
 	})
 }
 
+const translateText = () => {
+	if(document.querySelector("#home .title")){
+		anime.timeline()
+			.add({
+				targets: '#home .title p',
+				translateX: [-40,40],
+				translateZ: 0,
+				opacity: [0,1],
+				easing: "easeOutExpo",
+				duration: 1200,
+				delay: (el:any, i:any) => 150 + 25 * i
+			});
+	}
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
 	getSVGs(".svg");
 	Loading()
@@ -287,5 +302,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 	swiperIntro();
 	swiperNews();
 	toogleMenu();
-	swiperDetailNews();
+	swiperDetailNews(); 
+	translateText();
 });
