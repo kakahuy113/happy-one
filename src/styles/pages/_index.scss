@@ -446,11 +446,16 @@
 					.swiper-wrapper {
 						display: flex;
 						flex-direction: column;
-					}
-					.swiper-slide {
-						display: flex;
-						height: fit-content !important;
-						margin-bottom: 70px;
+						.swiper-slide {
+							display: flex;
+							height: fit-content !important;
+							margin-bottom: 70px;
+							.img-slide{
+								&:hover{								
+									   animation: shake 0.4s ease-out; 
+								}
+							}
+						}
 					}
 				}
 				.wrapper {
@@ -1125,3 +1130,24 @@ width: 100vw;
 	   opacity: 0;
 	}
  }
+ @keyframes shake { 
+	0% { 
+		transform: skewX(-10deg); 
+	} 
+
+	25% { 
+		transform: skewX(10deg); 
+	} 
+
+	50% { 
+		transform: skewX(-10deg); 
+	} 
+
+	75% { 
+		transform: skewX(10deg); 
+	} 
+
+	100% { 
+		transform: skewX(-10deg); 
+	} 
+} 
