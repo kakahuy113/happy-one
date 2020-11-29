@@ -217,11 +217,35 @@ const initFullpage = () => {
 }
 
 function showPattern (currentIndex:Number) { 
+	var dotsGridPatternEl = document.querySelectorAll('.block-animation-grid');
+	
+	[].forEach.call(dotsGridPatternEl, function(grid:any) {
+		grid.innerHTML = '';
+	});
+
 	switch (currentIndex) {
 		case 0:					
 			let homePattern = document.querySelector("#home");
 			if(homePattern){
 				gridPattern(homePattern, 40, 20);
+			}
+			break;
+		case 1:					
+			let introducePattern = document.querySelector("#introduce");
+			if(introducePattern){
+				gridPattern(introducePattern, 40, 20);
+			}
+			break;
+		case 4:					
+			let utilitiesPattern = document.querySelector("#utilities");
+			if(utilitiesPattern){
+				gridPattern(utilitiesPattern, 40, 20);
+			}
+			break;
+		case 6:					
+			let contactPattern = document.querySelector("#contact");
+			if(contactPattern){
+				gridPattern(contactPattern, 40, 20);
 			}
 			break;
 	
@@ -314,7 +338,7 @@ const toogleMenu = () => {
 			anime({
 				targets: ".navigation .language",
 				translateX: 5,
-				opacity: [0,1],
+				opacity: 1,
 				delay: anime.stagger(100 , {start: 500})
 			})
 		}, 300);
@@ -365,6 +389,7 @@ const translateHomeText = () => {
 }
 
 const gridPattern = (sectionEl: any, col:Number, row:Number) => {  
+	var elementID = sectionEl.getAttribute("id");
 	var gridPatternEl = sectionEl.querySelector('.grid-pattern');
 	var dotsGridPatternEl = gridPatternEl.querySelector('.block-animation-grid');
 	var squareFragment = document.createDocumentFragment();
@@ -398,7 +423,7 @@ const gridPattern = (sectionEl: any, col:Number, row:Number) => {
 			complete: play
 		  })
 		  .add({
-			targets: '.block-animation-grid .square',
+			targets: `#${elementID} .block-animation-grid .square`,
 			keyframes: [
 			  {
 				translateX: anime.stagger('-2px', {grid: grid, from: index, axis: 'x'}),
@@ -407,7 +432,7 @@ const gridPattern = (sectionEl: any, col:Number, row:Number) => {
 			  }, {
 				translateX: anime.stagger('4px', {grid: grid, from: index, axis: 'x'}),
 				translateY: anime.stagger('4px', {grid: grid, from: index, axis: 'y'}),
-				scale: anime.stagger([2.6, 1], {grid: grid, from: index}),
+				scale: anime.stagger([1.8, 1], {grid: grid, from: index}),
 				duration: 225
 			  }, {
 				translateX: 0,
