@@ -106,7 +106,7 @@ const initFullpage = () => {
 		let homePattern = document.querySelector("#home");
 		if(homePattern){
 			translateHomeText();
-			gridPattern(homePattern, 40, 20);			
+			gridPattern(homePattern, 40, 20);	
 		}
 		const fpOptions: FullpageOptions = {
 			prevEl: ".fp-prev",
@@ -453,10 +453,26 @@ const gridPattern = (sectionEl: any, col:Number, row:Number) => {
 	}
 }
 
+function loadApartmentSvg () {
+	var width = window.innerWidth;
+	var height = window.innerHeight;
+	console.log(width, height);
+	if (document.querySelector("#apartment-svg")){
+		document.querySelector("#apartment-svg").setAttribute("viewBox", `0 0 ${width} ${height}`)
+	}
+}
+window.onload = function () {
+	loadApartmentSvg();
+}
+window.addEventListener('resize', function () {
+	loadApartmentSvg();
+});
+
 document.addEventListener("DOMContentLoaded", async () => {
 	getSVGs(".svg");
 	Loading()
 	initFullpage();
+	loadApartmentSvg();
 	setBackgroundImageSection();
 	swiperIntro();
 	swiperNews();
