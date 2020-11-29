@@ -309,6 +309,7 @@ const swiperNews = () => {
 		slidesPerView: 3.5,
 		speed: 2000,
 		loop: true,
+		spaceBetween: 40,
 		breakpoints:{
 			300: {
 				centeredSlides: true,
