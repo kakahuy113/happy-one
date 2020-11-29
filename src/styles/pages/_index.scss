@@ -599,57 +599,67 @@
 
 .section-apartment {
 	.arpartment-map {
-		g.floor {
-			opacity: 0;
-			transition: opacity 0.4s linear;
-			path.area{
-				stroke-miterlimit: 10;
-				stroke-width: 1px;
-				fill: none;
-				stroke: #FFAC3B;
-    			stroke-width: 1px;				
-				stroke-dasharray: 1000;
-				stroke-dashoffset: 0;
-				fill: #FFAC3B;
+		width: 100%;
+		height: 100%;
+		position: relative;
+		svg {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			g.floor {
+				opacity: 0;
+				transition: opacity 0.4s linear;
+				path.area{
+					stroke-miterlimit: 10;
+					stroke-width: 1px;
+					fill: none;
+					stroke: #FFAC3B;
+					stroke-width: 1px;				
+					stroke-dasharray: 1000;
+					stroke-dashoffset: 0;
+					fill: #FFAC3B;
+				}
+				&:hover {
+					opacity: 1;
+					path.area {					
+						animation: dash 0.6s linear alternate, fillColor 1.2s linear alternate;
+					}
+				}
 			}
-			&:hover {
-				opacity: 1;
-				path.area {					
-					animation: dash 0.6s linear alternate, fillColor 1.2s linear alternate;
+			g.info{
+				cursor: pointer;
+				.line, .box{
+					opacity: 0.5;	
+					transition: opacity 0.6s linear;				
+				}
+				&:hover {
+					.line, .box{
+						opacity: 1;					
+					} 
 				}
 			}
 		}
-		g.info{
-			cursor: pointer;
-			.line, .box{
-				opacity: 0.5;	
-				transition: opacity 0.6s linear;				
-			}
-			&:hover {
-				.line, .box{
-					opacity: 1;					
-				} 
-			}
-		}
-		.title--main {
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			right: 12%;
-			p {
-				font-size: 6.5rem;
-				font-family: MyriaPro-Bold;
-				color: #FCCB81;
-				&:last-child {
-					padding-left: 100px;
-					position: relative;
-					&::after {
-						position: absolute;
-						left: -10px;
-						color: #fccb81;
-						content: "___";
-						line-height: 65px;
-					}
+	}
+	.title--main {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 12%;
+		p {
+			font-size: 6.5rem;
+			font-family: MyriaPro-Bold;
+			color: #FCCB81;
+			&:last-child {
+				padding-left: 100px;
+				position: relative;
+				&::after {
+					position: absolute;
+					left: -10px;
+					color: #fccb81;
+					content: "___";
+					line-height: 65px;
 				}
 			}
 		}
