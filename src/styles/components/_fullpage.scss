@@ -92,6 +92,13 @@
 				visibility: hidden;
 				transition: all 0.3s ease;
 			}
+			&:hover{
+				.fp-title {
+					opacity: 1;
+					visibility: visible;
+					margin-left: 20px;
+				}
+			}
 			&.active {
 				transition: .3s all ease;
 				padding-bottom: 5px;
