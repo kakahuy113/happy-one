@@ -242,7 +242,7 @@ function showPattern (currentIndex:Number) {
 				gridPattern(utilitiesPattern, 40, 20);
 			}
 			break;
-		case 6:					
+		case 7:					
 			let contactPattern = document.querySelector("#contact");
 			if(contactPattern){
 				gridPattern(contactPattern, 40, 20);
@@ -456,7 +456,6 @@ const gridPattern = (sectionEl: any, col:Number, row:Number) => {
 function loadApartmentSvg () {
 	var width = window.innerWidth;
 	var height = window.innerHeight;
-	console.log(width, height);
 	if (document.querySelector("#apartment-svg")){
 		document.querySelector("#apartment-svg").setAttribute("viewBox", `0 0 ${width} ${height}`)
 	}
