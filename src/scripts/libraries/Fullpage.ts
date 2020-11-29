@@ -183,24 +183,28 @@ export class Fullpage {
 			this.$elWrapper.querySelectorAll(".fp-dot-item"),
 		);
 		navigationItems.forEach((navItem) => {
-			navItem.addEventListener("click", () => {
-				if (this.state.canScroll) {
-					this.state.canScroll = false;
-					const target = navItem.getAttribute("fp-target");
-					this.state.nextIndex = Number(target);
-					if (this.state.nextIndex > this.state.currentIndex) {
-						this.state.scrollDirection = "down";
-					} else {
-						this.state.scrollDirection = "up";
-					}
-					this.changeSlide();
-					setTimeout(() => {
-						this.state.canScroll = true;
-						
-					}, this.options.speed + 1000);
-				}
+			navItem.addEventListener("click", () => { 
+				const target = navItem.getAttribute("fp-target");
+				this.scrollToSection(target);
 			});
 		});
+	}
+
+	public scrollToSection (target:any) {
+		if (this.state.canScroll) {
+			this.state.canScroll = false;
+			this.state.nextIndex = Number(target);
+			if (this.state.nextIndex > this.state.currentIndex) {
+				this.state.scrollDirection = "down";
+			} else {
+				this.state.scrollDirection = "up";
+			}
+			this.changeSlide();
+			setTimeout(() => {
+				this.state.canScroll = true;
+				
+			}, this.options.speed + 1000);
+		}
 	}
 
 	private activeDotWhenChangeSlide() {

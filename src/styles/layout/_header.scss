@@ -266,6 +266,7 @@ header {
 	.language__wrapper {
 		.language {
 			display: flex;
+			opacity: 0;
 			a {
 				color: map-get($color, x-white);
 				opacity: .38;
