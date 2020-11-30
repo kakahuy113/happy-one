@@ -38,16 +38,20 @@
 				mix-blend-mode: overlay;
 				opacity: 0;
 			}
-			&::after {
-				content: "";
-				position: absolute;
-				top: 46%;
-				left: 0;
-				transform: translateY(-50%);
-				height: 6px;
-				width: 66%;
-				background-color: map-get($color, x-white);
-				mix-blend-mode: overlay;
+			p:last-child{
+				display: inline-block;
+				&::after {
+					content: "";
+					position: absolute;
+					top: -8%;
+					right: 0;
+					transform: translateY(-50%);
+					height: 6px;
+					width: 66vw;
+					background-color: map-get($color, x-white);
+					mix-blend-mode: overlay;
+					position: absolute;
+				}
 			}
 			@media (max-width: 1499.98px) {
 				padding-left: 30%;
