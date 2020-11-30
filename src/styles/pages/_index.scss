@@ -477,11 +477,6 @@
 									display: flex;
 									height: fit-content !important;
 									margin-bottom: 70px;
-									.img-slide{
-										&:hover{								
-											animation: shake 0.4s ease-out; 
-										}
-									}
 								}
 							}
 						}
@@ -492,6 +487,10 @@
 							max-width: 338px;
 							max-height: 100px;
 							padding-bottom: 5px;
+							cursor: default;
+							&:hover{								
+								animation: shake 0.4s ease-out; 
+							}
 							.desc-slide {
 								padding-left: 40px;
 								p {
