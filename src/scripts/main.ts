@@ -106,7 +106,7 @@ const initFullpage = () => {
 		let homePattern = document.querySelector("#home");
 		if(homePattern){
 			translateHomeText();
-			gridPattern(homePattern, 40, 20);	
+			// gridPattern(homePattern, 40, 20);	
 		}
 		const fpOptions: FullpageOptions = {
 			prevEl: ".fp-prev",
@@ -178,7 +178,7 @@ const initFullpage = () => {
 						}
 					}
 
-					showPattern(currentIndex);
+					// showPattern(currentIndex);
 				},
 			},
 		};
