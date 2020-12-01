@@ -453,11 +453,33 @@ const gridPattern = (sectionEl: any, col:Number, row:Number) => {
 	}
 }
 
+function hoverApartment() {
+	document.querySelectorAll("#apartment-svg g").forEach((element : any) => {
+		var dataActive = element.getAttribute("data-active");
+		if (dataActive != null) {
+			$("#apartment-svg g[data-active=" + dataActive + "]").hover(
+			// Hover in
+			function() {
+				$("#apartment-svg g[data-active=" + dataActive + "]").css("opacity","unset")
+				$("#apartment-svg g .area").css("animation","dash 0.6s linear alternate, fillColor 1.2s linear alternate")
+				$("#apartment-svg g.info[data-active=" + dataActive + "] .box").css("opacity","1")
+			},
+			// Hover out
+			function() {
+				$("#apartment-svg g[data-active=" + dataActive + "]:not(.info)").css("opacity","0")
+				$("#apartment-svg g .area").css("animation","unset")
+				$("#apartment-svg g.info[data-active=" + dataActive + "] .box").css("opacity","0.5")
+			})
+		}
+	});
+}
+
 function loadApartmentSvg () {
 	var width = window.innerWidth;
 	var height = window.innerHeight;
 	if (document.querySelector("#apartment-svg")){
 		document.querySelector("#apartment-svg").setAttribute("viewBox", `0 0 ${width} ${height}`)
+		hoverApartment()
 	}
 }
 window.onload = function () {
