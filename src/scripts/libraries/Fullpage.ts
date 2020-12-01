@@ -96,19 +96,21 @@ export class Fullpage {
 
 	private generateDots() {
 		if (this.options.dots) {
-			this.$elWrapper = document.createElement("div");
-			this.$elWrapper.classList.add("fp-dots");
-			let dotItemString = "";
-			for (let i = 0; i < this.slidesLength; i++) {
-				dotItemString += `<div class="fp-dot-item" fp-target=${i}>
-					<span class="fp-number">0${i}</span>
-					<span class="fp-title">${this.titles[i]}</span>
-				</div>`;
+			if(!document.querySelector(".fp-dots")) {
+				this.$elWrapper = document.createElement("div");
+				this.$elWrapper.classList.add("fp-dots");
+				let dotItemString = "";
+				for (let i = 0; i < this.slidesLength; i++) {
+					dotItemString += `<div class="fp-dot-item" fp-target=${i}>
+						<span class="fp-number">0${i}</span>
+						<span class="fp-title">${this.titles[i]}</span>
+					</div>`;
+				}
+				this.$elWrapper.innerHTML = dotItemString;
+				this.$el.append(this.$elWrapper);
+	
+				this.dotsClicked();
 			}
-			this.$elWrapper.innerHTML = dotItemString;
-			this.$el.append(this.$elWrapper);
-
-			this.dotsClicked();
 		}
 	}
 
@@ -208,17 +210,19 @@ export class Fullpage {
 	}
 
 	private activeDotWhenChangeSlide() {
-		const currentIndex = this.state.currentIndex;
-		const navigationItems = Array.from(
-			this.$elWrapper.querySelectorAll(".fp-dot-item"),
-		);
-		navigationItems.forEach((navItem, navItemIndex) => {
-			if (navItemIndex == currentIndex) {
-				navItem.classList.add("active");
-			} else {
-				navItem.classList.remove("active");
-			}
-		});
+		if(this.$elWrapper){
+			const currentIndex = this.state.currentIndex;
+			const navigationItems = Array.from(
+				this.$elWrapper.querySelectorAll(".fp-dot-item"),
+			);
+			navigationItems.forEach((navItem, navItemIndex) => {
+				if (navItemIndex == currentIndex) {
+					navItem.classList.add("active");
+				} else {
+					navItem.classList.remove("active");
+				}
+			});
+		}
 	}
 
 	private changeSlide() {

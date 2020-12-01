@@ -102,118 +102,124 @@ const initFullpage = () => {
 	}
 
 	// INIT FULLPAGE
-	if(window.innerWidth > 1100) {				
-		let homePattern = document.querySelector("#home");
-		if(homePattern){
-			translateHomeText();
-			// gridPattern(homePattern, 40, 20);	
-		}
-		const fpOptions: FullpageOptions = {
-			prevEl: ".fp-prev",
-			nextEl: ".fp-buttons__wrapper",
-			speed: 800,
-			slideClass: ".fp-slide",
-			dots: true,
-			on: {
-				// event is fired before slide start transition
-				beforeSlideChange: function (
-					currentSlide,
-					nextSlide,
-					currentIndex,
-					nextIndex,
-				) {
+	function loadFullpage () {
+		if(window.innerWidth > 1100) {				
+			let homePattern = document.querySelector("#home");
+			if(homePattern){
+				translateHomeText();
+				// gridPattern(homePattern, 40, 20);	
+			}
+			const fpOptions: FullpageOptions = {
+				prevEl: ".fp-prev",
+				nextEl: ".fp-buttons__wrapper",
+				speed: 800,
+				slideClass: ".fp-slide",
+				dots: true,
+				on: {
+					// event is fired before slide start transition
+					beforeSlideChange: function (
+						currentSlide,
+						nextSlide,
+						currentIndex,
+						nextIndex,
+					) {
 
-					currentSlide.querySelector(".setting-section").classList.remove("show-content")
-					if(currentSlide.querySelector(".youtube-video")) {
-						player.pauseVideo();
-					}
-
-					if(currentIndex == 1) {
-						document.querySelector("header").classList.remove("changed")
-						document.querySelector(".fp-socials .fp-links__wrapper").classList.remove("changed")
-					}
-				},
-				// event is fired after slide end transition
-				afterSlideChange: function (currentSlide, currentIndex) {
-					if(document.querySelector(".index-page")) {
-						currentSlide.querySelector(".setting-section").classList.add("show-content")
+						currentSlide.querySelector(".setting-section").classList.remove("show-content")
 						if(currentSlide.querySelector(".youtube-video")) {
-							player.playVideo();
-						}
-						// console.log(currentSlide, currentIndex);
-						if(currentIndex != 0) {
-							// show and hide navigation bar when slide
-							document.querySelector(".fp-dots").classList.remove("hide");
-							document.querySelector(".fp-dots").classList.add("show");
-							//show and hide logo when slide
-							document.querySelector(".header__wrapper .logo").classList.remove("hide");
-							document.querySelector(".header__wrapper .logo").classList.add("show")
-						} else {
-							document.querySelector(".fp-dots").classList.remove("show");
-							document.querySelector(".fp-dots").classList.add("hide");
-							//show and hide logo when slide
-							document.querySelector(".header__wrapper .logo").classList.remove("show");
-							document.querySelector(".header__wrapper .logo").classList.add("hide")
+							player.pauseVideo();
 						}
 
-						//
-						if (currentIndex == 0) {
-							setTimeout(() => {
-								animation.allAnimeFullpageIndex__0();
-							},  1500);
-							// anime({
-							// 	targets: '#home .block-animation-grid .square',
-							// 	scale: [
-							// 		{value: .1, easing: 'easeOutSine', duration: 500},
-							// 		{value: 1, easing: 'easeInOutQuad', duration: 1200}
-							// 	],
-							// 	delay: anime.stagger(200, {grid: [40,40], from: 'center'}),
-							// 	loop:true
-							// });
-							translateHomeText();
-						}
 						if(currentIndex == 1) {
-							document.querySelector("header").classList.add("changed")
-							document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
+							document.querySelector("header").classList.remove("changed")
+							document.querySelector(".fp-socials .fp-links__wrapper").classList.remove("changed")
 						}
-					}
+					},
+					// event is fired after slide end transition
+					afterSlideChange: function (currentSlide, currentIndex) {
+						if(document.querySelector(".index-page")) {
+							currentSlide.querySelector(".setting-section").classList.add("show-content")
+							if(currentSlide.querySelector(".youtube-video")) {
+								player.playVideo();
+							}
+							// console.log(currentSlide, currentIndex);
+							if(currentIndex != 0) {
+								// show and hide navigation bar when slide
+								document.querySelector(".fp-dots").classList.remove("hide");
+								document.querySelector(".fp-dots").classList.add("show");
+								//show and hide logo when slide
+								document.querySelector(".header__wrapper .logo").classList.remove("hide");
+								document.querySelector(".header__wrapper .logo").classList.add("show")
+							} else {
+								document.querySelector(".fp-dots").classList.remove("show");
+								document.querySelector(".fp-dots").classList.add("hide");
+								//show and hide logo when slide
+								document.querySelector(".header__wrapper .logo").classList.remove("show");
+								document.querySelector(".header__wrapper .logo").classList.add("hide")
+							}
 
-					// showPattern(currentIndex);
+							//
+							if (currentIndex == 0) {
+								setTimeout(() => {
+									animation.allAnimeFullpageIndex__0();
+								},  1500);
+								// anime({
+								// 	targets: '#home .block-animation-grid .square',
+								// 	scale: [
+								// 		{value: .1, easing: 'easeOutSine', duration: 500},
+								// 		{value: 1, easing: 'easeInOutQuad', duration: 1200}
+								// 	],
+								// 	delay: anime.stagger(200, {grid: [40,40], from: 'center'}),
+								// 	loop:true
+								// });
+								translateHomeText();
+							}
+							if(currentIndex == 1) {
+								document.querySelector("header").classList.add("changed")
+								document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
+							}
+						}
+
+						// showPattern(currentIndex);
+					},
 				},
-			},
-		};
-		const fp = new Fullpage(".fp-container", fpOptions);
-		// method slide to a slide with index
-		fp.slideTo(0);
-		// method allow or not allow scroll to slide fullpage: true = allow, false = not allow
-		fp.canScroll(true);
-		if(fp.getIndex() == 0 && document.querySelector(".index-page")) {
-			document.querySelector(".fp-dots").classList.remove("show");
-			document.querySelector(".fp-dots").classList.add("hide");
-	
-			//show and hide logo when slide
-			document.querySelector(".header__wrapper .logo").classList.remove("show");
-			document.querySelector(".header__wrapper .logo").classList.add("hide")
+			};
+			const fp = new Fullpage(".fp-container", fpOptions);
+			// method slide to a slide with index
+			fp.slideTo(0);
+			// method allow or not allow scroll to slide fullpage: true = allow, false = not allow
+			fp.canScroll(true);
+			if(fp.getIndex() == 0 && document.querySelector(".index-page")) {
+				document.querySelector(".fp-dots").classList.remove("show");
+				document.querySelector(".fp-dots").classList.add("hide");
+		
+				//show and hide logo when slide
+				document.querySelector(".header__wrapper .logo").classList.remove("show");
+				document.querySelector(".header__wrapper .logo").classList.add("hide")
 
-			animation.allAnimeFullpageIndex__0();
+				animation.allAnimeFullpageIndex__0();
+			}
+			if(document.querySelector(".introduce-page")) {
+					document.querySelector(".fp-dots").classList.add("hide")
+			}
+
+			const menuItems = document.querySelectorAll(".navigation .nav-item");
+			menuItems.forEach((item) => {
+				item.addEventListener("click", (e) => {
+					e.preventDefault();
+					const target = item.querySelector("a").getAttribute("fp-target");
+					if(target){
+						fp.scrollToSection(target);
+						document.querySelector("header").classList.toggle("show");
+					}
+				})
+			});
+
 		}
-		if(document.querySelector(".introduce-page")) {
-				document.querySelector(".fp-dots").classList.add("hide")
-		}
-
-		const menuItems = document.querySelectorAll(".navigation .nav-item");
-		menuItems.forEach((item) => {
-			item.addEventListener("click", (e) => {
-				e.preventDefault();
-				const target = item.querySelector("a").getAttribute("fp-target");
-				if(target){
-					fp.scrollToSection(target);
-					document.querySelector("header").classList.toggle("show");
-				}
-			})
-		});
-
 	}
+	loadFullpage();
+	window.addEventListener('resize', function () {
+		loadFullpage();
+	})
 }
 
 function showPattern (currentIndex:Number) { 
@@ -270,7 +276,6 @@ const swiperIntro = () => {
 		spaceBetween: 20,
 		autoplay: {
 			delay: 400,
-			disableOnInteraction: false,
 		},
 		speed: 1500,
 		slidesPerView: 1,
@@ -290,7 +295,8 @@ const swiperIntro = () => {
 			},
 			1025: {
 				slidesPerView: 3,
-
+				loop: false,
+				autoplay: false,
 			}
 		}
 	});
