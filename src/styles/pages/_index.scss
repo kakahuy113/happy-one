@@ -283,6 +283,27 @@
 		svg{
 			height: calc(100% + 65px);
 			width: 100%;
+
+			#Union_2 {
+				animation: pointer 2s infinite;
+			}
+
+			#Path_10561 {
+				animation: pointerCircle1 2s infinite;
+			}
+			#Path_10562 {
+				animation: pointerCircle2 2s infinite;
+			}
+			#Path_10563 {
+				animation: pointerCircle3 2s infinite;
+			}
+			#Path_10564 {
+				animation: pointerCircle4 2s infinite;
+			}
+
+			#Ellipse_65 {
+				animation: StrokeLine 5s infinite linear;
+			}
 		}
 		@media (max-width: 1439.98px) {
 			width: 50vw;
@@ -1376,3 +1397,53 @@ width: 100vw;
 		transform: skewX(-10deg); 
 	} 
 } 
+
+@keyframes pointer {
+    0%{
+		fill:#F1BE78;
+		opacity: 0.3
+	}
+    20%{
+
+	}
+    60%{
+		fill:#F1BE78;
+		opacity: 0.5
+	}
+}
+
+@keyframes pointerCircle1 {
+    0%{
+		opacity: 0.55
+	}
+    40%{
+		opacity: 0.6
+	}
+}
+
+@keyframes pointerCircle2 {
+    0%{
+		opacity: 0.25
+	}
+    40%{
+		opacity: 0.2
+	}
+}
+
+@keyframes pointerCircle3 {
+    // 0%{
+	// 	opacity: 0.6
+	// }
+    40%{
+		opacity: 0.2
+	}
+}
+
+@keyframes pointerCircle4 {
+    0%{
+		opacity: 0.55
+	}
+    40%{
+		opacity: 0.6
+	}
+}
