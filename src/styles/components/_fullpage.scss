@@ -67,6 +67,7 @@
 			display: flex;
 			align-items: center;
 			transition: .3s all ease;
+			max-width: fit-content;
 			&:first-child {
 				display: none;
 			}
