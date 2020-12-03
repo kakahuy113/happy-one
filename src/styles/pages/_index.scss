@@ -305,7 +305,7 @@
 				animation: StrokeLine 5s infinite linear;
 			}
 
-			g[id^="Group_43"] {
+			g[id^="Point_"], path[id^="Point_"] {
 				stroke: #fff;
 				stroke-miterlimit: 10;
 				stroke-width: 1;
