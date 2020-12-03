@@ -485,26 +485,25 @@ function hoverLocationDot()
 	$(".section-location .map-svg svg g[id^=Group_43]").hover(
 		// Mouse in
 		function(t: any) {
-			alert("a");
+			
 			if (1100 < $(window).width()) {
 				$(".show-box").removeClass("showup");
-				var e = $(this).attr("data-dot"),
+				const urlImage = $(".box-circle .show-box").attr("data-url-img");
+				var e = $(this).attr("id"),
 					i = t.clientX,
 					o = t.clientY;
-				"dot-01" == e || "dot-02" == e || "dot-03" == e || "dot-04" == e || "dot-05" == e || "dot-06" == e || "dot-07" == e 
-				? $(".show-box[data-box='" + e + "']").css({
-					left: i - 280,
+				const imageSrc = `${urlImage}/${e}.png`;
+				$(".box-circle .show-box img").attr("src" , `${imageSrc}`)
+				$(".show-box").css({
+					left: i - 300,
 					top: o - 30
-				}) : $(".show-box[data-box='" + e + "']").css({
-					left: i + 40,
-					top: o - 100
 				})
-				$(".show-box[data-box='" + e + "']").addClass("showup");
+				$(".show-box").addClass("showup");
 			}
 		}, 
 		// Mouse out
 		function(t: any) {
-
+			$(".show-box").removeClass("showup");
 		}
 	)
 }
