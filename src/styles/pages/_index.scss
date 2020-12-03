@@ -301,8 +301,23 @@
 				animation: pointerCircle4 2s infinite;
 			}
 
-			#Ellipse_65 {
+			#Ellipse_65, #Ellipse_66 {
 				animation: StrokeLine 5s infinite linear;
+			}
+
+			g[id^="Group_43"] {
+				stroke: #fff;
+				stroke-miterlimit: 10;
+				stroke-width: 1;
+				stroke-dasharray: 3;
+				stroke-dashoffset: 0;
+				animation: StrokeLine 10s infinite linear;
+
+				&:hover {
+					fill:#daa244;
+					stroke-opacity:0;
+					animation-play-state:paused
+				}
 			}
 		}
 		@media (max-width: 1439.98px) {
@@ -1431,9 +1446,6 @@ width: 100vw;
 }
 
 @keyframes pointerCircle3 {
-    // 0%{
-	// 	opacity: 0.6
-	// }
     40%{
 		opacity: 0.2
 	}
