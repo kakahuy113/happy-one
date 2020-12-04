@@ -478,7 +478,16 @@ const hoverLocationDot = () =>
 					left: i - 300,
 					top: o - 30
 				})
-				$(".show-box").addClass("showup");
+				var iconNames = "";
+				$(".section-location .map-svg svg text[id=" + 
+					e.split("_")[0] + "_name_" + e.split("_")[2] 
+					+ "] tspan").each((i: number, element: any) => {
+					iconNames += $(element).text() + " "
+				});
+				$(".show-box h3").text(iconNames);
+				setTimeout(() => {
+					$(".show-box").addClass("showup");
+				}, 300)
 			}
 		}, 
 		// Mouse out
@@ -511,10 +520,9 @@ const hoverApartment = () => {
 
 const hoverApartmentRoom = () =>
 {
-	$(".section-apartment-detail .map-svg svg g path[id^=Path_109]").hover(
+	$(".section-location .map-svg svg g[id^=Point_Hover_]").hover(
 		// Mouse in
 		function(t: any) {
-			
 			if (1100 < $(window).width()) {
 				$(".show-box").removeClass("showup");
 				var e = $(this).attr("id"),
