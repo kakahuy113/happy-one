@@ -127,6 +127,7 @@
 	left: 0;
 	pointer-events: none;
 	height: 100%;
+	opacity: 0;
 	.scroll-content {
 		height: 100%;
 		.news-content {
@@ -222,6 +223,11 @@
 	}
 	&.show {
 		pointer-events: auto;
+		animation: goLeft;
+		animation-duration: 1s;
+		animation-delay: 0s;
+		animation-fill-mode: forwards;
+		z-index: 9999;
 		.news-content {
 			z-index: 601;
 			opacity: 1;

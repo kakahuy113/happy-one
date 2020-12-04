@@ -462,10 +462,9 @@ const gridPattern = (sectionEl: any, col:Number, row:Number) => {
 
 const hoverLocationDot = () =>
 {
-	$(".section-location .map-svg svg g[id^=Group_43]").hover(
+	$(".section-location .map-svg svg g[id^=Point_Hover_]").hover(
 		// Mouse in
 		function(t: any) {
-			
 			if (1100 < $(window).width()) {
 				$(".show-box").removeClass("showup");
 				const urlImage = $(".box-circle .show-box").attr("data-url-img");
@@ -478,6 +477,7 @@ const hoverLocationDot = () =>
 					left: i - 300,
 					top: o - 30
 				})
+
 				var iconNames = "";
 				$(".section-location .map-svg svg text[id=" + 
 					e.split("_")[0] + "_name_" + e.split("_")[2] 
@@ -554,6 +554,7 @@ const loadApartmentSvg = () => {
 		hoverApartmentRoom()
 	}
 }
+
 const loadDetailLocationSvg = () => {
 	var width = window.innerWidth;
 	var height = window.innerHeight;
@@ -561,6 +562,68 @@ const loadDetailLocationSvg = () => {
 		//document.querySelector("#detail-location-svg").setAttribute("viewBox", `0 0 ${width} ${height}`)
 		hoverLocationDot()
 	}
+}
+
+const newsAjax = () => {
+	const href = $("#checkurl").val();
+	if(window.location.href == href) {
+			$(".column-box-news").addClass("show")
+	}
+
+	// const currentPathnameAfterReload = window.location.pathname;
+	// $(".about-nav nav a").each(function () {
+	// 	const navPathname = $(this).attr("href");
+
+	// 	if (currentPathnameAfterReload.indexOf(navPathname) >= 0) {
+	// 		$(this).addClass("active");
+	// 		$(".about-nav nav a").not(this).removeClass("active");
+	// 	}
+
+	// 	if ($(".about-5--2").length > 0) {
+	// 		$(".about-nav nav a").each(function () {
+	// 			if ($(this).attr("href").indexOf("/giai-phap") >= 0) {
+	// 				$(this).addClass("active");
+	// 				$(".about-nav nav a").not(this).removeClass("active");
+	// 			}
+	// 		});
+	// 	}
+	// 	$(this).on("click", (e) => {
+	// 		e.preventDefault();
+	// 		const url = $(this).attr("href");
+	// 		$(this).addClass("active");
+	// 		$(".about-nav nav a").not(this).removeClass("active");
+	// 		$.ajax({
+	// 			url: url,
+	// 			type: "get",
+	// 			success: function (res) {
+	// 				if (url.indexOf("du-an") >= 0) {
+	// 					$(".about-ajax").html(
+	// 						`<div class="container"><div class="row row-custom about-project"><div class="col-lg-11 col-xl-10">${$(
+	// 							res
+	// 						)
+	// 							.find(".project-list .container")
+	// 							.html()}</div></div></div>`
+	// 					);
+	// 					$(".about-project .description").removeClass("d-none");
+	// 					$(".about-project .row").eq(0).addClass("row-custom");
+	// 					$(".about-project .col-lg-4").each(function () {
+	// 						$(this).addClass("col-6 col-md-4 about-4--item--col");
+	// 						$(this).removeClass("col-lg-4");
+	// 					});
+	// 					const fullUrl = `${window.location.origin}${url}`;
+	// 					window.history.pushState({}, "", fullUrl);
+	// 				} else {
+	// 					$(".about-ajax").html($(res).find(".about-ajax").html());
+	// 					const fullUrl = `${window.location.origin}${url}`;
+	// 					if ($(".about-ajax").find(".about-1--4 .clients-slider")) {
+	// 						about2slider();
+	// 					}
+	// 					window.history.pushState({}, "", fullUrl);
+	// 				}
+	// 			},
+	// 		});
+	// 	});
+	// });
 }
 window.onload = function () {
 	loadApartmentSvg();
@@ -584,4 +647,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 	swiperDetailNews(); 
 	hoverLocationDot();
 	hoverApartmentRoom();
+	newsAjax();
 });

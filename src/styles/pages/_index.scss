@@ -1157,16 +1157,12 @@
 			}
 			.text {
 				margin-left: 10px;
-			}
-			&:last-child {
-				.text {
-					display: flex;
-					a {
-						margin-left: 15px;
-						svg {
-							path {
-								fill: #FCCB81;
-							}
+				display: flex;
+				a {
+					margin-left: 15px;
+					svg {
+						path {
+							fill: #FCCB81;
 						}
 					}
 				}
@@ -1198,6 +1194,9 @@
 					align-items: center;
 					justify-content: center;
 					position: relative;
+					img {
+						height: 80%;
+					}
 					&::before {
 						content: "";
 						position: absolute;
