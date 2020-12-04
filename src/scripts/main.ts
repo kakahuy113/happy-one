@@ -459,28 +459,8 @@ const gridPattern = (sectionEl: any, col:Number, row:Number) => {
 	}
 }
 
-function hoverApartment() {
-	document.querySelectorAll("#apartment-svg g").forEach((element : any) => {
-		var dataActive = element.getAttribute("data-active");
-		if (dataActive != null) {
-			$("#apartment-svg g[data-active=" + dataActive + "]").hover(
-			// Hover in
-			function() {
-				$("#apartment-svg g[data-active=" + dataActive + "]").css("opacity","unset")
-				$("#apartment-svg g .area").css("animation","dash 0.6s linear alternate, fillColor 1.2s linear alternate")
-				$("#apartment-svg g.info[data-active=" + dataActive + "] .box").css("opacity","1")
-			},
-			// Hover out
-			function() {
-				$("#apartment-svg g[data-active=" + dataActive + "]:not(.info)").css("opacity","0")
-				$("#apartment-svg g .area").css("animation","unset")
-				$("#apartment-svg g.info[data-active=" + dataActive + "] .box").css("opacity","0.5")
-			})
-		}
-	});
-}
 
-function hoverLocationDot()
+const hoverLocationDot = () =>
 {
 	$(".section-location .map-svg svg g[id^=Group_43]").hover(
 		// Mouse in
@@ -508,15 +488,65 @@ function hoverLocationDot()
 	)
 }
 
-function loadApartmentSvg () {
+const hoverApartment = () => {
+	document.querySelectorAll("#apartment-svg g").forEach((element : any) => {
+		var dataActive = element.getAttribute("data-active");
+		if (dataActive != null) {
+			$("#apartment-svg g[data-active=" + dataActive + "]").hover(
+			// Hover in
+			function() {
+				$("#apartment-svg g[data-active=" + dataActive + "]").css("opacity","unset")
+				$("#apartment-svg g .area").css("animation","dash 0.6s linear alternate, fillColor 1.2s linear alternate")
+				$("#apartment-svg g.info[data-active=" + dataActive + "] .box").css("opacity","1")
+			},
+			// Hover out
+			function() {
+				$("#apartment-svg g[data-active=" + dataActive + "]:not(.info)").css("opacity","0")
+				$("#apartment-svg g .area").css("animation","unset")
+				$("#apartment-svg g.info[data-active=" + dataActive + "] .box").css("opacity","0.5")
+			})
+		}
+	});
+}
+
+const hoverApartmentRoom = () =>
+{
+	$(".section-apartment-detail .map-svg svg g path[id^=Path_109]").hover(
+		// Mouse in
+		function(t: any) {
+			
+			if (1100 < $(window).width()) {
+				$(".show-box").removeClass("showup");
+				var e = $(this).attr("id"),
+					i = t.clientX,
+					o = t.clientY;
+				$(".show-box").css({
+					left: i - 300,
+					top: o - 60
+				})
+				$(".show-box").addClass("showup");
+				
+			}
+		}, 
+		// Mouse out
+		function(t: any) {
+			$(".show-box").removeClass("showup");
+		}
+	)
+}
+
+const loadApartmentSvg = () => {
 	var width = window.innerWidth;
 	var height = window.innerHeight;
 	if (document.querySelector("#apartment-svg")){
 		document.querySelector("#apartment-svg").setAttribute("viewBox", `0 0 ${width} ${height}`)
-		hoverApartment()
+		hoverApartment();
+	}
+	if(document.querySelector("#apartment-detail-svg")) {
+		hoverApartmentRoom()
 	}
 }
-function loadDetailLocationSvg() {
+const loadDetailLocationSvg = () => {
 	var width = window.innerWidth;
 	var height = window.innerHeight;
 	if (document.querySelector("#detail-location-svg")){
@@ -545,4 +575,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 	toogleMenu();
 	swiperDetailNews(); 
 	hoverLocationDot();
+	hoverApartmentRoom();
 });
