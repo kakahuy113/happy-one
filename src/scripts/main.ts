@@ -467,14 +467,31 @@ window.addEventListener('resize', function () {
 	loadApartmentSvg();
 });
 
+function generateDots() {
+	if ($(".fp-dots").length === 0) {
+		let dotItemString = "";
+		$("#fullpage .section").each((idx:number, item:any)=>{
+			dotItemString += `<li class="fp-dot-item" data-menuanchor="slider-${$(item).attr("id")}">
+				<a href="#slider-${$(item).attr("id")}">
+					<span class="fp-number">0${idx}</span>
+					<span class="fp-title">${$(item).attr("fp-title")}</span>
+				</a>
+			</li>`;
+		}) 
+		let dotEl = `<ul class="fp-dots" id="menu">${dotItemString}</ul>`;
+		$('.fp-container').append(dotEl);
+	}
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
 	getSVGs(".svg");
 	Loading()
-	initFullpage();
+	// initFullpage();
 	loadApartmentSvg();
 	setBackgroundImageSection();
 	swiperIntro();
 	swiperNews();
 	toogleMenu();
 	swiperDetailNews(); 
+	generateDots();
 });

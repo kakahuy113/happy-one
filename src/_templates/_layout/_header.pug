@@ -22,25 +22,25 @@ header
 	.navigation
 		.menu.h-100
 			.menu__wrapper
-				.nav-list
+				.nav-list 
 					.nav-item.active
 						a(href="").nav-link Trang Chủ
-					.nav-item
-						a(href="", fp-target="1").nav-link Giới thiệu
-					.nav-item
-						a(href="", fp-target="2").nav-link Video
-					.nav-item
-						a(href="", fp-target="3").nav-link Vị trí
-					.nav-item
-						a(href="", fp-target="4").nav-link Tiện ích
-					.nav-item
-						a(href="", fp-target="5").nav-link Mặt bằng căn hộ
+					.nav-item(data-menuanchor="slider-introduce")
+						a(href="#slider-introduce", fp-target="1").nav-link Giới thiệu
+					.nav-item(data-menuanchor="slider-video")
+						a(href="#slider-video", fp-target="2").nav-link Video
+					.nav-item(data-menuanchor="slider-location")
+						a(href="#slider-location", fp-target="3").nav-link Vị trí
+					.nav-item(data-menuanchor="slider-utilities")
+						a(href="#slider-utilities", fp-target="4").nav-link Tiện ích
+					.nav-item(data-menuanchor="slider-apartment")
+						a(href="#slider-apartment", fp-target="5").nav-link Mặt bằng căn hộ
 					.nav-item
 						a(href="").nav-link Căn hộ 360
-					.nav-item
-						a(href="", fp-target="6").nav-link Tin tức sự kiện
-					.nav-item
-						a(href="", fp-target="7").nav-link Liên hệ
+					.nav-item(data-menuanchor="slider-news")
+						a(href="#slider-news", fp-target="6").nav-link Tin tức sự kiện
+					.nav-item(data-menuanchor="slider-contact")
+						a(href="#slider-contact", fp-target="7").nav-link Liên hệ
 					.nav-item
 						span Liên kết:
 						.socials

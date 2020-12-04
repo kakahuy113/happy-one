@@ -64,6 +64,11 @@
 			display: flex;
 			align-items: center;
 			transition: .3s all ease;
+			a{
+				width: 100%;
+				display: flex;
+				align-items: center;
+			}
 			&:first-child {
 				display: none;
 			}
