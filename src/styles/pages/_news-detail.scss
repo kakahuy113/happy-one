@@ -17,15 +17,22 @@
 		height: 100%;
 		align-items: center;
 		transition: .3s all ease-in-out;
+		.content__wrapper {
+			width: 100%;
+		}
 		.content--active {
 			.row {
-				margin-right: -15px;
-				margin-left: -15px;
-				> div {
-					padding-left: 15px;
-					padding-right: 15px;
+				flex-direction: column;
+				overflow: hidden;
+				.img {
+					max-width: 550px;
+					overflow: hidden;
+					width: 100%;
+					max-height: 345px;
+					margin-bottom: 10px;
 				}
 				.desc {
+					max-width: 550px;
 					.title {
 						margin-bottom: 10px;
 						h2 {
@@ -107,14 +114,19 @@
 				flex: 0 0 100%;
 				max-width: 70%;
 				margin-bottom: 30px;
-				@media (max-width: 767.98px) {
-					
-				}
 			}
 			.content--slide {
 				-ms-flex: 0 0 100%;
 				flex: 0 0 100%;
 				max-width: 70%;
+			}
+		}
+		@media (max-width: 575.98px) {
+			.content--active {
+				max-width: 100%;
+			}
+			.content--slide {
+				max-width: 100%;
 			}
 		}
 	}
