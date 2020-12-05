@@ -138,45 +138,50 @@ const initFullpage = () => {
 					afterSlideChange: function (currentSlide, currentIndex) {
 						if(document.querySelector(".index-page")) {
 							currentSlide.querySelector(".setting-section").classList.add("show-content")
-							if(currentSlide.querySelector(".youtube-video")) {
-								player.playVideo();
-							}
-							// console.log(currentSlide, currentIndex);
-							if(currentIndex != 0) {
-								// show and hide navigation bar when slide
-								document.querySelector(".fp-dots").classList.remove("hide");
-								document.querySelector(".fp-dots").classList.add("show");
-								//show and hide logo when slide
-								document.querySelector(".header__wrapper .logo").classList.remove("hide");
-								document.querySelector(".header__wrapper .logo").classList.add("show")
-							} else {
-								document.querySelector(".fp-dots").classList.remove("show");
-								document.querySelector(".fp-dots").classList.add("hide");
-								//show and hide logo when slide
-								document.querySelector(".header__wrapper .logo").classList.remove("show");
-								document.querySelector(".header__wrapper .logo").classList.add("hide")
-							}
+								return new Promise((resolve, reject) => {
+									if(currentSlide.querySelector(".youtube-video")) {
+										player.playVideo();
+									}
+									// console.log(currentSlide, currentIndex);
+									if(currentIndex != 0) {
+										// show and hide navigation bar when slide
+										document.querySelector(".fp-dots").classList.remove("hide");
+										document.querySelector(".fp-dots").classList.add("show");
+										//show and hide logo when slide
+										document.querySelector(".header__wrapper .logo").classList.remove("hide");
+										document.querySelector(".header__wrapper .logo").classList.add("show")
+									} else {
+										document.querySelector(".fp-dots").classList.remove("show");
+										document.querySelector(".fp-dots").classList.add("hide");
+										//show and hide logo when slide
+										document.querySelector(".header__wrapper .logo").classList.remove("show");
+										document.querySelector(".header__wrapper .logo").classList.add("hide")
+									}
 
-							//
-							if (currentIndex == 0) {
-								setTimeout(() => {
-									animation.allAnimeFullpageIndex__0();
-								},  1500);
-								// anime({
-								// 	targets: '#home .block-animation-grid .square',
-								// 	scale: [
-								// 		{value: .1, easing: 'easeOutSine', duration: 500},
-								// 		{value: 1, easing: 'easeInOutQuad', duration: 1200}
-								// 	],
-								// 	delay: anime.stagger(200, {grid: [40,40], from: 'center'}),
-								// 	loop:true
-								// });
-								translateHomeText();
-							}
-							if(currentIndex == 1) {
-								document.querySelector("header").classList.add("changed")
-								document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
-							}
+									//
+									if (currentIndex == 0) {
+										setTimeout(() => {
+											animation.allAnimeFullpageIndex__0();
+										},  1500);
+										// anime({
+										// 	targets: '#home .block-animation-grid .square',
+										// 	scale: [
+										// 		{value: .1, easing: 'easeOutSine', duration: 500},
+										// 		{value: 1, easing: 'easeInOutQuad', duration: 1200}
+										// 	],
+										// 	delay: anime.stagger(200, {grid: [40,40], from: 'center'}),
+										// 	loop:true
+										// });
+										translateHomeText();
+									}
+									if(currentIndex == 1) {
+										document.querySelector("header").classList.add("changed")
+										document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
+									}
+									resolve();
+								});
+							
+							
 						}
 
 						// showPattern(currentIndex);
@@ -594,7 +599,6 @@ const newsAjax = () => {
 			}
 		})
 	}
-
 
 	$("#news-detail--1 .btn--see-more a").on("click" , function(e:any) {
 		e.preventDefault();

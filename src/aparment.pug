@@ -1,0 +1,13 @@
+extends _templates/_layout/_layout.pug
+
+block var
+	- let title = 'Page | Apartment';
+	- let bodyClass = 'apartment-page';
+
+block loading
+	include _templates/_layout/_loading
+block banner,breadcrumb
+block main
+		.fp-wrapper
+			include _templates/index/i-6
+block scripts
