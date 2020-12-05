@@ -582,18 +582,18 @@ const newsAjax = () => {
 			window.history.pushState({}, "", href);
 		}, 1000);
 	})
-	// if(window.location.href != href) {
-	// 	$(".column-box-news").addClass("show");
-	// 	$(".section-news--1__wrapper").addClass("level-index-out");
-	// 	const url = window.location.href;
-	// 	$.ajax({
-	// 		url: url,
-	// 		type: "get",
-	// 		success: function(res:any) {
-	// 			$(".column-box-news .news-text").html(`${res}`);
-	// 		}
-	// 	})
-	// }
+	if(window.location.pathname != href) {
+		$(".column-box-news").addClass("show");
+		$(".section-news--1__wrapper").addClass("level-index-out");
+		const url = window.location.href;
+		$.ajax({
+			url: url,
+			type: "get",
+			success: function(res:any) {
+				$(".column-box-news .news-text").html(`${res}`);
+			}
+		})
+	}
 
 	const url_news = $("#news-detail--1 .btn--see-more a").attr("href")
 
