@@ -54,8 +54,8 @@ export class Fullpage {
 		this.$el = document.querySelector($el);
 		if (this.$el) {
 			this.options = [].concat(options)[0];
-			this.prevEl = this.$el.querySelector(this.options.prevEl);
-			this.nextEl = this.$el.querySelector(this.options.nextEl);
+			this.prevEl = document.querySelector(this.options.prevEl);
+			this.nextEl = document.querySelector(this.options.nextEl);
 			this.slides = Array.from(
 				this.$el.querySelectorAll(this.options.slideClass),
 			);

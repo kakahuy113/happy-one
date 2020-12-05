@@ -103,7 +103,7 @@ const initFullpage = () => {
 
 	// INIT FULLPAGE
 	function loadFullpage () {
-		if(window.innerWidth > 1100) {				
+		if(window.innerWidth > 1100) {
 			let homePattern = document.querySelector("#home");
 			if(homePattern){
 				translateHomeText();
