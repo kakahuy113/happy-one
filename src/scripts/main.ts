@@ -276,10 +276,11 @@ const swiperIntro = () => {
 		spaceBetween: 20,
 		autoplay: {
 			delay: 400,
+			disableOnInteraction: false,
 		},
 		speed: 1500,
-		slidesPerView: 1,
 		loop:true,
+
 		breakpoints: {
 			300: {
 				slidesPerView: 1,
@@ -583,7 +584,9 @@ const newsAjax = () => {
 	if(window.location.href == href) {
 		$(".column-box-news").addClass("show");
 		$(".section-news--1__wrapper").addClass("level-index-out");
-	} 
+		const url = (<HTMLInputElement>document.getElementById("checkurl")).value;
+		$.ajax()
+	}
 	
 	// const currentPathnameAfterReload = window.location.pathname;
 	// $(".about-nav nav a").each(function () {

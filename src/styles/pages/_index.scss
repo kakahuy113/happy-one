@@ -31,6 +31,17 @@
 			padding-left: 40%;
 			bottom: 20%;
 			width: 100%;
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+				height: 6px;
+				width: 70vw;
+				background-color: map-get($color, x-white);
+				position: absolute;
+			}
 			p {
 				font-size: 7rem;
 				font-family: MyriaPro-Bold;
@@ -39,21 +50,7 @@
 				color: #ffffff;
 				opacity: 0;
 			}
-			p:last-child{
-				display: inline-block;
-				position: relative;
-				&::after {
-					content: "";
-					position: absolute;
-					top: -8%;
-					right: 0;
-					transform: translateY(-50%);
-					height: 6px;
-					width: 66vw;
-					background-color: map-get($color, x-white);
-					position: absolute;
-				}
-			}
+			
 			@media (max-width: 1499.98px) {
 				padding-left: 30%;
 			}
@@ -61,18 +58,11 @@
 				position: relative;
 				padding-left: 5%;
 				bottom: unset;
-				mix-blend-mode: unset;
 				&::after {
 					width: 50%;
 				}
 			}
-			@media (max-width: 900px) {
-				p {
-					font-size: 5rem;
-					opacity: 1;
-				}
-				
-			}
+			
 			@media (max-width: 575.98px) {
 				text-align: center;
 				p {
