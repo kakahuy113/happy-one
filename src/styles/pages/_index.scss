@@ -31,32 +31,26 @@
 			padding-left: 40%;
 			bottom: 20%;
 			width: 100%;
-			mix-blend-mode: overlay;
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+				height: 6px;
+				width: 70vw;
+				background-color: map-get($color, x-white);
+				position: absolute;
+			}
 			p {
 				font-size: 7rem;
 				font-family: MyriaPro-Bold;
 				font-weight: 700;
 				line-height: 1.5;
 				color: #ffffff;
-				mix-blend-mode: overlay;
 				opacity: 0;
 			}
-			p:last-child{
-				display: inline-block;
-				position: relative;
-				&::after {
-					content: "";
-					position: absolute;
-					top: -8%;
-					right: 0;
-					transform: translateY(-50%);
-					height: 6px;
-					width: 66vw;
-					background-color: map-get($color, x-white);
-					mix-blend-mode: overlay;
-					position: absolute;
-				}
-			}
+			
 			@media (max-width: 1499.98px) {
 				padding-left: 30%;
 			}
@@ -64,27 +58,17 @@
 				position: relative;
 				padding-left: 5%;
 				bottom: unset;
-				mix-blend-mode: unset;
 				&::after {
 					width: 50%;
 				}
 			}
-			@media (max-width: 900px) {
-				p {
-					font-size: 5rem;
-					opacity: 1;
-					mix-blend-mode: unset;
-				}
-				p:last-child::after{
-					mix-blend-mode: unset;
-				}
-			}
+			
 			@media (max-width: 575.98px) {
-				&::after {
-					content: none;
-				}
+				text-align: center;
 				p {
-					font-size: 3.5rem;
+					&::after {
+						content: none !important;
+					}
 				}
 			}
 		}
@@ -96,15 +80,7 @@
 	}
 	.setting-section {
 		background-position: 30%;
-		&::before {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			background: rgba($color: #000000, $alpha: .5);
-		}
+	
 		&.show-content {
 			svg {
 				animation: scaleLarge;
@@ -729,15 +705,22 @@
 				}
 			}
 			g.info{
+				
 				cursor: pointer;
 				.line, .box{
 					opacity: 0.5;	
-					transition: opacity 0.6s linear;				
+					transition: opacity 0.6s linear;
 				}
 				&:hover {
 					.line, .box{
-						opacity: 1;					
+						opacity: 1;
 					} 
+				}
+				@media (max-width: 1024.98px) {
+					transform: translateX(-10%);
+				}
+				@media (max-width: 767.98px) {
+					transform: translateX(-50%);
 				}
 			}
 		}

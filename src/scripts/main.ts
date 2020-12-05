@@ -276,10 +276,11 @@ const swiperIntro = () => {
 		spaceBetween: 20,
 		autoplay: {
 			delay: 400,
+			disableOnInteraction: false,
 		},
 		speed: 1500,
-		slidesPerView: 1,
 		loop:true,
+
 		breakpoints: {
 			300: {
 				slidesPerView: 1,
@@ -547,7 +548,13 @@ const loadApartmentSvg = () => {
 	var width = window.innerWidth;
 	var height = window.innerHeight;
 	if (document.querySelector("#apartment-svg")){
-		document.querySelector("#apartment-svg").setAttribute("viewBox", `0 0 ${width} ${height}`)
+		if(width > 575.98) {
+			document.querySelector("#apartment-svg").setAttribute("viewBox", `0 0 ${width} ${height}`)
+		}
+		if(width < 575.98) {
+			document.querySelector("#apartment-svg").setAttribute("viewBox", `${width - 200} 0 ${width} ${height}`)
+		}
+		
 		hoverApartment();
 	}
 	if(document.querySelector("#apartment-detail-svg")) {
@@ -566,10 +573,43 @@ const loadDetailLocationSvg = () => {
 
 const newsAjax = () => {
 	const href = $("#checkurl").val();
-	if(window.location.href == href) {
-			$(".column-box-news").addClass("show")
+	$(".close-news").on("click" , function() {
+		$(".column-box-news .news-content").addClass("show")
+		setTimeout(() => {
+			$(".column-box-news").removeClass("show");
+			$(".section-news--1__wrapper").removeClass("level-index-out");
+			$(".column-box-news .news-content").removeClass("show")
+		}, 1000);
+	})
+	if(window.location.href != href) {
+		$(".column-box-news").addClass("show");
+		$(".section-news--1__wrapper").addClass("level-index-out");
+		const url = window.location.href;
+		$.ajax({
+			url: url,
+			type: "get",
+			success: function(res:any) {
+				$(".column-box-news .news-text").html(`${res}`);
+			}
+		})
 	}
 
+	const url_news = $("#news-detail--1 .btn--see-more a").attr("href")
+
+	$("#news-detail--1 .btn--see-more").on("click" , function(e:any) {
+		e.preventDefault();
+		$.ajax({
+			url: url_news,
+			type: "get",
+			success: function(res:any) {
+				$(".column-box-news .news-text").html(`${res}`)
+			},
+			complete: function(res:any) {
+				window.history.pushState({}, "", url_news);
+			}
+		})
+	})
+	
 	// const currentPathnameAfterReload = window.location.pathname;
 	// $(".about-nav nav a").each(function () {
 	// 	const navPathname = $(this).attr("href");
