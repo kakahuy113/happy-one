@@ -595,15 +595,17 @@ const newsAjax = () => {
 		})
 	}
 
-	const url_news = $("#news-detail--1 .btn--see-more a").attr("href")
 
-	$("#news-detail--1 .btn--see-more").on("click" , function(e:any) {
+	$("#news-detail--1 .btn--see-more a").on("click" , function(e:any) {
 		e.preventDefault();
+		const url_news = $(this).attr("href")
 		$.ajax({
 			url: url_news,
 			type: "get",
 			success: function(res:any) {
 				$(".column-box-news .news-text").html(`${res}`)
+				$(".column-box-news").addClass("show");
+				$(".section-news--1__wrapper").addClass("level-index-out");
 			},
 			complete: function(res:any) {
 				window.history.pushState({}, "", url_news);
