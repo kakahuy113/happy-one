@@ -145,3 +145,10 @@
 		}
 	}
 }
+
+.level-index-out {
+	z-index: -9999!important;
+	pointer-events: none!important;
+	visibility: hidden;
+	transition: .3 all ease-in-out;
+}

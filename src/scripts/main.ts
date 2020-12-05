@@ -547,7 +547,13 @@ const loadApartmentSvg = () => {
 	var width = window.innerWidth;
 	var height = window.innerHeight;
 	if (document.querySelector("#apartment-svg")){
-		document.querySelector("#apartment-svg").setAttribute("viewBox", `0 0 ${width} ${height}`)
+		if(width > 575.98) {
+			document.querySelector("#apartment-svg").setAttribute("viewBox", `0 0 ${width} ${height}`)
+		}
+		if(width < 575.98) {
+			document.querySelector("#apartment-svg").setAttribute("viewBox", `${width - 200} 0 ${width} ${height}`)
+		}
+		
 		hoverApartment();
 	}
 	if(document.querySelector("#apartment-detail-svg")) {
@@ -566,10 +572,19 @@ const loadDetailLocationSvg = () => {
 
 const newsAjax = () => {
 	const href = $("#checkurl").val();
+	$(".close-news").on("click" , function() {
+		$(".column-box-news .news-content").addClass("show")
+		setTimeout(() => {
+			$(".column-box-news").removeClass("show");
+			$(".section-news--1__wrapper").removeClass("level-index-out");
+			$(".column-box-news .news-content").removeClass("show")
+		}, 1000);
+	})
 	if(window.location.href == href) {
-			$(".column-box-news").addClass("show")
-	}
-
+		$(".column-box-news").addClass("show");
+		$(".section-news--1__wrapper").addClass("level-index-out");
+	} 
+	
 	// const currentPathnameAfterReload = window.location.pathname;
 	// $(".about-nav nav a").each(function () {
 	// 	const navPathname = $(this).attr("href");
