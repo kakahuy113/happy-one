@@ -207,17 +207,17 @@ const initFullpage = () => {
 					document.querySelector(".fp-dots").classList.add("hide")
 			}
 
-			const menuItems = document.querySelectorAll(".navigation .nav-item");
-			menuItems.forEach((item) => {
-				item.addEventListener("click", (e) => {
-					e.preventDefault();
-					const target = item.querySelector("a").getAttribute("fp-target");
-					if(target){
-						fp.scrollToSection(target);
-						document.querySelector("header").classList.toggle("show");
-					}
-				})
-			});
+			// const menuItems = document.querySelectorAll(".navigation .nav-item");
+			// menuItems.forEach((item) => {
+			// 	item.addEventListener("click", (e) => {
+			// 		e.preventDefault();
+			// 		const target = item.querySelector("a").getAttribute("fp-target");
+			// 		if(target){
+			// 			fp.scrollToSection(target);
+			// 			document.querySelector("header").classList.toggle("show");
+			// 		}
+			// 	})
+			// });
 
 		}
 	}
