@@ -581,12 +581,34 @@ const newsAjax = () => {
 			$(".column-box-news .news-content").removeClass("show")
 		}, 1000);
 	})
-	if(window.location.href == href) {
+	if(window.location.href != href) {
 		$(".column-box-news").addClass("show");
 		$(".section-news--1__wrapper").addClass("level-index-out");
-		const url = (<HTMLInputElement>document.getElementById("checkurl")).value;
-		$.ajax()
+		const url = window.location.href;
+		$.ajax({
+			url: url,
+			type: "get",
+			success: function(res:any) {
+				$(".column-box-news .news-text").html(`${res}`);
+			}
+		})
 	}
+
+	const url_news = $("#news-detail--1 .btn--see-more a").attr("href")
+
+	$("#news-detail--1 .btn--see-more").on("click" , function(e:any) {
+		e.preventDefault();
+		$.ajax({
+			url: url_news,
+			type: "get",
+			success: function(res:any) {
+				$(".column-box-news .news-text").html(`${res}`)
+			},
+			complete: function(res:any) {
+				window.history.pushState({}, "", url_news);
+			}
+		})
+	})
 	
 	// const currentPathnameAfterReload = window.location.pathname;
 	// $(".about-nav nav a").each(function () {
