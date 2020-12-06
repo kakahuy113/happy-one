@@ -105,7 +105,7 @@ const initFullpage = () => {
 	if(window.innerWidth > 1100) {				
 		let homePattern = document.querySelector("#home");
 		if(homePattern){
-			translateHomeText();
+			// translateHomeText();
 			gridPattern(homePattern, 40, 20);	
 		}
 		const fpOptions: FullpageOptions = {
@@ -170,7 +170,7 @@ const initFullpage = () => {
 							// 	delay: anime.stagger(200, {grid: [40,40], from: 'center'}),
 							// 	loop:true
 							// });
-							translateHomeText();
+							// translateHomeText();
 						}
 						if(currentIndex == 1) {
 							document.querySelector("header").classList.add("changed")
