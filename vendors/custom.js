@@ -3,3 +3,8 @@ jQuery('#fullpage').fullpage({
     menu: '#menu',
     lazyLoad: true
 });
+
+jQuery(document).on("click", "#left-menu .nav-item a", ()=>{
+    console.log("click");
+    jQuery(".hambuger--menu").click();
+})
