@@ -283,36 +283,17 @@ const swiperIntro = () => {
 			delay: 400,
 			disableOnInteraction: false,
 		},
-		speed: 1500,
 		loop:true,
-
-		breakpoints: {
-			300: {
-				slidesPerView: 1,
-				autoplay: {
-					delay: 2000,
-				  },
-				  loop: true,
-			},
-			767.98: {
-				slidesPerView: 3,
-				loop: false,
-				autoplay: false,
-			},
-			1025: {
-				slidesPerView: 3,
-				loop: false,
-				autoplay: false,
-			}
-		}
+		slidesPerView: 3,
+		speed: 1500
 	});
 
-	$('.intro--swiper .swiper-container').on('mouseenter', function () {
-		newsSlider.autoplay.stop();
-	})
-	$('.intro--swiper .swiper-container').on('mouseleave', function () {
-		newsSlider.autoplay.start();
-	})
+	// $('.intro--swiper .swiper-container').on('mouseenter', function () {
+	// 	newsSlider.autoplay.stop();
+	// })
+	// $('.intro--swiper .swiper-container').on('mouseleave', function () {
+	// 	newsSlider.autoplay.start();
+	// })
 }
 
 
