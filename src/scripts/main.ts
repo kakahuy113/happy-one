@@ -298,12 +298,12 @@ const swiperIntro = () => {
 		}
 	});
 
-	$('.intro--swiper .swiper-container').on('mouseenter', function () {
-		newsSlider.autoplay.stop();
-	})
-	$('.intro--swiper .swiper-container').on('mouseleave', function () {
-		newsSlider.autoplay.start();
-	})
+	// $('.intro--swiper .swiper-container').on('mouseenter', function () {
+	// 	newsSlider.autoplay.stop();
+	// })
+	// $('.intro--swiper .swiper-container').on('mouseleave', function () {
+	// 	newsSlider.autoplay.start();
+	// })
 }
 
 
