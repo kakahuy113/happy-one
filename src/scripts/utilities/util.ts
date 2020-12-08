@@ -17,9 +17,9 @@ export const Loading = () => {
 	let images = document.images;
 	let imagesLength = images.length;
 	let counter = 0;
-
+	
 	function turnOffLoadingScreen() {
-		loading.style.opacity = "0";
+		loading.style.top = "-100%";
 		setTimeout(function () {
 			loading.parentNode.removeChild(loading);
 			document.querySelector("body").classList.add("show-page");
@@ -41,12 +41,16 @@ export const Loading = () => {
 			progressPercentage.innerHTML = `${n}`;
 		}
 		if (counter === imagesLength) {
-			return turnOffLoadingScreen();
+			setTimeout(() => {
+				return turnOffLoadingScreen();
+			}, 1000);
 		}
 	}
 	if (loading) {
 		if (imagesLength === 0) {
-			return turnOffLoadingScreen();
+			setTimeout(() => {
+				return turnOffLoadingScreen();
+			}, 1000);
 		} else {
 			for (let i = 0; i < imagesLength; i++) {
 				let img = new Image();

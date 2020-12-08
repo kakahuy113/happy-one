@@ -2,8 +2,7 @@ import { getSVGs, Loading } from "./utilities/util";
 import { Fullpage, FullpageOptions } from "./libraries/Fullpage";
 import Axios from "axios";
 import * as animation from "./animation/animation";
-import { fstat } from "fs";
-
+import { commonController } from "./libraries/CommonController";
 declare var Swiper:any;
 declare var $:any;
 declare var YT:any;
@@ -280,29 +279,21 @@ const swiperIntro = () => {
 	const newsSlider = new Swiper('.intro--swiper .swiper-container', {
 		spaceBetween: 20,
 		autoplay: {
-			delay: 400,
+			delay: 2000,
 			disableOnInteraction: false,
-		},
+		  },
+		  loop: true,
 		speed: 1500,
-		loop:true,
-
 		breakpoints: {
 			300: {
 				slidesPerView: 1,
-				autoplay: {
-					delay: 2000,
-				  },
-				  loop: true,
+				
 			},
 			767.98: {
 				slidesPerView: 3,
-				loop: false,
-				autoplay: false,
 			},
 			1025: {
 				slidesPerView: 3,
-				loop: false,
-				autoplay: false,
 			}
 		}
 	});
@@ -468,39 +459,56 @@ const gridPattern = (sectionEl: any, col:Number, row:Number) => {
 
 const hoverLocationDot = () =>
 {
-	$(".section-location .map-svg svg g[id^=Point_Hover_]").hover(
-		// Mouse in
-		function(t: any) {
-			if (1100 < $(window).width()) {
+	if (1100 < $(window).width()) {
+		$(".section-location .map-svg svg g[id^=Point_Hover_]").hover(
+			// Mouse in
+			function(t: any) {
+					$(".show-box").removeClass("showup");
+					const urlImage = $(".box-circle .show-box").attr("data-url-img");
+					var e = $(this).attr("id"),
+						i = t.clientX,
+						o = t.clientY;
+					const imageSrc = `${urlImage}/${e}.png`;
+					$(".box-circle .show-box img").attr("src" , `${imageSrc}`)
+					$(".show-box").css({
+						left: i - 300,
+						top: o - 30
+					})
+					var iconNames = "";
+					$(".section-location .map-svg svg text[id=" + 
+						e.split("_")[0] + "_name_" + e.split("_")[2] 
+						+ "] tspan").each((i: number, element: any) => {
+						iconNames += $(element).text() + " "
+					});
+					$(".show-box h3").text(iconNames);
+					setTimeout(() => {
+						$(".show-box").addClass("showup");
+					}, 300)
+			}, 
+			// Mouse out
+			function(t: any) {
 				$(".show-box").removeClass("showup");
-				const urlImage = $(".box-circle .show-box").attr("data-url-img");
-				var e = $(this).attr("id"),
-					i = t.clientX,
-					o = t.clientY;
-				const imageSrc = `${urlImage}/${e}.png`;
-				$(".box-circle .show-box img").attr("src" , `${imageSrc}`)
-				$(".show-box").css({
-					left: i - 300,
-					top: o - 30
-				})
-
-				var iconNames = "";
-				$(".section-location .map-svg svg text[id=" + 
-					e.split("_")[0] + "_name_" + e.split("_")[2] 
-					+ "] tspan").each((i: number, element: any) => {
-					iconNames += $(element).text() + " "
-				});
-				$(".show-box h3").text(iconNames);
-				setTimeout(() => {
-					$(".show-box").addClass("showup");
-				}, 300)
 			}
-		}, 
-		// Mouse out
-		function(t: any) {
-			$(".show-box").removeClass("showup");
-		}
-	)
+		)
+		
+	} else {
+		$(".section-location .map-svg svg g[id^=Point_Hover_]").each(function(i: any , v:any){
+			// $(".show-box").removeClass("showup");
+			const urlImage = $(".box-circle").attr("data-url-img");
+			var e = $(this).attr("id");
+			const imagceSrc = `${urlImage}/${e}.png`;
+			// $(".box-circle .show-box img").attr("src" , `${imagceSrc}`)
+			var iconNames = "";
+			$(".section-location .map-svg svg text[id=" + 
+				e.split("_")[0] + "_name_" + e.split("_")[2] 
+				+ "] tspan").each((i: number, element: any) => {
+				iconNames += $(element).text() + " "
+			});
+			$(".box-circle").append(`<div class="show-box" data-box-id="sample" data-url-img="./assets/img/location"><img src="${urlImage}/Group_4314.png" alt="">
+			<h3>${iconNames}</h3>
+		</div>`)
+		})
+	}
 }
 
 const hoverApartment = () => {
@@ -526,25 +534,26 @@ const hoverApartment = () => {
 
 const hoverApartmentRoom = () =>
 {
-	$(".section-location .map-svg svg g[id^=Point_Hover_]").hover(
+	$(".section-apartment-detail .map-svg svg .hover-room").hover(
 		// Mouse in
 		function(t: any) {
 			if (1100 < $(window).width()) {
 				$(".show-box").removeClass("showup");
-				var e = $(this).attr("id"),
+				const e = $(this).attr("id"),
 					i = t.clientX,
 					o = t.clientY;
-				$(".show-box").css({
-					left: i - 300,
-					top: o - 60
-				})
-				$(".show-box").addClass("showup");
+			$(`.show-box[id=${e}]`).css({
+				left: i - 30,
+				top: o - 30
+			})
+				$(`.show-box[id=${e}]`).addClass("showup");
 				
 			}
 		}, 
 		// Mouse out
 		function(t: any) {
-			$(".show-box").removeClass("showup");
+			const e = $(this).attr("id")
+			$(`.show-box[id=${e}]`).removeClass("showup");
 		}
 	)
 }
@@ -616,74 +625,22 @@ const newsAjax = () => {
 			}
 		})
 	})
-	
-	// const currentPathnameAfterReload = window.location.pathname;
-	// $(".about-nav nav a").each(function () {
-	// 	const navPathname = $(this).attr("href");
-
-	// 	if (currentPathnameAfterReload.indexOf(navPathname) >= 0) {
-	// 		$(this).addClass("active");
-	// 		$(".about-nav nav a").not(this).removeClass("active");
-	// 	}
-
-	// 	if ($(".about-5--2").length > 0) {
-	// 		$(".about-nav nav a").each(function () {
-	// 			if ($(this).attr("href").indexOf("/giai-phap") >= 0) {
-	// 				$(this).addClass("active");
-	// 				$(".about-nav nav a").not(this).removeClass("active");
-	// 			}
-	// 		});
-	// 	}
-	// 	$(this).on("click", (e) => {
-	// 		e.preventDefault();
-	// 		const url = $(this).attr("href");
-	// 		$(this).addClass("active");
-	// 		$(".about-nav nav a").not(this).removeClass("active");
-	// 		$.ajax({
-	// 			url: url,
-	// 			type: "get",
-	// 			success: function (res) {
-	// 				if (url.indexOf("du-an") >= 0) {
-	// 					$(".about-ajax").html(
-	// 						`<div class="container"><div class="row row-custom about-project"><div class="col-lg-11 col-xl-10">${$(
-	// 							res
-	// 						)
-	// 							.find(".project-list .container")
-	// 							.html()}</div></div></div>`
-	// 					);
-	// 					$(".about-project .description").removeClass("d-none");
-	// 					$(".about-project .row").eq(0).addClass("row-custom");
-	// 					$(".about-project .col-lg-4").each(function () {
-	// 						$(this).addClass("col-6 col-md-4 about-4--item--col");
-	// 						$(this).removeClass("col-lg-4");
-	// 					});
-	// 					const fullUrl = `${window.location.origin}${url}`;
-	// 					window.history.pushState({}, "", fullUrl);
-	// 				} else {
-	// 					$(".about-ajax").html($(res).find(".about-ajax").html());
-	// 					const fullUrl = `${window.location.origin}${url}`;
-	// 					if ($(".about-ajax").find(".about-1--4 .clients-slider")) {
-	// 						about2slider();
-	// 					}
-	// 					window.history.pushState({}, "", fullUrl);
-	// 				}
-	// 			},
-	// 		});
-	// 	});
-	// });
 }
+
 window.onload = function () {
 	loadApartmentSvg();
 	loadDetailLocationSvg();
 }
 window.addEventListener('resize', function () {
+	// Loading()
 	loadApartmentSvg();
 	loadDetailLocationSvg();
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
 	getSVGs(".svg");
-	Loading()
+	Loading();
+	commonController();
 	initFullpage();
 	loadApartmentSvg();
 	loadDetailLocationSvg();

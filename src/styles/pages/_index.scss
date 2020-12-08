@@ -1437,6 +1437,37 @@ width: 100vw;
 			opacity: 1;
 		}
 	}
+	@media (max-width: 1100px) {
+		position: relative;
+		top: unset;
+		left: unset;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;;
+		.show-box {
+			pointer-events: auto;
+			-ms-flex: 0 0 20%;
+			flex: 0 0 20%;
+			max-width: 20%;
+			position: relative;
+			margin: 0 10px;
+		   top: unset;
+		   right: unset;
+		   left: unset;
+		   opacity: 1;
+		   transform: scale(1);
+		   margin-bottom: 10px;
+		   &::before {
+			   content: none;
+		   }
+		   .box-detail {
+			   &::before {
+				   content: none;
+			   }
+		   }
+		}
+		
+	}
 }
 
 

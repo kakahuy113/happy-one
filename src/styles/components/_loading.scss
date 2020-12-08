@@ -2,12 +2,12 @@
 	position: fixed;
 	top: 0;
 	right: 0;
-	bottom: 0;
-	left: 0;
+	width: 100vw;
+	height: 100vh;
 	z-index: 99999;
 	transition: all 0.3s ease-in-out;
 	background-color: #08152E;
-
+	transition: 1s all ease-in-out;
 	.loading-wrapper {
 		position: absolute;
 		padding-bottom: 75px;
@@ -58,10 +58,9 @@
 	#loading-logo {
 		text-align: center;
 		padding: 20px 0;
-
 		img,
 		svg {
-			max-width: 200px;
+			max-width: 280px;
 			width: 100%;
 			#logo-new {
 				animation-name: DrawStroke;
@@ -69,5 +68,19 @@
 				animation-fill-mode: forwards;
 			}
 		}
+		svg {
+			width: 70vw;
+		  }
+		
+		  .path {
+			stroke: #ffffff;
+			animation: draw 3.5s linear infinite alternate;
+		  }
+		
+		  @keyframes draw {
+			50% {
+			  stroke-dashoffset: 0;
+			}
+		  }
 	}
 }
