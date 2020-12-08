@@ -199,11 +199,14 @@ const initFullpage = () => {
 				//show and hide logo when slide
 				document.querySelector(".header__wrapper .logo").classList.remove("show");
 				document.querySelector(".header__wrapper .logo").classList.add("hide")
-
+	
 				animation.allAnimeFullpageIndex__0();
 			}
 			if(document.querySelector(".introduce-page")) {
 					document.querySelector(".fp-dots").classList.add("hide")
+			}
+	
+			document.querySelector(".fp-dots").classList.add("hide")
 			}
 
 			// const menuItems = document.querySelectorAll(".navigation .nav-item");
@@ -219,11 +222,6 @@ const initFullpage = () => {
 			// });
 
 		}
-	}
-	loadFullpage();
-	window.addEventListener('resize', function () {
-		loadFullpage();
-	})
 }
 
 function showPattern (currentIndex:Number) { 
@@ -637,11 +635,27 @@ window.addEventListener('resize', function () {
 	loadDetailLocationSvg();
 });
 
+function generateDots() {
+	if ($(".fp-dots").length === 0) {
+		let dotItemString = "";
+		$("#fullpage .section").each((idx:number, item:any)=>{
+			dotItemString += `<li class="fp-dot-item" data-menuanchor="slider-${$(item).attr("id")}">
+				<a href="#slider-${$(item).attr("id")}">
+					<span class="fp-number">0${idx}</span>
+					<span class="fp-title">${$(item).attr("fp-title")}</span>
+				</a>
+			</li>`;
+		}) 
+		let dotEl = `<ul class="fp-dots" id="menu">${dotItemString}</ul>`;
+		$('.fp-container').append(dotEl);
+	}
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
 	getSVGs(".svg");
 	Loading();
 	commonController();
-	initFullpage();
+	// initFullpage();
 	loadApartmentSvg();
 	loadDetailLocationSvg();
 	setBackgroundImageSection();
@@ -652,4 +666,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 	hoverLocationDot();
 	hoverApartmentRoom();
 	newsAjax();
+	generateDots();
 });

@@ -10,7 +10,6 @@ jQuery('#fullpage').fullpage({
             jQuery(currentSection).find("section>div").css("display", "table");
         }, 10)
     }
-
 });
 
 jQuery(document).on("click", "#left-menu .nav-item a", () => {

@@ -15,42 +15,41 @@
 				left: unset;
 				transform: unset;
 				margin-bottom: 60px;
-				svg {
-					width: 140px;
-				}
 			}
 			@media (max-width: 575.98px) {
 				svg {
 					width: 170px;
-					height: 220px;
+				height: 220px;
 				}
 			}
 		}
 		.title {
 			position: absolute;
-			padding-left: 40%;
 			bottom: 20%;
 			width: 100%;
-			&::after {
-				content: "";
-				position: absolute;
-				top: 50%;
-				left: 0;
-				transform: translateY(-50%);
-				height: 6px;
-				width: 70vw;
-				background-color: map-get($color, x-white);
-				position: absolute;
-			}
+			mix-blend-mode: overlay;
 			p {
 				font-size: 7rem;
 				font-family: MyriaPro-Bold;
 				font-weight: 700;
 				line-height: 1.5;
 				color: #ffffff;
-				opacity: 0;
+				mix-blend-mode: overlay;
+				position: relative;
+				left: 40%;
 			}
-			
+			span.line{				
+				position: absolute;
+				top: 43%;
+				left: 0;
+				width: 60vw;
+				height: 6px;
+				background-color: #fff;
+				mix-blend-mode: overlay;
+			}
+			p:last-child{
+				display: inline-block;
+			}
 			@media (max-width: 1499.98px) {
 				padding-left: 30%;
 			}
@@ -62,13 +61,17 @@
 					width: 50%;
 				}
 			}
-			
-			@media (max-width: 575.98px) {
-				text-align: center;
+			@media (max-width: 900px) {
 				p {
-					&::after {
-						content: none !important;
-					}
+					font-size: 5rem;
+				}
+			}
+			@media (max-width: 575.98px) {
+				&::after {
+					content: none;
+				}
+				p {
+					font-size: 3.5rem;
 				}
 			}
 		}
@@ -80,7 +83,15 @@
 	}
 	.setting-section {
 		background-position: 30%;
-	
+		&::before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background: rgba($color: #000000, $alpha: .5);
+		}
 		&.show-content {
 			svg {
 				animation: scaleLarge;
@@ -259,49 +270,6 @@
 		svg{
 			height: calc(100% + 65px);
 			width: 100%;
-
-			#Union_2 {
-				animation: pointer 2s infinite;
-			}
-
-			#Path_10561 {
-				animation: pointerCircle1 2s infinite;
-			}
-			#Path_10562 {
-				animation: pointerCircle2 2s infinite;
-			}
-			#Path_10563 {
-				animation: pointerCircle3 2s infinite;
-			}
-			#Path_10564 {
-				animation: pointerCircle4 2s infinite;
-			}
-
-			#Ellipse_65, #Ellipse_66 {
-				animation: StrokeLine 5s infinite linear;
-			}
-
-			g[id^="Point_Hover_"] 
-			{
-				circle {
-					stroke: #fff;
-					stroke-miterlimit: 10;
-					stroke-width: 1;
-					stroke-dasharray: 3;
-					stroke-dashoffset: 0;
-					animation: StrokeLine 10s infinite linear;
-	
-					&:hover {
-						fill:#daa244;
-						stroke-opacity:0;
-						animation-play-state:paused
-					}
-				}
-
-				[id^="Point_Icon_"] {
-					pointer-events: none;
-				}
-			}
 		}
 		@media (max-width: 1439.98px) {
 			width: 50vw;
@@ -585,9 +553,6 @@
 					padding-top: 50px;
 					.row {
 						justify-content: center;
-						max-width: 100%;
-						padding: 0px;
-						margin: 0px!important;
 					}
 					.content-main {
 						position: relative;
@@ -673,7 +638,6 @@
 }
 
 .section-apartment {
-	background-size: 0px 0px!important;
 	.arpartment-map {
 		width: 100%;
 		height: 100%;
@@ -705,22 +669,15 @@
 				}
 			}
 			g.info{
-				
 				cursor: pointer;
 				.line, .box{
 					opacity: 0.5;	
-					transition: opacity 0.6s linear;
+					transition: opacity 0.6s linear;				
 				}
 				&:hover {
 					.line, .box{
-						opacity: 1;
+						opacity: 1;					
 					} 
-				}
-				@media (max-width: 1024.98px) {
-					transform: translateX(-10%);
-				}
-				@media (max-width: 767.98px) {
-					transform: translateX(-50%);
 				}
 			}
 		}
@@ -744,35 +701,6 @@
 					content: "___";
 					line-height: 65px;
 				}
-			}
-		}
-	}
-	
-	@media (max-width: 1100px) {
-		background-size: cover!important;
-		background-position-x: 24%!important;
-		.arpartment-map{
-			height: 780px;
-			overflow: hidden;
-			svg {
-				// display: block;
-				// height: 780px;
-				// left: -20%;
-				// width: 140%;
-				display: none;
-			}
-		}
-		.title--main{
-			bottom: 0px;
-			top: unset;
-			width: 80%;
-		}
-	}
-	@media (max-width: 500px) {
-		.arpartment-map{
-			svg{
-				width: 100%;
-				left: 0%;
 			}
 		}
 	}
@@ -908,18 +836,6 @@
 			}
 			&:hover{
 				width: 400px!important;
-				.img {
-					position: relative;
-					&::before {
-						content: "";
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						background: url(../assets/img/index/active-new.png) ;
-					}
-				}
 				.sub-title {
 					display: block;
 					opacity: 1;
@@ -1033,12 +949,6 @@
 		}
 		@media (max-width: 575.98px) {
 			height: 75vw;
-			.swiper-slide {
-				.desc {
-					width: 100%;
-    				bottom: 15px;
-				}
-			}
 		}
 	}
 	.utilities__wrapper {
@@ -1156,12 +1066,16 @@
 			}
 			.text {
 				margin-left: 10px;
-				display: flex;
-				a {
-					margin-left: 15px;
-					svg {
-						path {
-							fill: #FCCB81;
+			}
+			&:last-child {
+				.text {
+					display: flex;
+					a {
+						margin-left: 15px;
+						svg {
+							path {
+								fill: #FCCB81;
+							}
 						}
 					}
 				}
@@ -1193,9 +1107,6 @@
 					align-items: center;
 					justify-content: center;
 					position: relative;
-					img {
-						height: 80%;
-					}
 					&::before {
 						content: "";
 						position: absolute;
@@ -1373,7 +1284,7 @@ width: 100vw;
 		}
 	}
 	@media (max-width: 1100px) {
-		height: calc(1125/2000 * 100vw);
+		// height: calc(1125/2000 * 100vw);
 		width: 100%;
 		left: auto;
 		position: relative;
@@ -1390,94 +1301,12 @@ width: 100vw;
 	pointer-events: none;
 }
 
-.box-circle {
-	height: auto;
-	position: absolute;
-	width: 100%;
-    left: 0;
-    top: 0;
-	.show-box {
-		max-width: 250px;
-		left: auto;
-		top: auto;
-		right: auto;
-		overflow: hidden;
-		border-radius: 20px;
-		background-color: #daa244;
-		transition: all .5s ease-in-out;
-		box-shadow: 0 0 30px rgba(0,0,0,.5);
-		padding: 10px;
-		z-index: 100;
-		opacity: 0;
-		transform: scale(0);
-		height: auto;
-		position: absolute;
-		width: fit-content;
-		pointer-events: none;
-		img {
-			width: 100%;
-			height: auto;
-			position: relative;
-			border-radius: 10px;
-			display: block;
-			pointer-events: none;
-			margin: 0 0 5px;
-		}
-		h3 {
-			font-weight: 700;
-			font-size: 13px;
-			line-height: 1.4;
-			color: #fff;
-			text-align: center;
-			text-shadow: 0 1px 1px rgba(0,0,0,.3);
-			text-transform: uppercase;
-		}
-		&.showup {
-			transform: scale(1);
-			opacity: 1;
-		}
-	}
-	@media (max-width: 1100px) {
-		position: relative;
-		top: unset;
-		left: unset;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;;
-		.show-box {
-			pointer-events: auto;
-			-ms-flex: 0 0 20%;
-			flex: 0 0 20%;
-			max-width: 20%;
-			position: relative;
-			margin: 0 10px;
-		   top: unset;
-		   right: unset;
-		   left: unset;
-		   opacity: 1;
-		   transform: scale(1);
-		   margin-bottom: 10px;
-		   &::before {
-			   content: none;
-		   }
-		   .box-detail {
-			   &::before {
-				   content: none;
-			   }
-		   }
-		}
-		
-	}
-}
-
-
 @keyframes fade {
 	to {
 	   transform: scale(2);
 	   opacity: 0;
 	}
  }
-
  @keyframes shake { 
 	0% { 
 		transform: skewX(-10deg); 
@@ -1499,50 +1328,3 @@ width: 100vw;
 		transform: skewX(-10deg); 
 	} 
 } 
-
-@keyframes pointer {
-    0%{
-		fill:#F1BE78;
-		opacity: 0.3
-	}
-    20%{
-
-	}
-    60%{
-		fill:#F1BE78;
-		opacity: 0.5
-	}
-}
-
-@keyframes pointerCircle1 {
-    0%{
-		opacity: 0.55
-	}
-    40%{
-		opacity: 0.6
-	}
-}
-
-@keyframes pointerCircle2 {
-    0%{
-		opacity: 0.25
-	}
-    40%{
-		opacity: 0.2
-	}
-}
-
-@keyframes pointerCircle3 {
-    40%{
-		opacity: 0.2
-	}
-}
-
-@keyframes pointerCircle4 {
-    0%{
-		opacity: 0.55
-	}
-    40%{
-		opacity: 0.6
-	}
-}
