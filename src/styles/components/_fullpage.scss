@@ -47,7 +47,8 @@
 		}
 	}
 
-	.fp-dots{
+	.fp-dots {
+		padding: 0;
 		position: fixed;
 		margin-left: 20px;
 		z-index: 100;
@@ -55,7 +56,7 @@
 		top: 50%;
 		transform: translateY(-50%);
 		font-family: Avenir-Black;
-		min-width: 160px;
+		min-width: fit-content;
 		.fp-dot-item {
 			cursor: pointer;
 			user-select: none;
@@ -126,9 +127,6 @@
 
 		.fp-dot-item + .fp-dot-item {
 			margin-top: 15px;
-		}
-		@media (min-width: 1440px) {
-			margin-right: 60px;
 		}
 		&.hide {
 			opacity: 0;

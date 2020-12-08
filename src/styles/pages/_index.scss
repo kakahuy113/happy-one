@@ -27,25 +27,22 @@
 			position: absolute;
 			bottom: 20%;
 			width: 100%;
-			mix-blend-mode: overlay;
 			p {
 				font-size: 7rem;
 				font-family: MyriaPro-Bold;
 				font-weight: 700;
 				line-height: 1.5;
 				color: #ffffff;
-				mix-blend-mode: overlay;
 				position: relative;
 				left: 40%;
 			}
-			span.line{				
+			span.line{
 				position: absolute;
 				top: 43%;
 				left: 0;
 				width: 60vw;
 				height: 6px;
 				background-color: #fff;
-				mix-blend-mode: overlay;
 			}
 			p:last-child{
 				display: inline-block;
@@ -83,22 +80,6 @@
 	}
 	.setting-section {
 		background-position: 30%;
-		&::before {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			background: rgba($color: #000000, $alpha: .5);
-		}
-		&.show-content {
-			svg {
-				animation: scaleLarge;
-				animation-duration: 2s;
-				animation-fill-mode: forwards;
-			}
-		}
 		@media (max-width: 1100px) {
 			height: 100vh;
 			
