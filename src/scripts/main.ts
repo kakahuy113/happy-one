@@ -155,21 +155,7 @@ declare var anime:any;
 // 									}
 
 // 									//
-// 									if (currentIndex == 0) {
-// 										setTimeout(() => {
-// 											animation.allAnimeFullpageIndex__0();
-// 										},  1500);
-// 										// anime({
-// 										// 	targets: '#home .block-animation-grid .square',
-// 										// 	scale: [
-// 										// 		{value: .1, easing: 'easeOutSine', duration: 500},
-// 										// 		{value: 1, easing: 'easeInOutQuad', duration: 1200}
-// 										// 	],
-// 										// 	delay: anime.stagger(200, {grid: [40,40], from: 'center'}),
-// 										// 	loop:true
-// 										// });
-// 										translateHomeText();
-// 									}
+									
 // 									if(currentIndex == 1) {
 // 										document.querySelector("header").classList.add("changed")
 // 										document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
@@ -222,6 +208,97 @@ declare var anime:any;
 // }
 
 const initFullpage = () => {
+	var player: any;
+	// Init Youtube Video API
+	var script = document.createElement('script');
+	script.onload = function() {
+		console.log("Script loaded and ready");
+	};
+	if(document.querySelector(".youtube-video")) {
+		script.src = `https://www.youtube.com/iframe_api`;
+		script.setAttribute("async", "");
+		script.setAttribute("defer", "");
+		document.getElementsByTagName('head')[0].appendChild(script);
+		var youtuID = document.querySelector(".youtube-video").getAttribute("data-youtube-id");
+	}
+	
+	(<any>window).YT.ready(function() {
+		player = new (<any>window).YT.Player("VYT", {
+	
+		  videoId: `${youtuID}`,
+		  playerVars: {
+            // playlist: 'z1Ev1Z0cCG4,FG0fTKAqZ5g',
+            // autoplay: 1,
+			controls: 0,
+			playsinline: 1,
+			loop: 0,
+			cc_load_policy: 1,
+			color: "white",
+			rel: 0,
+        },
+		  events: {
+			'onReady': onPlayerReady,
+		  	'onStateChange': onPlayerStateChange
+		  }
+		});
+	  });
+	   function onPlayerReady(event:any) {
+		var time_update_interval:any;   
+		// Update the controls on load
+		updateTimerDisplay();
+	
+		// Clear any old interval.
+		clearInterval(time_update_interval);
+	
+		// Start interval to update elapsed time display and
+		// the elapsed part of the progress bar every second.
+		time_update_interval = setInterval(function () {
+			updateTimerDisplay();
+		}, 1000)
+      }
+
+    
+      var done = false;
+      function onPlayerStateChange(event:any) {
+        if (event.data == YT.PlayerState.PLAYING ) {
+			$(".youtube-video").on("click" , function() {
+				player.pauseVideo();
+			})
+          document.querySelector(".bg-video").classList.add("hide")
+          document.querySelector(".control-youtube .play-button").classList.remove("show")
+          document.querySelector(".control-youtube .play-button").classList.add("hide")
+        } else {
+			$(".youtube-video").on("click" , function() {
+				player.playVideo();
+			})
+			document.querySelector(".bg-video").classList.remove("hide")
+			document.querySelector(".control-youtube .play-button").classList.remove("hide")
+			document.querySelector(".control-youtube .play-button").classList.add("show")
+		
+		}
+      }
+	  $('#play-big').on('click', function () {
+	
+		player.playVideo();
+	});
+	  $('#play').on('click', function () {
+	
+		player.playVideo();
+	});
+	
+	$('#pause').on('click', function () {
+		player.pauseVideo();
+	});
+	
+	function updateTimerDisplay() {
+		// Update current time text display.
+		$('#current-time').text(formatTime(player.getCurrentTime()));
+		$('#duration').text(formatTime(player.getDuration()));
+	}
+
+	function formatTime(time: any) {
+		return moment(0).add(moment.duration({'seconds': time})).format('mm:ss');
+	}
 	if ($(window).width() > 1100) {
 		$('#fullpage').fullpage({
 			anchors: ['slider-home', 'slider-introduce', 'slider-video', 'slider-location', 'slider-utilities', 'slider-news', 'slider-contact'],
@@ -229,9 +306,44 @@ const initFullpage = () => {
 			lazyLoad: true,
 			keyboardScrolling: true,
 			afterLoad: (origin:any, destination:any, direction:any) => {
+				if(destination == 1) {
+					document.querySelector(".fp-dots").classList.remove("show")
+					document.querySelector(".fp-dots").classList.add("hide")
+				} else {
+					document.querySelector(".fp-dots").classList.remove("hide")
+					document.querySelector(".fp-dots").classList.add("show")
+				}
+				if(destination == 3 ) {
+					player.playVideo();
+				}
+				if(destination == 2) {
+					document.querySelector("header").classList.add("changed")
+					document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
+				} else {
+					document.querySelector("header").classList.remove("changed")
+					document.querySelector(".fp-socials .fp-links__wrapper").classList.remove("changed")
+				}
 			},
 			onLeave: (origin:any, destination:any, direction:any) => {
-				console.log(origin, destination, direction);
+				console.log(origin , destination, direction);
+				
+				if(destination == 1) {
+					document.querySelector(".fp-dots").classList.remove("show")
+					document.querySelector(".fp-dots").classList.add("hide")
+				} else {
+					document.querySelector(".fp-dots").classList.remove("hide")
+					document.querySelector(".fp-dots").classList.add("show")
+				}
+				if(destination == 3 ) {
+					player.playVideo();
+				}
+				if(destination == 2) {
+					document.querySelector("header").classList.add("changed")
+					document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
+				} else {
+					document.querySelector("header").classList.remove("changed")
+					document.querySelector(".fp-socials .fp-links__wrapper").classList.remove("changed")
+				}
 				let currentSection = $(document).find(".section")[destination - 1];
 				$(currentSection).find("section>div").css("display", "none");
 				setTimeout(()=>{
@@ -680,6 +792,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	getSVGs(".svg");
 	Loading();
 	commonController();
+	generateDots();
 	initFullpage();
 	loadApartmentSvg();
 	loadDetailLocationSvg();
@@ -691,5 +804,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 	hoverLocationDot();
 	hoverApartmentRoom();
 	newsAjax();
-	generateDots();
 });
