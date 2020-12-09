@@ -356,6 +356,65 @@ const initFullpage = () => {
 		console.log("click");
 		$(".hambuger--menu").click();
 	})
+
+	$(document).on("click", "ul.location-list li.location-item", () => {
+		let slider = `
+		<div class="swiper-container gallery-top">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-11.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-12.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-13.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-14.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-11.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-12.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-13.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-14.jpg)"></div>
+			</div>
+		</div>
+		<!-- Add Arrows -->
+		<div class="swiper-button-next swiper-button-white" style="background-image:url(./assets/img/utilities-detail/arrow-right.svg)"></div>
+		<div class="swiper-button-prev swiper-button-white" style="background-image:url(./assets/img/utilities-detail/arrow-left.svg)"></div>
+		<label class="title">Sảnh đón Hetia</label>
+		<div class="swiper-container gallery-thumbs">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-11.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-12.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-13.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-14.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-11.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-12.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-13.jpg)"></div>
+				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-14.jpg)"></div>
+			</div>
+		</div>
+		`;
+		const utilitiesPopup = "<div id='utilities-popup'><button class='btn-close' style='background-image:url(./assets/img/utilities-detail/btn-close.svg)'></button><div class='container'>"+slider+"<div></div>";
+		$('main').after(utilitiesPopup);
+		var galleryThumbs = new Swiper('.gallery-thumbs', {
+			spaceBetween: 10,
+			slidesPerView: 4,
+			loop: true,
+			freeMode: true,
+			loopedSlides: 5, 
+			watchSlidesVisibility: true,
+			watchSlidesProgress: true,
+		  });
+		  var galleryTop = new Swiper('.gallery-top', {
+			spaceBetween: 10,
+			loop: true,
+			loopedSlides: 5, 
+			navigation: {
+			  nextEl: '.swiper-button-next',
+			  prevEl: '.swiper-button-prev',
+			},
+			thumbs: {
+			  swiper: galleryThumbs,
+			},
+		  });
+		  $("#utilities-popup .btn-close").click(()=>{
+			$("#utilities-popup").remove();
+		  })
+	})
 }
 function showPattern (currentIndex:Number) { 
 	var dotsGridPatternEl = document.querySelectorAll('.block-animation-grid');
