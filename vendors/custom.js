@@ -1,9 +1,15 @@
 jQuery('#fullpage').fullpage({
-    anchors: ['slider-home', 'slider-introduce', 'slider-video', 'slider-location', 'slider-utilities', 'slider-apartment', 'slider-news', 'slider-contact'],
+    anchors: ['slider-home', 'slider-introduce', 'slider-video', 'slider-location', 'slider-utilities', 'slider-news', 'slider-contact'],
     menu: '#menu',
     lazyLoad: true,
-    afterLoad: (origin, destination, direction) => {},
+    keyboardScrolling: true,
+    afterLoad: (origin, destination, direction) => {
+    },
+    onSlideLeave: function(section, origin, destination, direction){
+        console.log(section , origin , destination , direction);
+    },
     onLeave: (origin, destination, direction) => {
+        // console.log(origin, destination, direction);
         let currentSection = jQuery(document).find(".section")[destination - 1];
         jQuery(currentSection).find("section>div").css("display", "none");
         setTimeout(()=>{

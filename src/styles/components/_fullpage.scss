@@ -50,14 +50,14 @@
 	.fp-dots {
 		padding: 0;
 		position: fixed;
-		margin-left: 20px;
 		z-index: 100;
-		left: 0;
+		left: 20px;
 		top: 50%;
 		transform: translateY(-50%);
 		font-family: Avenir-Black;
 		min-width: fit-content;
 		.fp-dot-item {
+			max-width: fit-content;
 			cursor: pointer;
 			user-select: none;
 			position: relative;
