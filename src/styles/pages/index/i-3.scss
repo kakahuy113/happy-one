@@ -1,0 +1,167 @@
+.section-location {
+	background: #08152E !important;
+	.st-line {
+		stroke-miterlimit: 10;
+		stroke-width: 1;
+		stroke-dasharray: 10;
+		stroke-dashoffset: 0;
+		animation: StrokeLine 3s infinite linear;
+	}
+	
+	.map-svg {
+		padding-top: 50px;
+		overflow: hidden;
+		width: 55vw;
+		height: 100%;
+		overflow: hidden;
+		svg{
+			height: calc(100% + 65px);
+			width: 100%;
+
+			#Union_2 {
+				animation: pointer 2s infinite;
+			}
+
+			#Path_10561 {
+				animation: pointerCircle1 2s infinite;
+			}
+			#Path_10562 {
+				animation: pointerCircle2 2s infinite;
+			}
+			#Path_10563 {
+				animation: pointerCircle3 2s infinite;
+			}
+			#Path_10564 {
+				animation: pointerCircle4 2s infinite;
+			}
+
+			#Ellipse_65, #Ellipse_66 {
+				animation: StrokeLine 5s infinite linear;
+			}
+
+			g[id^="Point_Hover_"] 
+			{
+				circle {
+					stroke: #fff;
+					stroke-miterlimit: 10;
+					stroke-width: 1;
+					stroke-dasharray: 3;
+					stroke-dashoffset: 0;
+					animation: StrokeLine 10s infinite linear;
+	
+					&:hover {
+						fill:#daa244;
+						stroke-opacity:0;
+						animation-play-state:paused
+					}
+				}
+
+				[id^="Point_Icon_"] {
+					pointer-events: none;
+				}
+			}
+		}
+		@media (max-width: 1439.98px) {
+			width: 50vw;
+		}
+		@media (max-width: 1100px) {
+			width: 100%;
+			height: 100%;
+			padding-top: 0;
+			svg {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	.content--main {
+		position: absolute;
+		right: 76px;
+		height: auto;
+		width: 100%;
+		max-width: 410px;
+		top: 50%;
+		transform: translateY(-50%);
+		text-align: right;
+		.title-main {
+			font-size: 6.5rem;
+			font-family: MyriaPro-Bold;
+			position: relative;
+			color: #FCCB81;
+			margin-bottom: 20px;
+			h2 {
+				padding-left: 55px;
+				position: relative;
+				display: inline-block;
+				&::after {
+					position: absolute;
+					content: "";
+					background: #FCCB81;
+					height: 2px;
+					width: 50px;
+					bottom: 32px;
+					left: 0;
+				}
+			}
+			
+		}
+		.sub-title {
+			margin-bottom: 20px;
+			p {
+				color: map-get($color, x-white);
+				&:not(:last-child) {
+					margin-bottom: 20px;
+				}
+			}
+		}
+		.btn--see-more {
+			a {
+				color: map-get($color, x-white);
+				font-weight: 400;
+				svg {
+					path {
+						stroke: map-get($color, x-white)
+					}
+				}
+			}
+		}
+		@media (max-width: 1439.98px) {
+			right: 0;
+		}
+		@media (max-width: 1100px) {
+			position: relative;
+			right: unset;
+			top: unset;
+			transform: unset;
+			text-align: center;
+			max-width: 700px;
+			margin: 0 auto;
+			padding-top: 50px;
+			.title-main {
+				font-size: 5rem;
+				h2 {
+					
+					padding-left: unset;
+					&::after {
+						content: none;
+					}
+				}
+			}
+			.sub-title {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+			}
+		}
+		@media (max-width: 767.98px) {
+			max-width: 70%;
+		}
+		@media (max-width: 575.98px) {
+			.title-main {
+				font-size: 3.5rem;
+			}
+		}
+	}
+}

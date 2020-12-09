@@ -1,16 +1,16 @@
-.fp-slide#news(fp-title="Tin Tức - Sụ Kiện")
+.fp-slide.section#news(fp-title="Tin Tức - Sụ Kiện", data-anchor="slider-news")
 	section.setting-section.section-news(fp-bg="")
 		.container.h-100
 			.container-custom.container-1660px.h-100
 				.utilities__wrapper.h-100
 					.row.h-100
 						.col-5.content-main
-							.title--main
+							.title--main.animate__zoomIn.animate__animated.animate__delay-1s
 								p Tin Tức
 								p Sự Kiện
 		.news-swiper
 			.swiper-container
-				.swiper-wrapper
+				.swiper-wrapper.animate__slideInRight.animate__animated.animate__delay-2s
 					-for(var i = 0; i < 3 ; i ++)
 						.swiper-slide
 							.wrapper
@@ -22,6 +22,6 @@
 									.sub-title
 										p.lcl.lcl-3 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum quod quia vitae libero architecto saepe molestiae. Placeat, consequuntur molestiae error officia nihil voluptates ducimus a? Consequuntur fuga fugit ab vero.
 									.btn--see-more.btn
-										a(href="news-detail.html") Xem Thêm
+										a(href="") Xem Thêm
 												img.svg(src="./assets/img/index/seemore-white.svg", alt="")
 									.btn-arrow.btn 

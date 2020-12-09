@@ -6,8 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="shortcut icon" type="image/png" href="/favicon/favicon.ico">
-		<link rel="stylesheet" href="./css/core.min.css">
 		<link rel="stylesheet" href="./css/main.min.css">
+		<link rel="stylesheet" href="./css/core.min.css">
 	</head>
 	<body>
 		<div id="loading-container">
@@ -39,7 +39,7 @@
 			<div class="navigation">
 				<div class="menu h-100">
 					<div class="menu__wrapper">
-						<div class="nav-list">
+						<div class="nav-list" id="left-menu">
 							<div class="nav-item active"><a class="nav-link" href="">Trang Chủ</a></div>
 							<div class="nav-item"><a class="nav-link" href="">Giới thiệu</a></div>
 							<div class="nav-item"><a class="nav-link" href="">Video</a></div>
@@ -65,14 +65,14 @@
 		</header>
 		<main>
 			<div class="fp-container">
-				<div class="fp-wrapper">
-					<div class="fp-slide" id="home" fp-title="Trang chủ">
+				<div class="fp-wrapper" id="fullpage">
+					<div class="fp-slide section" id="home" fp-title="Trang chủ" data-anchor="slider-home">
 						<section class="setting-section section-homepage" fp-bg="./assets/img/index/bg-1.png">
 							<div class="section-title h-100">
-								<div class="logo--big"><img class="svg" src="./assets/img/index/logo-new.svg" alt=""></div>
+								<div class="logo--big animate__animated animate__pulse animate__delay-1s"><img class="svg" src="./assets/img/index/logo-new.svg" alt=""></div>
 								<div class="title"> 
-									<p>MỘT SIÊU PHẨM</p>
-									<p>TẠI BÌNH DƯƠNG</p>
+									<p class="animate__animated animate__bounceInLeft animate__delay-2s">MỘT SIÊU PHẨM</p><span class="line animate__animated animate__bounceInLeft animate__delay-1s"></span>
+									<p class="animate__animated animate__bounceInLeft animate__delay-2s">TẠI BÌNH DƯƠNG</p>
 								</div>
 							</div>
 							<div class="grid-pattern">
@@ -80,22 +80,22 @@
 							</div>
 						</section>
 					</div>
-					<div class="fp-slide" id="introduce" fp-title="Giới Thiệu">
+					<div class="fp-slide section" id="introduce" fp-title="Giới Thiệu" data-anchor="slider-introduce">
 						<section class="setting-section section-intro" fp-bg="./assets/img/index/bg-2.png">
 							<div class="container h-100">
 								<div class="container-custom container-1660px h-100">
 									<div class="intro__wrapper">
-										<div class="title">
+										<div class="title animate__animated animate__bounceInRight animate__delay-1s">
 											<h2>KHU CĂN HỘ COMPOUND CAO CẤP</h2>
 										</div>
 										<div class="sub-title">
-											<h3>HAPPY ONE CENTRAL</h3>
+											<h3 class="animate__animated animate__zoomIn animate__delay-2s">HAPPY ONE CENTRAL</h3>
 										</div>
 										<div class="sub-desc">
-											<p class="lcl lcl-4">Happy One Central không chỉ dừng lại một dự án siêu sang, đẳng cấp, đậm chất Singapore mà còn trở thành một biểu tượng mới của Bình Dương. Hai tòa tháp cao 40 tầng vươn mình kiêu hãnh giữa lòng đô thị hiện đại, khởi nguồn cho phong cách sống tiên phong.</p>
+											<p class="lcl lcl-4 animate__animated animate__zoomIn animate__delay-2s">Happy One Central không chỉ dừng lại một dự án siêu sang, đẳng cấp, đậm chất Singapore mà còn trở thành một biểu tượng mới của Bình Dương. Hai tòa tháp cao 40 tầng vươn mình kiêu hãnh giữa lòng đô thị hiện đại, khởi nguồn cho phong cách sống tiên phong.</p>
 										</div>
-										<div class="btn--see-more btn"><a href="/introduce.html">Xem Thêm<img class="svg" src="./assets/img/index/seemore.svg" alt=""></a></div>
-										<div class="intro--swiper">
+										<div class="btn--see-more btn animate__animated animate__zoomIn animate__delay-2s"><a href="/introduce.html">Xem Thêm<img class="svg" src="./assets/img/index/seemore.svg" alt=""></a></div>
+										<div class="intro--swiper animate__animated animate__fadeInUp animate__delay-3s">
 											<div class="swiper-container">
 												<div class="swiper-wrapper">
 													<div class="swiper-slide">
@@ -136,7 +136,7 @@
 							</div>
 						</section>
 					</div>
-					<div class="fp-slide" id="video" fp-title="Video">
+					<div class="fp-slide section" id="video" fp-title="Video" data-anchor="slider-video">
 						<section class="setting-section section-intro" fp-bg="none">
 							<div class="box-video-center">
 								<div class="video-youtube-full playing">
@@ -154,54 +154,53 @@
 							</div>
 						</section>
 					</div>
-					<div class="fp-slide" id="location" fp-title="Vị Trí">
+					<div class="fp-slide section" id="location" fp-title="Vị Trí" data-anchor="slider-location">
 						<section class="setting-section section-location" fp-bg="none">
 							<div class="container h-100">
 								<div class="container-custom container-1660px h-100">
 									<div class="content--main">
 										<div class="box-txt">
-											<div class="title-main">
+											<div class="title-main animate__animated animate__zoomIn animate__delay-2s">
 												<h2>Vị Trí</h2>
 											</div>
-											<div class="sub-title">
+											<div class="sub-title animate__animated animate__zoomIn animate__delay-2s">
 												<p>Toạ lạc tại trung tâm phường Phú Hoà – nơi sôi động bậc nhất thành phố Thủ Dầu Một, Điểm vàng kết nối giao thương với hệ thống đại lộ huyết mạch như đường DT743, Quốc lộ 1A, Quốc lộ 1K, Quốc lộ 13, đường cao tốc Mỹ phước – Tân Vạn,… mang đến cho cư dân sự thuận tiện tối đa trong di chuyển.</p>
 											</div>
-											<div class="btn--see-more btn"><a href="location-detail.html">Xem Thêm<img class="svg" src="./assets/img/index/seemore.svg" alt=""></a></div>
+											<div class="btn--see-more animate__animated btn animate__zoomIn animate__delay-2s"><a href="">Xem Thêm<img class="svg" src="./assets/img/index/seemore.svg" alt=""></a></div>
 										</div>
 									</div>
-									<!-- id="Path_10557" class="st-line"-->
-									<div class="map-svg"><img class="svg" src="./assets/img/index/video-icon-2.svg" alt=""></div>
+									<div class="map-svg animate__animated animate__zoomIn animate__delay-1s"><img class="svg" src="./assets/img/index/video-icon-2.svg" alt=""></div>
 								</div>
 							</div>
 						</section>
 					</div>
-					<div class="fp-slide" id="utilities" fp-title="Tiện ích">
+					<div class="fp-slide section" id="utilities" fp-title="Tiện ích" data-anchor="slider-utilities">
 						<section class="setting-section section-utilities" fp-bg="">
 							<div class="container h-100">
 								<div class="container-custom container-1660px h-100">
 									<div class="utilities__wrapper h-100">
 										<div class="row h-100">
 											<div class="col-4 content-main">
-												<div class="title--main">
+												<div class="title--main animate__zoomIn animate__animated animate__delay-1s">
 													<p>Tiện Ích</p>
 													<p>Đẳng Cấp</p>
 												</div>
 												<div class="desc">
-													<div class="sub-title">
+													<div class="sub-title animate__zoomIn animate__animated animate__delay-1s">
 														<p>Happy One Central tích hợp 68 tiện ích đẳng cấp với công viên cây xanh, quảng trường chân mây, hồ bơi tràn bờ, hệ thống tường rào compound ngăn cách khói bụi, ồn ào mang đến trải nghiệm sống xanh, sống an lành giữa lòng thành phố.</p>
 													</div>
-													<div class="btn--see-more btn"><a href="">Xem Thêm<img class="svg" src="./assets/img/index/seemore.svg" alt=""></a></div>
+													<div class="btn--see-more btn animate__zoomIn animate__animated animate__delay-1s"><a href="">Xem Thêm<img class="svg" src="./assets/img/index/seemore.svg" alt=""></a></div>
 												</div>
 											</div>
 											<div class="col-8 content-main-right">
 												<div class="row">
 													<div class="img col-6">
-														<div class="img--left"><img class="object-cover fullsize" src="./assets/img/index/util.png" alt=""></div>
+														<div class="img--left animate__flipInY animate__animated animate__delay-2s"><img class="object-cover fullsize" src="./assets/img/index/util.png" alt=""></div>
 													</div>
 													<div class="desc col-6">
 														<div class="swiper-container">
 															<div class="swiper-wrapper">
-																<div class="swiper-slide">
+																<div class="swiper-slide animate__slideInRight animate__animated animate__delay-3s">
 																	<div class="wrapper">
 																		<div class="img-slide"><img class="svg" src="./assets/img/index/util-1.svg" alt=""></div>
 																		<div class="desc-slide">
@@ -210,7 +209,7 @@
 																		</div>
 																	</div>
 																</div>
-																<div class="swiper-slide">
+																<div class="swiper-slide animate__slideInRight animate__animated animate__delay-3s">
 																	<div class="wrapper">
 																		<div class="img-slide"><img class="svg" src="./assets/img/index/util-2.svg" alt=""></div>
 																		<div class="desc-slide">
@@ -219,7 +218,7 @@
 																		</div>
 																	</div>
 																</div>
-																<div class="swiper-slide">
+																<div class="swiper-slide animate__slideInRight animate__animated animate__delay-3s">
 																	<div class="wrapper">
 																		<div class="img-slide"><img class="svg" src="./assets/img/index/util-3.svg" alt=""></div>
 																		<div class="desc-slide">
@@ -228,7 +227,7 @@
 																		</div>
 																	</div>
 																</div>
-																<div class="swiper-slide">
+																<div class="swiper-slide animate__slideInRight animate__animated animate__delay-3s">
 																	<div class="wrapper">
 																		<div class="img-slide"><img class="svg" src="./assets/img/index/util-4.svg" alt=""></div>
 																		<div class="desc-slide">
@@ -251,14 +250,14 @@
 							</div>
 						</section>
 					</div>
-					<div class="fp-slide" id="news" fp-title="Tin Tức - Sụ Kiện">
+					<div class="fp-slide section" id="news" fp-title="Tin Tức - Sụ Kiện" data-anchor="slider-news">
 						<section class="setting-section section-news" fp-bg="">
 							<div class="container h-100">
 								<div class="container-custom container-1660px h-100">
 									<div class="utilities__wrapper h-100">
 										<div class="row h-100">
 											<div class="col-5 content-main">
-												<div class="title--main">
+												<div class="title--main animate__zoomIn animate__animated animate__delay-1s">
 													<p>Tin Tức</p>
 													<p>Sự Kiện</p>
 												</div>
@@ -269,7 +268,7 @@
 							</div>
 							<div class="news-swiper">
 								<div class="swiper-container">
-									<div class="swiper-wrapper">
+									<div class="swiper-wrapper animate__slideInRight animate__animated animate__delay-2s">
 										<div class="swiper-slide">
 											<div class="wrapper">
 												<div class="img"><img class="object-cover fullsize" src="./assets/img/index/news-1.png" alt=""></div>
@@ -280,7 +279,7 @@
 													<div class="sub-title">
 														<p class="lcl lcl-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum quod quia vitae libero architecto saepe molestiae. Placeat, consequuntur molestiae error officia nihil voluptates ducimus a? Consequuntur fuga fugit ab vero.</p>
 													</div>
-													<div class="btn--see-more btn"><a href="news-detail.html">Xem Thêm<img class="svg" src="./assets/img/index/seemore-white.svg" alt=""></a></div>
+													<div class="btn--see-more btn"><a href="">Xem Thêm<img class="svg" src="./assets/img/index/seemore-white.svg" alt=""></a></div>
 													<div class="btn-arrow btn"> </div>
 												</div>
 											</div>
@@ -295,7 +294,7 @@
 													<div class="sub-title">
 														<p class="lcl lcl-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum quod quia vitae libero architecto saepe molestiae. Placeat, consequuntur molestiae error officia nihil voluptates ducimus a? Consequuntur fuga fugit ab vero.</p>
 													</div>
-													<div class="btn--see-more btn"><a href="news-detail.html">Xem Thêm<img class="svg" src="./assets/img/index/seemore-white.svg" alt=""></a></div>
+													<div class="btn--see-more btn"><a href="">Xem Thêm<img class="svg" src="./assets/img/index/seemore-white.svg" alt=""></a></div>
 													<div class="btn-arrow btn"> </div>
 												</div>
 											</div>
@@ -310,7 +309,7 @@
 													<div class="sub-title">
 														<p class="lcl lcl-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum quod quia vitae libero architecto saepe molestiae. Placeat, consequuntur molestiae error officia nihil voluptates ducimus a? Consequuntur fuga fugit ab vero.</p>
 													</div>
-													<div class="btn--see-more btn"><a href="news-detail.html">Xem Thêm<img class="svg" src="./assets/img/index/seemore-white.svg" alt=""></a></div>
+													<div class="btn--see-more btn"><a href="">Xem Thêm<img class="svg" src="./assets/img/index/seemore-white.svg" alt=""></a></div>
 													<div class="btn-arrow btn"> </div>
 												</div>
 											</div>
@@ -320,16 +319,16 @@
 							</div>
 						</section>
 					</div>
-					<div class="fp-slide" id="contact" fp-title="Liên Hệ">
+					<div class="fp-slide section" id="contact" fp-title="Liên Hệ" data-anchor="slider-contact">
 						<section class="setting-section section-contact" fp-bg="./assets/img/index/contact-bg.png">
 							<div class="container h-100">
 								<div class="container-custom container-1140px h-100">
 									<div class="contact__wrapper">
-										<div class="contact--title">
+										<div class="contact--title animate__zoomIn animate__animated animate__delay-1s">
 											<h2>Liên Hệ</h2>
 										</div>
 										<div class="row">
-											<div class="col-6 info-content">
+											<div class="col-6 info-content animate__zoomIn animate__animated animate__delay-2s">
 												<h3>CÔNG TY CỔ PHẦN TẬP ĐOÀN ĐỊA ỐC VẠN XUÂN</h3>
 												<div class="address"><a class="contact-info" href="">
 														<div class="icon"><img class="svg" src="./assets/img/index/position.svg" alt=""></div>
@@ -337,7 +336,7 @@
 														<div class="icon"><img class="svg" src="./assets/img/index/mail.svg" alt=""></div>
 														<div class="text"><span>Contact@happyone.vn</span></div></a><a class="contact-info" href="">
 														<div class="icon"><img src="./assets/img/index/phone.svg" alt=""></div>
-														<div class="text"><span>0929 009 555</span></div></a>
+														<div class="text"><span>50965 65 65 87</span></div></a>
 													<div class="contact-info">
 														<div class="icon"></div>
 														<div class="text"><span>Liên Kết</span>
@@ -351,23 +350,23 @@
 											</div>
 											<div class="col-6 company-info">
 												<div class="company">
-													<div class="item">
+													<div class="item animate__lightSpeedInRight animate__animated animate__delay-2s">
 														<div class="text">
 															<p>CHỦ ĐẦU TƯ</p>
 														</div>
-														<div class="logo"><img class="object-cover" src="./assets/img/index/vanxuan.png" alt=""></div>
+														<div class="logo"><img src="./assets/img/index/vanxuan.png" alt=""></div>
 													</div>
-													<div class="item">
+													<div class="item animate__lightSpeedInRight animate__animated animate__delay-2s">
 														<div class="text">
-															<p>ĐƠN VỊ PHÁT TRIỂN CENLAND VÀ VIVAHOMES</p>
+															<p>ĐƠN VỊ PHÁT TRIỂN KINH DOANH</p>
 														</div>
-														<div class="logo"><img class="object-cover" src="./assets/img/index/cengroup.png" alt=""></div>
+														<div class="logo"><img src="./assets/img/index/cengroup.png" alt=""></div>
 													</div>
-													<div class="item">
+													<div class="item animate__lightSpeedInRight animate__animated animate__delay-2s">
 														<div class="text">
 															<p>TỔNG THẦU XÂY DỰNG:</p>
 														</div>
-														<div class="logo"><img class="object-cover" src="./assets/img/index/central.png" alt=""></div>
+														<div class="logo"><img src="./assets/img/index/central.png" alt=""></div>
 													</div>
 												</div>
 											</div>
