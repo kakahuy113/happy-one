@@ -41,39 +41,41 @@
 				background-color: map-get($color, x-white);
 				position: absolute;
 			}
+		
 			p {
 				font-size: 7rem;
 				font-family: MyriaPro-Bold;
 				font-weight: 700;
 				line-height: 1.5;
 				color: #ffffff;
+			
 			}
 			
 			@media (max-width: 1499.98px) {
 				padding-left: 30%;
 			}
 			@media (max-width: 1100px) {
-				position: relative;
-				padding-left: 5%;
+				padding-left: unset;
 				bottom: unset;
-				&::after {
-					width: 50%;
-				}
-			}
-			
-			@media (max-width: 575.98px) {
 				text-align: center;
-				p {
-					&::after {
-						content: none !important;
-					}
+				&::after {
+					content: none;
 				}
-			}
+				p {
+					font-size: 5rem;
+				}
+			} 
 		}
 		@media (max-width: 1100px) {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
+			.logo--big {
+				margin-bottom: 0;
+			}
+			.title {
+				position: relative;
+			}
 		}
 	}
 	.setting-section {

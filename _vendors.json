@@ -8,8 +8,7 @@
 		"node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js",
 		"node_modules/animejs/lib/anime.min.js",
 		"node_modules/gsap/dist/gsap.min.js",
-		"vendors/moment.min.js",
-		"vendors/custom.js"
+		"vendors/moment.min.js"
 	],
 	"css": [
 		"vendors/animate.min.css",

@@ -221,6 +221,30 @@ declare var anime:any;
 // 		}
 // }
 
+const initFullpage = () => {
+	if ($(window).width() > 1100) {
+		$('#fullpage').fullpage({
+			anchors: ['slider-home', 'slider-introduce', 'slider-video', 'slider-location', 'slider-utilities', 'slider-news', 'slider-contact'],
+			menu: '#menu',
+			lazyLoad: true,
+			keyboardScrolling: true,
+			afterLoad: (origin:any, destination:any, direction:any) => {
+			},
+			onLeave: (origin:any, destination:any, direction:any) => {
+				console.log(origin, destination, direction);
+				let currentSection = $(document).find(".section")[destination - 1];
+				$(currentSection).find("section>div").css("display", "none");
+				setTimeout(()=>{
+					$(currentSection).find("section>div").css("display", "table");
+				}, 10)
+			}
+		});
+	}
+	$(document).on("click", "#left-menu .nav-item a", () => {
+		console.log("click");
+		$(".hambuger--menu").click();
+	})
+}
 function showPattern (currentIndex:Number) { 
 	var dotsGridPatternEl = document.querySelectorAll('.block-animation-grid');
 	
@@ -630,29 +654,33 @@ window.addEventListener('resize', function () {
 	// Loading()
 	loadApartmentSvg();
 	loadDetailLocationSvg();
+	generateDots();
 });
 
 function generateDots() {
-	if ($(".fp-dots").length === 0) {
-		let dotItemString = "";
-		$("#fullpage .section").each((idx:number, item:any)=>{
-			dotItemString += `<li class="fp-dot-item" data-menuanchor="slider-${$(item).attr("id")}">
-				<a href="#slider-${$(item).attr("id")}">
-					<span class="fp-number">0${idx}</span>
-					<span class="fp-title">${$(item).attr("fp-title")}</span>
-				</a>
-			</li>`;
-		}) 
-		let dotEl = `<ul class="fp-dots" id="menu">${dotItemString}</ul>`;
-		$('.fp-container').append(dotEl);
+	if ($(window).width() > 1100) {
+		if ($(".fp-dots").length === 0) {
+			let dotItemString = "";
+			$("#fullpage .section").each((idx:number, item:any)=>{
+				dotItemString += `<li class="fp-dot-item" data-menuanchor="slider-${$(item).attr("id")}">
+					<a href="#slider-${$(item).attr("id")}">
+						<span class="fp-number">0${idx}</span>
+						<span class="fp-title">${$(item).attr("fp-title")}</span>
+					</a>
+				</li>`;
+			}) 
+			let dotEl = `<ul class="fp-dots" id="menu">${dotItemString}</ul>`;
+			$('.fp-container').append(dotEl);
+		}
 	}
+
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
 	getSVGs(".svg");
 	Loading();
 	commonController();
-	// initFullpage();
+	initFullpage();
 	loadApartmentSvg();
 	loadDetailLocationSvg();
 	setBackgroundImageSection();

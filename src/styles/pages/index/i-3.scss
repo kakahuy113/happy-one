@@ -9,13 +9,13 @@
 	}
 	
 	.map-svg {
-		padding-top: 50px;
 		overflow: hidden;
 		width: 55vw;
 		height: 100%;
-		overflow: hidden;
+		position: relative;
+		padding-top: 50px;
 		svg{
-			height: calc(100% + 65px);
+			height: 100%;
 			width: 100%;
 
 			#Union_2 {
