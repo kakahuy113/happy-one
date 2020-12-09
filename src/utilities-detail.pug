@@ -1,0 +1,13 @@
+extends _templates/_layout/_layout.pug
+
+block var
+	- let title = 'Page | Utilities Detail';
+	- let bodyClass = 'utilities-detail-page';
+
+block loading
+	include _templates/_layout/_loading
+block banner,breadcrumb
+block main
+		.fp-wrapper
+			include _templates/utilities-detail/u-1
+block scripts
