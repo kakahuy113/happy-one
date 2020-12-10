@@ -691,8 +691,11 @@ const hoverApartment = () => {
 
 const hoverApartmentRoom = () =>
 {
+	const box = document.querySelector(".apartment-detail__wrapper .info-room .box-circle");
+	$(".apartment-detail__wrapper").append(box.outerHTML);
+	box.remove();
+	
 	var width = window.innerWidth;
-	var height = window.innerHeight;
 	$(".section-apartment-detail .map-svg svg .hover-room").hover(
 		// Mouse in
 		
@@ -745,6 +748,10 @@ const hoverApartmentRoom = () =>
 			// $(`.show-box[id=${e}]`).removeClass("showup");
 		}
 	)
+	
+	$(".apartment-detail__wrapper .show-box").on("click" , function() {
+		window.location.pathname = $(this).attr("href")
+	})
 }
 
 const loadApartmentSvg = () => {

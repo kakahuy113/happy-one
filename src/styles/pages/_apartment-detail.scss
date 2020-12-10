@@ -128,7 +128,11 @@
 					 font-size: 1.4rem;
 					 font-family: Avenir-Black;
 				 }
-				 
+				 .id {
+					 visibility: hidden;
+					 opacity: 0;
+					 display: none;
+				 }
 			 }
 		 }
 		 @media (max-width: 1100px) {
