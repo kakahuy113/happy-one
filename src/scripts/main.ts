@@ -700,38 +700,49 @@ const hoverApartmentRoom = () =>
 			const e = $(this).attr("id"),
 			i = t.clientX,
 			o = t.clientY;
+			let link = "";
 			if (1100 < $(window).width()) {
 				$(".show-box").removeClass("showup");
-				
-			if(width > 1700) {
-				$(`.show-box[id=${e}]`).css({
-					left: i - 150,
-					top: o - 30
+				$(".show-box").each(function(event:any) {
+					if($(this).find(".id")[0].innerHTML == e) {
+						link = $(this).attr("href")
+						if(width > 1700) {
+							$(this).css({
+								left: i - 150,
+								top: o - 30
+							})
+						}
+						if(width < 1700) {
+							$(this).css({
+								left: i - 50,
+								top: o - 30
+							})
+						}
+						if(width < 1440) {
+							$(this).css({
+								left: i - 60,
+								top: o - 20
+							})
+						}
+						$(this).addClass("showup");
+					
+					}
 				})
-			}
-			if(width < 1700) {
-				$(`.show-box[id=${e}]`).css({
-					left: i - 50,
-					top: o - 30
-				})
-			}
-			if(width < 1440) {
-				$(`.show-box[id=${e}]`).css({
-					left: i - 60,
-					top: o - 20
-				})
-			}
-				$(`.show-box[id=${e}]`).addClass("showup");
-				
-			}
-			$(this).on("click" , function() {
-				window.location.pathname = $(`.show-box[id=${e}]`).attr("href");
+		}
+		$(this).on("click" , function() {
+				window.location.pathname = link;
 			})
 		}, 
 		// Mouse out
 		function(t: any) {
-			const e = $(this).attr("id")
-			$(`.show-box[id=${e}]`).removeClass("showup");
+			const e = $(this).attr("id");
+			$(".show-box").each(function(event:any) {
+				if($(this).find(".id")[0].innerHTML == e) {
+					$(this).removeClass("showup");
+				}
+			})
+			// const e = $(this).attr("id")
+			// $(`.show-box[id=${e}]`).removeClass("showup");
 		}
 	)
 }
