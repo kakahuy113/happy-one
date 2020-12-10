@@ -784,18 +784,8 @@ const newsAjax = () => {
 	})
 }
 
-window.onload = function () {
-	loadApartmentSvg();
-	loadDetailLocationSvg();
-}
-window.addEventListener('resize', function () {
-	// Loading()
-	loadApartmentSvg();
-	loadDetailLocationSvg();
-	generateDots();
-});
 
-function generateDots() {
+const generateDots = () => {
 	if ($(window).width() > 1100) {
 		if ($(".fp-dots").length === 0) {
 			let dotItemString = "";
@@ -811,8 +801,26 @@ function generateDots() {
 			$('.fp-container').append(dotEl);
 		}
 	}
-
 }
+
+const swiperRoomDetail = () => {
+	const roomDetail = new Swiper(".image-house .swiper-container" , {
+		direction: 'vertical',
+		speed: 1000,
+		slidesPerView: 1
+	})
+}
+
+window.onload = function () {
+	loadApartmentSvg();
+	loadDetailLocationSvg();
+}
+window.addEventListener('resize', function () {
+	// Loading()
+	loadApartmentSvg();
+	loadDetailLocationSvg();
+	generateDots();
+});
 
 document.addEventListener("DOMContentLoaded", async () => {
 	getSVGs(".svg");
@@ -830,4 +838,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 	hoverLocationDot();
 	hoverApartmentRoom();
 	newsAjax();
+	swiperRoomDetail();
 });
