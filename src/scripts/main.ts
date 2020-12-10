@@ -691,21 +691,42 @@ const hoverApartment = () => {
 
 const hoverApartmentRoom = () =>
 {
+	var width = window.innerWidth;
+	var height = window.innerHeight;
 	$(".section-apartment-detail .map-svg svg .hover-room").hover(
 		// Mouse in
+		
 		function(t: any) {
+			const e = $(this).attr("id"),
+			i = t.clientX,
+			o = t.clientY;
 			if (1100 < $(window).width()) {
 				$(".show-box").removeClass("showup");
-				const e = $(this).attr("id"),
-					i = t.clientX,
-					o = t.clientY;
-			$(`.show-box[id=${e}]`).css({
-				left: i - 30,
-				top: o - 30
-			})
+				
+			if(width > 1700) {
+				$(`.show-box[id=${e}]`).css({
+					left: i - 150,
+					top: o - 30
+				})
+			}
+			if(width < 1700) {
+				$(`.show-box[id=${e}]`).css({
+					left: i - 50,
+					top: o - 30
+				})
+			}
+			if(width < 1440) {
+				$(`.show-box[id=${e}]`).css({
+					left: i - 60,
+					top: o - 20
+				})
+			}
 				$(`.show-box[id=${e}]`).addClass("showup");
 				
 			}
+			$(this).on("click" , function() {
+				window.location.pathname = $(`.show-box[id=${e}]`).attr("href");
+			})
 		}, 
 		// Mouse out
 		function(t: any) {
@@ -805,9 +826,22 @@ const generateDots = () => {
 
 const swiperRoomDetail = () => {
 	const roomDetail = new Swiper(".image-house .swiper-container" , {
-		direction: 'vertical',
 		speed: 1000,
-		slidesPerView: 1
+		slidesPerView: 1,
+		mousewheel: true,
+		navigation: {
+			nextEl: '.image-house .swiper-button-next',
+			prevEl: '.image-house .swiper-button-prev',
+		},
+		breakpoints: {
+			300: {
+				spaceBetween: 0,
+				direction: 'horizontal',
+			},
+			1100: {
+				direction: 'vertical',
+			}
+		}
 	})
 }
 
