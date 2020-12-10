@@ -417,12 +417,17 @@ function loadUtilitiesDetail () {
 				$('main').after(utilitiesPopup);
 				var galleryThumbs = new Swiper('.gallery-thumbs', {
 					spaceBetween: 10,
-					slidesPerView: 4,
+					slidesPerView: 2,
 					loop: true,
 					freeMode: true,
 					loopedSlides: 5, 
 					watchSlidesVisibility: true,
 					watchSlidesProgress: true,
+					breakpoints: {
+						768: {
+							slidesPerView: 4,
+						}
+					}
 				  });
 				  var galleryTop = new Swiper('.gallery-top', {
 					spaceBetween: 10,
