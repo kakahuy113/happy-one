@@ -418,15 +418,31 @@ const initFullpage = () => {
 }
 function loadUtilitiesDetail () {
 	$("#utilities-detail svg>g>g").each((index:number,item:any)=>{
-		console.log(item, index);
-		$(item).on("click", (e:any)=>{
-			const anchor = $(e.currentTarget).find("text").text();
+		$(item).on("click", (event:any)=>{
+			const anchor = $(event.currentTarget).find("text").text();
 			const item = $("ul.location-list ").find(`li.location-item[data-anchor="${anchor}"]`);
 			if(item.length>0){
 				$(item).click();
 			}
 		})
-	})
+	});
+	$("#utilities-detail svg>g").mousemove(function(event:any){            
+		var relX = (event.pageX - $(this).offset().left) - 40;
+		var relY = (event.pageY - $(this).offset().top) - 180;
+		var relBoxCoords = "(" + relX.toFixed() + "," + relY.toFixed() + ")";
+		if(event.target.tagName === "circle"){
+			console.log(relBoxCoords)
+			const anchor = $($(event.target).closest("g").find("text")[0]).text();
+			$("#utilities-detail svg foreignObject").attr("transform", `translate(${relX.toFixed()} ${relY.toFixed()})`);
+			$($("#utilities-detail svg foreignObject").find("img")[0]).attr("src", "./assets/img/utilities-detail/u-14.jpg");
+			$($("#utilities-detail svg foreignObject").find("label")[0]).text("KHU THƯƠNG MẠI 1");
+			$("#utilities-detail svg foreignObject").css("opacity", "1");
+			$("#utilities-detail svg foreignObject").css("pointer-events", "auto");
+		} else {
+			$("#utilities-detail svg foreignObject").css("opacity", "0");
+			$("#utilities-detail svg foreignObject").css("pointer-events", "none");
+		}
+	});
 }
 
 function showPattern (currentIndex:Number) { 
