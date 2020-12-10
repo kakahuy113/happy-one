@@ -356,91 +356,113 @@ const initFullpage = () => {
 		console.log("click");
 		$(".hambuger--menu").click(); 
 	})
-
-	$(document).on("click", "ul.location-list li.location-item", () => {
-		let slider = `
-		<div class="swiper-container gallery-top">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-11.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-12.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-13.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-14.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-11.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-12.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-13.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-14.jpg)"></div>
-			</div>
-		</div>
-		<!-- Add Arrows -->
-		<div class="swiper-button-next swiper-button-white" style="background-image:url(./assets/img/utilities-detail/arrow-right.svg)"></div>
-		<div class="swiper-button-prev swiper-button-white" style="background-image:url(./assets/img/utilities-detail/arrow-left.svg)"></div>
-		<label class="title">Sảnh đón Hetia</label>
-		<div class="swiper-container gallery-thumbs">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-11.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-12.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-13.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-14.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-11.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-12.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-13.jpg)"></div>
-				<div class="swiper-slide" style="background-image:url(./assets/img/utilities-detail/u-14.jpg)"></div>
-			</div>
-		</div>
-		`;
-		const utilitiesPopup = "<div id='utilities-popup'><button class='btn-close' style='background-image:url(./assets/img/utilities-detail/btn-close.svg)'></button><div class='container'>"+slider+"<div></div>";
-		$('main').after(utilitiesPopup);
-		var galleryThumbs = new Swiper('.gallery-thumbs', {
-			spaceBetween: 10,
-			slidesPerView: 4,
-			loop: true,
-			freeMode: true,
-			loopedSlides: 5, 
-			watchSlidesVisibility: true,
-			watchSlidesProgress: true,
-		  });
-		  var galleryTop = new Swiper('.gallery-top', {
-			spaceBetween: 10,
-			loop: true,
-			loopedSlides: 5, 
-			navigation: {
-			  nextEl: '.swiper-button-next',
-			  prevEl: '.swiper-button-prev',
-			},
-			thumbs: {
-			  swiper: galleryThumbs,
-			},
-		  });
-		  $("#utilities-popup .btn-close").click(()=>{
-			$("#utilities-popup").remove();
-		  })
-	})
 }
 function loadUtilitiesDetail () {
+	const location =
+		{
+			'name': "Sảnh đón Hetia",
+			'images': [
+				"./assets/img/utilities-detail/u-11.jpg",
+				"./assets/img/utilities-detail/u-12.jpg",
+				"./assets/img/utilities-detail/u-13.jpg",
+				"./assets/img/utilities-detail/u-14.jpg",
+				"./assets/img/utilities-detail/u-11.jpg",
+				"./assets/img/utilities-detail/u-12.jpg",
+				"./assets/img/utilities-detail/u-13.jpg",
+				"./assets/img/utilities-detail/u-14.jpg"
+				]
+			};
+	const Data = Array.from({length: 10}, (i) => {return location});
+	const locations = Data.map((item, index) => {
+		const anchor = index < 9 ? "0" + (index + 1) : (index + 1);
+		return {...item, anchor: anchor.toString()};
+	}) 
+	locations.forEach((item, index) => {
+		const locationEl = `<li class="location-item" data-anchor="${item.anchor}"><span>${item.anchor}</span><span>${item.name}</span></li>`;
+		$('.location-list').append(locationEl);
+	})
 	$("#utilities-detail svg>g>g").each((index:number,item:any)=>{
 		$(item).on("click", (event:any)=>{
 			const anchor = $(event.currentTarget).find("text").text();
 			const item = $("ul.location-list ").find(`li.location-item[data-anchor="${anchor}"]`);
-			if(item.length>0){
+			if(item.length > 0){
 				$(item).click();
 			}
 		})
 	});
+
+	$(document).on("click", "ul.location-list li.location-item", (event:any) => {
+		const anchor = $(event.currentTarget).attr("data-anchor");
+		const detail = locations.find(item => item.anchor === anchor);
+		if(detail) {
+			if(detail.images.length > 0) { 
+				const slides = detail.images.reduce((arr, item) => arr + `<div class="swiper-slide" style="background-image:url(${item})"></div>`, '');
+				let slider = `
+				<div class="swiper-container gallery-top">
+					<div class="swiper-wrapper">
+						${slides}
+					</div>
+				</div>
+				<!-- Add Arrows -->
+				<div class="swiper-button-next swiper-button-white" style="background-image:url(./assets/img/utilities-detail/arrow-right.svg)"></div>
+				<div class="swiper-button-prev swiper-button-white" style="background-image:url(./assets/img/utilities-detail/arrow-left.svg)"></div>
+				<label class="title">${detail.name}</label>
+				<div class="swiper-container gallery-thumbs">
+					<div class="swiper-wrapper">
+						${slides}
+					</div>
+				</div>
+				`;
+				const utilitiesPopup = "<div id='utilities-popup'><button class='btn-close' style='background-image:url(./assets/img/utilities-detail/btn-close.svg)'></button><div class='container'>"+slider+"<div></div>";
+				$('main').after(utilitiesPopup);
+				var galleryThumbs = new Swiper('.gallery-thumbs', {
+					spaceBetween: 10,
+					slidesPerView: 4,
+					loop: true,
+					freeMode: true,
+					loopedSlides: 5, 
+					watchSlidesVisibility: true,
+					watchSlidesProgress: true,
+				  });
+				  var galleryTop = new Swiper('.gallery-top', {
+					spaceBetween: 10,
+					loop: true,
+					loopedSlides: 5, 
+					navigation: {
+					  nextEl: '.swiper-button-next',
+					  prevEl: '.swiper-button-prev',
+					},
+					thumbs: {
+					  swiper: galleryThumbs,
+					},
+				  });
+				  $("#utilities-popup .btn-close").click(()=>{
+					$("#utilities-popup").remove();
+				  })
+			}
+		}
+	})
 	$("#utilities-detail svg>g").mousemove(function(event:any){            
 		var relX = (event.pageX - $(this).offset().left) - 40;
 		var relY = (event.pageY - $(this).offset().top) - 180;
-		var relBoxCoords = "(" + relX.toFixed() + "," + relY.toFixed() + ")";
 		if(event.target.tagName === "circle"){
-			console.log(relBoxCoords)
 			const anchor = $($(event.target).closest("g").find("text")[0]).text();
-			$("#utilities-detail svg foreignObject").attr("transform", `translate(${relX.toFixed()} ${relY.toFixed()})`);
-			$($("#utilities-detail svg foreignObject").find("img")[0]).attr("src", "./assets/img/utilities-detail/u-14.jpg");
-			$($("#utilities-detail svg foreignObject").find("label")[0]).text("KHU THƯƠNG MẠI 1");
-			$("#utilities-detail svg foreignObject").css("opacity", "1");
-			$("#utilities-detail svg foreignObject").css("pointer-events", "auto");
+			const detail = locations.find(item => item.anchor === anchor);
+			if(detail) {
+				if(detail.images.length > 0) { 
+					$("#utilities-detail svg foreignObject").attr("transform", `translate(${relX.toFixed()} ${relY.toFixed()})`);
+					$($("#utilities-detail svg foreignObject").find("img")[0]).attr("src", detail.images[0]);
+				} else {
+					$($("#utilities-detail svg foreignObject").find("img")[0]).css("display", "none");
+				}
+				$($("#utilities-detail svg foreignObject").find("label")[0]).text(detail.name || '');
+				$("#utilities-detail svg foreignObject").css("opacity", "1");
+				$("#utilities-detail svg foreignObject").css("pointer-events", "auto");
+			}
 		} else {
 			$("#utilities-detail svg foreignObject").css("opacity", "0");
 			$("#utilities-detail svg foreignObject").css("pointer-events", "none");
+			$($("#utilities-detail svg foreignObject").find("img")[0]).css("display", "block");
 		}
 	});
 }
