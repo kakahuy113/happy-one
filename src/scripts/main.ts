@@ -192,7 +192,7 @@ function loadUtilitiesDetail () {
 				"./assets/img/utilities-detail/u-14.jpg"
 				]
 			};
-	const Data = Array.from({length: 10}, (i) => {return location});
+	const Data = Array.from({length: 20}, (i) => {return location});
 	const locations = Data.map((item, index) => {
 		const anchor = index < 9 ? "0" + (index + 1) : (index + 1);
 		return {...item, anchor: anchor.toString()};
@@ -245,7 +245,7 @@ function loadUtilitiesDetail () {
 					watchSlidesProgress: true,
 					breakpoints: {
 						768: {
-							slidesPerView: 4,
+							slidesPerView: 3,
 						}
 					}
 				  });
@@ -273,6 +273,22 @@ function loadUtilitiesDetail () {
 		if(event.target.tagName === "circle"){
 			const anchor = $($(event.target).closest("g").find("text")[0]).text();
 			const detail = locations.find(item => item.anchor === anchor);
+			
+			const items = $("ul.location-list").find(`li.location-item[data-anchor="${anchor}"]`);
+			if(items.length > 0){
+				$(items).addClass("active");
+			}
+			
+			const activeItems = $("ul.location-list").find(`li.location-item.active`);
+			if(activeItems.length > 0){
+				$(activeItems).each((index:number, item:any) => {
+					const anchorActive = $(item).attr("data-anchor");
+					if(anchorActive !== anchor) {
+						$(item).removeClass("active");
+					}
+				})
+			}
+
 			if(detail) {
 				if(detail.images.length > 0) { 
 					$("#utilities-detail svg foreignObject").attr("transform", `translate(${relX.toFixed()} ${relY.toFixed()})`);
