@@ -690,11 +690,7 @@ const hoverApartment = () => {
 }
 
 const hoverApartmentRoom = () =>
-{
-	const box = document.querySelector(".apartment-detail__wrapper .info-room .box-circle");
-	$(".apartment-detail__wrapper").append(box.outerHTML);
-	box.remove();
-	
+{	
 	var width = window.innerWidth;
 	$(".section-apartment-detail .map-svg svg .hover-room").hover(
 		// Mouse in
@@ -879,6 +875,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 	Loading();
 	commonController();
 	generateDots();
+	if(document.querySelector(".apartment-detail__wrapper")) {
+		const box = document.querySelector(".apartment-detail__wrapper .info-room .box-circle");
+		$(".apartment-detail__wrapper").append(box.outerHTML);
+		document.querySelector(".apartment-detail__wrapper .info-room .box-circle").remove();
+	}
 	initFullpage();
 	loadApartmentSvg();
 	loadDetailLocationSvg();
