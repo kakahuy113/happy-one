@@ -6,7 +6,6 @@ declare var YT:any;
 declare var moment:any;
 declare var anime:any;
 
-
 // const initFullpage = () => {
 // 	var player: any;
 // 	// Init Youtube Video API
@@ -300,57 +299,77 @@ const initFullpage = () => {
 		return moment(0).add(moment.duration({'seconds': time})).format('mm:ss');
 	}
 	if ($(window).width() > 1100) {
-		$('#fullpage').fullpage({
-			anchors: ['slider-home', 'slider-introduce', 'slider-video', 'slider-location', 'slider-utilities', 'slider-news', 'slider-contact'],
-			menu: '#menu',
-			lazyLoad: true,
-			keyboardScrolling: true,
-			afterLoad: (origin:any, destination:any, direction:any) => {
-				if(destination == 1) {
-					document.querySelector(".fp-dots").classList.remove("show")
-					document.querySelector(".fp-dots").classList.add("hide")
-				} else {
-					document.querySelector(".fp-dots").classList.remove("hide")
-					document.querySelector(".fp-dots").classList.add("show")
+		if(document.querySelector("#fullpage")) {
+			$('#fullpage').fullpage({
+				anchors: ['slider-home', 'slider-introduce', 'slider-video', 'slider-location', 'slider-utilities', 'slider-news', 'slider-contact'],
+				menu: '#menu',
+				lazyLoad: true,
+				keyboardScrolling: true,
+				recordHistory: false,
+				afterLoad: (origin:any, destination:any, direction:any) => {
+					if(destination == 1) {
+						document.querySelector(".fp-dots").classList.remove("show")
+						document.querySelector(".fp-dots").classList.add("hide")
+					} else {
+						document.querySelector(".fp-dots").classList.remove("hide")
+						document.querySelector(".fp-dots").classList.add("show")
+					}
+					if(destination == 3 ) {
+						player.playVideo();
+					}
+					if(destination == 2) {
+						document.querySelector("header").classList.add("changed")
+						document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
+					} else {
+						document.querySelector("header").classList.remove("changed")
+						document.querySelector(".fp-socials .fp-links__wrapper").classList.remove("changed")
+					}
+				},
+				onLeave: (origin:any, destination:any, direction:any) => {
+					console.log(origin , destination, direction);
+					
+					if(destination == 1) {
+						document.querySelector(".fp-dots").classList.remove("show")
+						document.querySelector(".fp-dots").classList.add("hide")
+					} else {
+						document.querySelector(".fp-dots").classList.remove("hide")
+						document.querySelector(".fp-dots").classList.add("show")
+					}
+					if(destination == 3 ) {
+						player.playVideo();
+					}
+					if(destination == 2) {
+						document.querySelector("header").classList.add("changed")
+						document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
+					} else {
+						document.querySelector("header").classList.remove("changed")
+						document.querySelector(".fp-socials .fp-links__wrapper").classList.remove("changed")
+					}
+					let currentSection = $(document).find(".section")[destination - 1];
+					$(currentSection).find("section>div").css("display", "none");
+					setTimeout(()=>{
+						$(currentSection).find("section>div").css("display", "table");
+					}, 10)
 				}
-				if(destination == 3 ) {
-					player.playVideo();
-				}
-				if(destination == 2) {
-					document.querySelector("header").classList.add("changed")
-					document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
-				} else {
-					document.querySelector("header").classList.remove("changed")
-					document.querySelector(".fp-socials .fp-links__wrapper").classList.remove("changed")
-				}
-			},
-			onLeave: (origin:any, destination:any, direction:any) => {
-				console.log(origin , destination, direction);
+			});
+		}
+		if(document.querySelector("#fullpage-introduce")) {
+			$('#fullpage-introduce').fullpage({
+				anchors: ['introduce--1' , 'introduce--2', 'introduce--3'],
+				menu: '#menu',
+				lazyLoad: true,
+				keyboardScrolling: true,
+				recordHistory: false,
+				afterLoad: (origin:any, destination:any, direction:any) => {
 				
-				if(destination == 1) {
-					document.querySelector(".fp-dots").classList.remove("show")
-					document.querySelector(".fp-dots").classList.add("hide")
-				} else {
-					document.querySelector(".fp-dots").classList.remove("hide")
-					document.querySelector(".fp-dots").classList.add("show")
+				},
+				onLeave: (origin:any, destination:any, direction:any) => {
+					console.log(origin , destination, direction);
+					
+				
 				}
-				if(destination == 3 ) {
-					player.playVideo();
-				}
-				if(destination == 2) {
-					document.querySelector("header").classList.add("changed")
-					document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
-				} else {
-					document.querySelector("header").classList.remove("changed")
-					document.querySelector(".fp-socials .fp-links__wrapper").classList.remove("changed")
-				}
-				let currentSection = $(document).find(".section")[destination - 1];
-				$(currentSection).find("section>div").css("display", "none");
-				setTimeout(()=>{
-					$(currentSection).find("section>div").css("display", "table");
-				}, 10)
-			}
-		});
+			});
+		}
 	}
 	$(document).on("click", "#left-menu .nav-item a", () => {
 		console.log("click");
@@ -761,47 +780,89 @@ const hoverApartment = () => {
 	document.querySelectorAll("#apartment-svg g").forEach((element : any) => {
 		var dataActive = element.getAttribute("data-active");
 		if (dataActive != null) {
-			$("#apartment-svg g[data-active=" + dataActive + "]").hover(
-			// Hover in
-			function() {
-				$("#apartment-svg g[data-active=" + dataActive + "]").css("opacity","unset")
-				$("#apartment-svg g .area").css("animation","dash 0.6s linear alternate, fillColor 1.2s linear alternate")
-				$("#apartment-svg g.info[data-active=" + dataActive + "] .box").css("opacity","1")
-			},
-			// Hover out
-			function() {
-				$("#apartment-svg g[data-active=" + dataActive + "]:not(.info)").css("opacity","0")
-				$("#apartment-svg g .area").css("animation","unset")
-				$("#apartment-svg g.info[data-active=" + dataActive + "] .box").css("opacity","0.5")
+			// Only PC has hover animation
+			if (1100 < $(window).width()) {
+				$("#apartment-svg g[data-active=" + dataActive + "]").hover(
+					// Hover in
+					function() {
+						$("#apartment-svg g[data-active=" + dataActive + "]").css("opacity","unset")
+						$("#apartment-svg g .area").css("animation","dash 0.6s linear alternate, fillColor 1.2s linear alternate")
+						$("#apartment-svg g.info[data-active=" + dataActive + "] .box").css("opacity","1")
+					},
+					// Hover out
+					function() {
+						$("#apartment-svg g[data-active=" + dataActive + "]:not(.info)").css("opacity","0")
+						$("#apartment-svg g .area").css("animation","unset")
+						$("#apartment-svg g.info[data-active=" + dataActive + "] .box").css("opacity","0.5")
+					})
+			}
+			// Click event
+			element.addEventListener('click', function() {
+				window.location.href = $("#apartment .link p")[Number(dataActive) - 1].innerHTML
 			})
 		}
 	});
 }
 
 const hoverApartmentRoom = () =>
-{
+{	
+	var width = window.innerWidth;
 	$(".section-apartment-detail .map-svg svg .hover-room").hover(
 		// Mouse in
+		
 		function(t: any) {
+			const e = $(this).attr("id"),
+			i = t.clientX,
+			o = t.clientY;
+			let link = "";
 			if (1100 < $(window).width()) {
 				$(".show-box").removeClass("showup");
-				const e = $(this).attr("id"),
-					i = t.clientX,
-					o = t.clientY;
-			$(`.show-box[id=${e}]`).css({
-				left: i - 30,
-				top: o - 30
+				$(".show-box").each(function(event:any) {
+					if($(this).find(".id")[0].innerHTML == e) {
+						link = $(this).attr("href")
+						if(width > 1700) {
+							$(this).css({
+								left: i - 150,
+								top: o - 30
+							})
+						}
+						if(width < 1700) {
+							$(this).css({
+								left: i - 50,
+								top: o - 30
+							})
+						}
+						if(width < 1440) {
+							$(this).css({
+								left: i - 60,
+								top: o - 20
+							})
+						}
+						$(this).addClass("showup");
+					
+					}
+				})
+		}
+		$(this).on("click" , function() {
+				window.location.pathname = link;
 			})
-				$(`.show-box[id=${e}]`).addClass("showup");
-				
-			}
 		}, 
 		// Mouse out
 		function(t: any) {
-			const e = $(this).attr("id")
-			$(`.show-box[id=${e}]`).removeClass("showup");
+			const e = $(this).attr("id");
+			$(".show-box").each(function(event:any) {
+				if($(this).find(".id")[0].innerHTML == e) {
+					$(this).removeClass("showup");
+				}
+			})
+			// const e = $(this).attr("id")
+			// $(`.show-box[id=${e}]`).removeClass("showup");
 		}
 	)
+	
+	$(".apartment-detail__wrapper .show-box").on("click" , function() {
+		window.location.pathname = $(this).attr("href")
+	})
 }
 
 const loadApartmentSvg = () => {
@@ -873,19 +934,9 @@ const newsAjax = () => {
 	})
 }
 
-window.onload = function () {
-	loadApartmentSvg();
-	loadDetailLocationSvg();
-	loadUtilitiesDetail();
-}
-window.addEventListener('resize', function () {
-	// Loading()
-	loadApartmentSvg();
-	loadDetailLocationSvg();
-	generateDots();
-});
 
-function generateDots() {
+
+const generateDots = () => {
 	if ($(window).width() > 1100) {
 		if ($(".fp-dots").length === 0) {
 			let dotItemString = "";
@@ -901,14 +952,51 @@ function generateDots() {
 			$('.fp-container').append(dotEl);
 		}
 	}
-
 }
+
+const swiperRoomDetail = () => {
+	const roomDetail = new Swiper(".image-house .swiper-container" , {
+		speed: 1000,
+		slidesPerView: 1,
+		mousewheel: true,
+		navigation: {
+			nextEl: '.image-house .swiper-button-next',
+			prevEl: '.image-house .swiper-button-prev',
+		},
+		breakpoints: {
+			300: {
+				spaceBetween: 0,
+				direction: 'horizontal',
+			},
+			1100: {
+				direction: 'vertical',
+			}
+		}
+	})
+}
+
+window.onload = function () {
+	loadApartmentSvg();
+	loadDetailLocationSvg();
+	loadUtilitiesDetail();
+}
+window.addEventListener('resize', function () {
+	// Loading()
+	loadApartmentSvg();
+	loadDetailLocationSvg();
+	generateDots();
+});
 
 document.addEventListener("DOMContentLoaded", async () => {
 	getSVGs(".svg");
 	Loading();
 	commonController();
 	generateDots();
+	if(document.querySelector(".apartment-detail__wrapper")) {
+		const box = document.querySelector(".apartment-detail__wrapper .info-room .box-circle");
+		$(".apartment-detail__wrapper").append(box.outerHTML);
+		document.querySelector(".apartment-detail__wrapper .info-room .box-circle").remove();
+	}
 	initFullpage();
 	loadApartmentSvg();
 	loadDetailLocationSvg();
@@ -920,4 +1008,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 	hoverLocationDot();
 	hoverApartmentRoom();
 	newsAjax();
+	swiperRoomDetail();
 });
