@@ -56,15 +56,13 @@
 
 @keyframes pointer {
     0%{
-		fill:#F1BE78;
 		opacity: 0.3
 	}
-    20%{
-
-	}
-    60%{
-		fill:#F1BE78;
+    50%{
 		opacity: 0.5
+	}
+    100%{
+		opacity: 1
 	}
 }
 
