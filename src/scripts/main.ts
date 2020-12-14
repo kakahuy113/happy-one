@@ -165,9 +165,11 @@ const initFullpage = () => {
 				
 				},
 				onLeave: (origin:any, destination:any, direction:any) => {
-					console.log(origin , destination, direction);
-					
-				
+					let currentSection = $(document).find(".section")[destination - 1];
+					$(currentSection).find("section>div").css("display", "none");
+					setTimeout(()=>{
+						$(currentSection).find("section>div").css("display", "table");
+					}, 10)
 				}
 			});
 		}
@@ -177,6 +179,7 @@ const initFullpage = () => {
 		$(".hambuger--menu").click(); 
 	})
 }
+
 function loadUtilitiesDetail () {
 	const location =
 		{
@@ -616,34 +619,17 @@ const hoverApartmentRoom = () =>
 			i = t.clientX,
 			o = t.clientY;
 			let link = "";
-			if (1100 < $(window).width()) {
-				$(".show-box").removeClass("showup");
-				$(".show-box").each(function(event:any) {
-					if($(this).find(".id")[0].innerHTML == e) {
-						link = $(this).attr("href")
-						if(width > 1700) {
-							$(this).css({
-								left: i - 150,
-								top: o - 30
-							})
-						}
-						if(width < 1700) {
-							$(this).css({
-								left: i - 50,
-								top: o - 30
-							})
-						}
-						if(width < 1440) {
-							$(this).css({
-								left: i - 60,
-								top: o - 20
-							})
-						}
-						$(this).addClass("showup");
-					
-					}
-				})
-		}
+			$(".show-box").removeClass("showup");
+			$(".show-box").each(function(event:any) {
+				if($(this).find(".id")[0].innerHTML == e) {
+					link = $(this).attr("href")
+					$(this).css({
+						left: i - 150,
+						top: o - 30
+					})
+					$(this).addClass("showup");
+				}
+			})
 		$(this).on("click" , function() {
 				window.location.pathname = link;
 			})
@@ -735,8 +721,6 @@ const newsAjax = () => {
 	})
 }
 
-
-
 const generateDots = () => {
 	if ($(window).width() > 1100) {
 		if ($(".fp-dots").length === 0) {
@@ -783,6 +767,7 @@ window.onload = function () {
 }
 window.addEventListener('resize', function () {
 	// Loading()
+	initFullpage();
 	loadApartmentSvg();
 	loadDetailLocationSvg();
 	generateDots();

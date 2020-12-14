@@ -43,14 +43,14 @@ export const Loading = () => {
 		if (counter === imagesLength) {
 			setTimeout(() => {
 				return turnOffLoadingScreen();
-			}, 1000);
+			}, 800);
 		}
 	}
 	if (loading) {
 		if (imagesLength === 0) {
 			setTimeout(() => {
 				return turnOffLoadingScreen();
-			}, 1000);
+			}, 800);
 		} else {
 			for (let i = 0; i < imagesLength; i++) {
 				let img = new Image();

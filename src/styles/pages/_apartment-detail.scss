@@ -61,6 +61,17 @@
 						transition: .3s all ease-in-out;
 					}
 				}
+				g[id^="Floor-"]  {
+					ellipse,
+					circle {
+						stroke: #fff;
+						stroke-miterlimit: 10;
+						stroke-width: 1;
+						stroke-dasharray: 3;
+						stroke-dashoffset: 0;
+						animation: StrokeLine 10s infinite linear;
+					}
+				}
 			}
 		}
 		@media (max-width: 1100px) {

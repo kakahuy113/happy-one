@@ -172,7 +172,7 @@
 		padding: 10px;
 		z-index: 100;
 		opacity: 0;
-		transform: scale(0);
+		transform: scale(0) translate(-10% , -10%);
 		height: auto;
 		position: absolute;
 		width: fit-content;
@@ -209,6 +209,7 @@
 		flex-wrap: wrap;
 		justify-content: center;;
 		.show-box {
+			width: unset !important;
 			pointer-events: auto;
 			-ms-flex: 0 0 20%;
 			flex: 0 0 20%;
@@ -228,6 +229,16 @@
 			   &::before {
 				   content: none;
 			   }
+		   }
+		   @media (max-width: 767.98px) {
+			   -ms-flex: 0 0 30%;
+			   flex: 0 0 30%;
+			   max-width: 30%;
+		   }
+		   @media (max-width: 575.98px) {
+			   -ms-flex: 0 0 40%;
+			   flex: 0 0 40%;
+			   max-width: 40%;
 		   }
 		}
 		

@@ -28,6 +28,25 @@ html(lang="en")
 					.fp-next
 		block footer
 			include _footer.pug
+		.d-none
+			#popup-info.info-project
+				.title
+					p NHẬN THÔNG TIN DỰ ÁN
+				.info
+					form(action="")
+						.name
+							input#name(type="text" data-name="name" placeholder="Họ & tên")
+						.row.mail-phone
+							.col-6
+								input#mail(type="text" data-name="mail", placeholder="Email")
+							.col-6
+								input#phone(type="text" data-name="phone", placeholder="Email")
+						.context
+							textarea#context(data-name="context", cols="30", rows="10")
+						.btn.btn-submit
+							button
+								span Gửi
+								img(src="", alt="")
 		//- end main content
 		//- #go-top
 		//- 	img.svg(src="./assets/icons/gotop.svg")
