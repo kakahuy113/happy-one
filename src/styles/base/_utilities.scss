@@ -118,6 +118,19 @@
 		-webkit-line-clamp: 4;
 	}
 }
+
+input.input-validation-error, 
+select.input-validation-error, 
+textarea.input-validation-error {
+	border: 1px solid red!important;
+	color: red!important;
+	transition: .3s all ease-in-out;
+}
+
+.fake-button-recaptcha {
+    display: none;
+}
+
 .block-animation-grid  {
 	display: flex;
 	flex-wrap: wrap;
