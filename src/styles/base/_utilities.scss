@@ -244,3 +244,77 @@
 		
 	}
 }
+
+.popup-custom {
+	&#popup-info {
+		max-width: 815px;
+		width: 100%;
+		border-radius: 19px;
+		background: rgba($color: #FFFFFF, $alpha: .25);
+		.title  {
+			text-align: center;
+			margin-bottom: 30px;
+			p {
+				font-size: 2.5rem;
+				color: #F1BE78;
+				font-family: Avenir-Black;
+			}
+		}
+		.info {
+			margin: 0 auto;
+			max-width: 570px;
+			input {
+				width: 100%;
+				height: 47px;
+				margin-bottom: 15px;
+				border-radius: 10px;
+				padding-left: 15px;
+				padding-top: 5px;
+			}
+			.name {
+				@media (max-width: 575.98px) {
+				
+				}
+			}
+			.mail-phone {
+				@media (max-width: 575.98px) {
+					> div {
+						-ms-flex: 0 0 100%;
+						flex: 0 0 100%;
+						max-width: 100%;
+					}
+				}
+			}
+			.context {
+				margin-bottom: 25px;
+				textarea {
+					width: 100%;
+					border-radius: 10px;
+					height: 96px;
+					overflow: hidden;
+					padding-left: 15px;
+					padding-top: 5px;
+				}
+			}
+		}
+		.btn-submit {
+			display: flex;
+			justify-content: center;
+			button {
+				cursor: pointer;
+				text-align: center;
+				min-width: 71px;
+				height: 26px;
+				border: none;
+				border-radius: 6px;
+				background: #F1BE78;
+
+				span {
+					color: #FFFFFF;
+					font-family: Avenir-Black;
+					margin-right: 8px;
+				}
+			}
+		}
+	}
+}

@@ -776,6 +776,43 @@ const swiperRoomDetail = () => {
 	})
 }
 
+const ajaxSubcribe = () => {
+	$('#popup-info .btn-submit').on('click', function(e:any) {
+		e.preventDefault();
+		const _thisBtn = $(this);
+		const url = _thisBtn.attr('data-url');
+		const formData = new FormData();
+		$('.info input').each(function() {
+			const name = $(this).attr('name');
+			const value = $(this).val();
+			formData.append(name, value);
+		});
+		$('.info .context textarea').each(function() {
+			const name = $(this).attr('name');
+			const value = $(this).val();
+			formData.append(name, value);
+		});
+		
+		// if ($('#popup-info form').valid() === true) {
+			$.ajax({
+				url: url,
+				type: 'post',
+				data: formData,
+				processData: false,
+				contentType: false,
+				beforeSend: function() {
+					_thisBtn.attr('disabled', 'disabled');
+				},
+				success: function(res:any) {
+					alert(`${res.Message}`);
+					window.location.reload();
+					_thisBtn.removeAttr('disabled');
+				},
+			});
+		// }
+	});
+}
+
 window.onload = function () {
 	loadApartmentSvg();
 	loadDetailLocationSvg();
@@ -811,4 +848,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 	hoverApartmentRoom();
 	newsAjax();
 	swiperRoomDetail();
+	ajaxSubcribe();
 });

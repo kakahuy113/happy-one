@@ -104,7 +104,7 @@
 							</div>
 							<div class="fp-links__wrapper">
 								<div class="fp-link-item"><a href="" target="_blank">0929 009 555</a></div>
-								<div class="fp-link-item"><a href="" target="_blank">ĐĂNG KÝ NHẬN TIN</a></div>
+								<div class="fp-link-item"><a href="javascript:;" data-fancybox data-src="#popup-info">ĐĂNG KÝ NHẬN TIN</a></div>
 								<div class="fp-link-item"><a href="https://roundme.com/tour/645906/view/2053857/" target="_blank">
 										<div class="icon-desc"><span>Căn Hộ 360</span></div>
 										<div class="icon"><img src="./assets/img/index/360.png" alt=""></div></a></div>
@@ -115,28 +115,28 @@
 			</div>
 		</footer>
 		<div class="d-none">
-			<div class="info-project" id="popup-info">
+			<div class="popup-custom" id="popup-info">
 				<div class="title">
 					<p>NHẬN THÔNG TIN DỰ ÁN</p>
 				</div>
 				<div class="info">
 					<form action="">
 						<div class="name">
-							<input id="name" type="text" data-name="name" placeholder="Họ &amp; tên">
+							<input id="name" type="text" name="name" placeholder="Họ &amp; tên">
 						</div>
 						<div class="row mail-phone">
 							<div class="col-6">
-								<input id="mail" type="text" data-name="mail" placeholder="Email">
+								<input id="mail" type="text" name="mail" placeholder="Email">
 							</div>
 							<div class="col-6">
-								<input id="phone" type="text" data-name="phone" placeholder="Email">
+								<input id="phone" type="text" name="phone" placeholder="SDT">
 							</div>
 						</div>
 						<div class="context">
-							<textarea id="context" data-name="context" cols="30" rows="10"></textarea>
+							<textarea id="context" name="context" cols="30" rows="5" placeholder="Nội Dung"></textarea>
 						</div>
-						<div class="btn btn-submit">
-							<button><span>Gửi</span><img src="" alt=""></button>
+						<div class="btn-submit" data-url="asd">
+							<button class="btn"><span>Gửi</span><img class="svg" src="./assets/icons/send.svg" alt=""></button>
 						</div>
 					</form>
 				</div>

@@ -29,24 +29,24 @@ html(lang="en")
 		block footer
 			include _footer.pug
 		.d-none
-			#popup-info.info-project
+			#popup-info.popup-custom
 				.title
 					p NHẬN THÔNG TIN DỰ ÁN
 				.info
 					form(action="")
 						.name
-							input#name(type="text" data-name="name" placeholder="Họ & tên")
+							input#name(type="text" name="name" placeholder="Họ & tên")
 						.row.mail-phone
 							.col-6
-								input#mail(type="text" data-name="mail", placeholder="Email")
+								input#mail(type="text" name="mail", placeholder="Email")
 							.col-6
-								input#phone(type="text" data-name="phone", placeholder="Email")
+								input#phone(type="text" name="phone", placeholder="SDT")
 						.context
-							textarea#context(data-name="context", cols="30", rows="10")
-						.btn.btn-submit
-							button
+							textarea#context(name="context", cols="30", rows="5" placeholder="Nội Dung")
+						.btn-submit(data-url="asd")
+							button.btn
 								span Gửi
-								img(src="", alt="")
+								img.svg(src="./assets/icons/send.svg", alt="")
 		//- end main content
 		//- #go-top
 		//- 	img.svg(src="./assets/icons/gotop.svg")
