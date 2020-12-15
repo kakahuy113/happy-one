@@ -108,6 +108,7 @@ const initFullpage = () => {
 				lazyLoad: true,
 				keyboardScrolling: true,
 				recordHistory: false,
+				lockAnchors: true,
 				afterLoad: (origin:any, destination:any, direction:any) => {
 					if(destination == 1) {
 						document.querySelector(".fp-dots").classList.remove("show")
@@ -162,6 +163,7 @@ const initFullpage = () => {
 				lazyLoad: true,
 				keyboardScrolling: true,
 				recordHistory: false,
+				lockAnchors: true,
 				afterLoad: (origin:any, destination:any, direction:any) => {
 				
 				},
@@ -182,22 +184,26 @@ const initFullpage = () => {
 }
 
 function loadUtilitiesDetail () {
-	const location =
-		{
-			'name': "Sảnh đón Hetia",
-			'images': [
-				"./assets/img/utilities-detail/u-11.jpg",
-				"./assets/img/utilities-detail/u-12.jpg",
-				"./assets/img/utilities-detail/u-13.jpg",
-				"./assets/img/utilities-detail/u-14.jpg"
-				]
-			};
+	interface utilitiesInterface {
+		name : string,
+		images: string[],
+		anchor?: string
+	}
+	const location: utilitiesInterface =
+			{
+				'name': "Sảnh đón Hetia",
+				'images': [
+					"./assets/img/utilities-detail/u-11.jpg",
+					"./assets/img/utilities-detail/u-12.jpg",
+					"./assets/img/utilities-detail/u-13.jpg",
+					"./assets/img/utilities-detail/u-14.jpg"
+					]
+				}
 	const Data = Array.from({length: 20}, (i) => {return location});
 	const locations = Data.map((item, index) => {
 		const anchor = index < 9 ? "0" + (index + 1) : (index + 1);
 		return {...item, anchor: anchor.toString()};
 	})
-	console.log(locations);
 	locations.forEach((item, index) => {
 		const locationEl = `<li class="location-item" data-anchor="${item.anchor}"><span>${item.anchor}</span><span>${item.name}</span></li>`;
 		$('.location-list').append(locationEl);
