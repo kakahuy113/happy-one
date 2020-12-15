@@ -204,10 +204,10 @@ function loadUtilitiesDetail () {
 		const anchor = index < 9 ? "0" + (index + 1) : (index + 1);
 		return {...item, anchor: anchor.toString()};
 	})
-	locations.forEach((item, index) => {
-		const locationEl = `<li class="location-item" data-anchor="${item.anchor}"><span>${item.anchor}</span><span>${item.name}</span></li>`;
-		$('.location-list').append(locationEl);
-	})
+	// locations.forEach((item, index) => {
+	// 	const locationEl = `<li class="location-item" data-anchor="${item.anchor}"><span>${item.anchor}</span><span>${item.name}</span></li>`;
+	// 	$('.location-list').append(locationEl);
+	// })
 	
 	$("#utilities-detail svg>g>g").each((index:number,item:any)=>{
 		$(item).on("click", (event:any)=>{
@@ -222,6 +222,7 @@ function loadUtilitiesDetail () {
 	$(document).on("click", "ul.location-list li.location-item", (event:any) => {
 		const anchor = $(event.currentTarget).attr("data-anchor");
 		const detail = locations.find(item => item.anchor === anchor);
+		
 		if(detail) {
 			if(detail.images.length > 0) { 
 				const slides = detail.images.reduce((arr, item) => arr + `<div class="swiper-slide" style="background-image:url(${item})"></div>`, '');
@@ -540,7 +541,7 @@ const hoverLocationDot = () =>
 			// Mouse in
 			function(t: any) {
 					$(".show-box").removeClass("showup");
-					const urlImage = $(".box-circle .show-box").attr("data-url-img");
+					const urlImage = $(".box-circle").attr("data-url-img");
 					var e = $(this).attr("id"),
 						i = t.clientX,
 						o = t.clientY;
@@ -834,6 +835,12 @@ const ajaxSubcribe = () => {
 	});
 }
 
+const toogle360 = () => {
+	$(".fp-socials__wrapper .fp-link-item:last-child").on("click" , function() {
+		$(this).toggleClass("active")
+	})
+}
+
 window.onload = function () {
 	const button: HTMLElement = document.querySelector(".fake-button-recaptcha");
 	button.click();
@@ -873,4 +880,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 	newsAjax();
 	swiperRoomDetail();
 	ajaxSubcribe();
+	toogle360();
 });

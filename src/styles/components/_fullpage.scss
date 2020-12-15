@@ -249,6 +249,7 @@
 		// transform: translate(0,0)!important;
 		width: 100%;
 		backface-visibility: hidden;
+		float: unset !important;
 	}
 }
 
@@ -280,6 +281,9 @@
 			color: map-get($color, x-white);
 			font-family: Avenir-Black;
 			font-weight: 700;
+			span {
+				color: map-get($color, x-white);
+			}
 		}
 		.fp-link-item {
 			a {
@@ -287,7 +291,7 @@
 			}
 		}
 		&.changed {
-			.fp-link-item:not(:last-child) {
+			.fp-link-item {
 				a {
 					color: #08152E;
 					transition: .3s all ease-in-out;
@@ -369,7 +373,5 @@
 			position: relative;
 		}
 	}
-	@media (max-width: 1024.98px) {
-		display: none;
-	}
+
 }

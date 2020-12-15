@@ -4,7 +4,53 @@ footer {
 	.fp-button {
 		z-index: 1;
 	}
+	.fp-links__wrapper {
+		.fp-link-item {
+			&:last-child {
+				position: relative;
+				.dropdown {
+					position: absolute;
+					bottom: 100%;
+					left: 0;
+					width: 100%;
+					height: 0;
+					overflow: hidden;
+					transition: .5s all ease-in-out;
+				}
+				&.active {
+					transition: .5s all ease-in-out;
+					.dropdown {
+						transition: .5s all ease-in-out;
+						height: 100px;
+					}
+				}
+			}
+		}
+	}
 	@media (max-width: 1100px) {
-		display: none;
+		background: #08152E;
+		padding: 30px 0;
+		.fp-socials {
+			position: relative;
+			bottom: unset;
+			left: unset;
+			.fp-socials__wrapper {
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				.socials__wrapper {
+					-ms-flex: 0 0 100%;
+					flex: 0 0 100%;
+					max-width: 100%;
+					margin-bottom: 20px;
+				}
+				.fp-links__wrapper {
+					-ms-flex: 0 0 100%;
+					flex: 0 0 100%;
+					max-width: 100%;
+				}
+			}
+		}
+		
 	}
 }
