@@ -189,10 +189,6 @@ function loadUtilitiesDetail () {
 				"./assets/img/utilities-detail/u-11.jpg",
 				"./assets/img/utilities-detail/u-12.jpg",
 				"./assets/img/utilities-detail/u-13.jpg",
-				"./assets/img/utilities-detail/u-14.jpg",
-				"./assets/img/utilities-detail/u-11.jpg",
-				"./assets/img/utilities-detail/u-12.jpg",
-				"./assets/img/utilities-detail/u-13.jpg",
 				"./assets/img/utilities-detail/u-14.jpg"
 				]
 			};
@@ -200,11 +196,13 @@ function loadUtilitiesDetail () {
 	const locations = Data.map((item, index) => {
 		const anchor = index < 9 ? "0" + (index + 1) : (index + 1);
 		return {...item, anchor: anchor.toString()};
-	}) 
+	})
+	console.log(locations);
 	locations.forEach((item, index) => {
 		const locationEl = `<li class="location-item" data-anchor="${item.anchor}"><span>${item.anchor}</span><span>${item.name}</span></li>`;
 		$('.location-list').append(locationEl);
 	})
+	
 	$("#utilities-detail svg>g>g").each((index:number,item:any)=>{
 		$(item).on("click", (event:any)=>{
 			const anchor = $(event.currentTarget).find("text").text();
@@ -271,7 +269,8 @@ function loadUtilitiesDetail () {
 			}
 		}
 	})
-	$("#utilities-detail svg>g").mousemove(function(event:any){            
+
+	$("#utilities-detail svg>g").mousemove(function(event:any){
 		var relX = (event.pageX - $(this).offset().left) - 40;
 		var relY = (event.pageY - $(this).offset().top) - 180;
 		if(event.target.tagName === "circle"){
