@@ -225,24 +225,9 @@ function loadUtilitiesDetail () {
 		if(detail) {
 			if(detail.images.length > 0) { 
 				const slides = detail.images.reduce((arr, item) => arr + `<div class="swiper-slide" style="background-image:url(${item})"></div>`, '');
-				let slider = `
-				<div class="swiper-container gallery-top">
-					<div class="swiper-wrapper">
-						${slides}
-					</div>
-				</div>
-				<!-- Add Arrows -->
-				<div class="swiper-button-next swiper-button-white" style="background-image:url(./assets/img/utilities-detail/arrow-right.svg)"></div>
-				<div class="swiper-button-prev swiper-button-white" style="background-image:url(./assets/img/utilities-detail/arrow-left.svg)"></div>
-				<label class="title">${detail.name}</label>
-				<div class="swiper-container gallery-thumbs">
-					<div class="swiper-wrapper">
-						${slides}
-					</div>
-				</div>
-				`;
-				const utilitiesPopup = "<div id='utilities-popup'><button class='btn-close' style='background-image:url(./assets/img/utilities-detail/btn-close.svg)'></button><div class='container'>"+slider+"<div></div>";
-				$('main').after(utilitiesPopup);
+				$("#utilities-popup .gallery-top .swiper-wrapper").append(`${slides}`)
+				$("#utilities-popup .gallery-thumbs .swiper-wrapper").append(`${slides}`)
+				$("#utilities-popup").css({"opacity" : "1" , "pointer-events" : "auto" })
 				var galleryThumbs = new Swiper('.gallery-thumbs', {
 					spaceBetween: 10,
 					slidesPerView: 2,
@@ -270,7 +255,7 @@ function loadUtilitiesDetail () {
 					},
 				  });
 				  $("#utilities-popup .btn-close").click(()=>{
-					$("#utilities-popup").remove();
+					$("#utilities-popup").css({"opacity" : "0" , "pointer-events" : "none" })
 				  })
 			}
 		}
