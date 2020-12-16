@@ -129,7 +129,6 @@ const initFullpage = () => {
 					}
 				},
 				onLeave: (origin:any, destination:any, direction:any) => {
-					console.log(origin , destination, direction);
 					
 					if(destination == 1) {
 						document.querySelector(".fp-dots").classList.remove("show")
@@ -176,6 +175,26 @@ const initFullpage = () => {
 				}
 			});
 		}
+		if(document.querySelector("#fullpage-utilities-detail")) {
+			$('#fullpage-utilities-detail').fullpage({
+				anchors: ['utilities-1' , 'utilities-2', 'utilities-3' ,'utilities-4'],
+				menu: '#menu',
+				lazyLoad: true,
+				keyboardScrolling: true,
+				recordHistory: false,
+				lockAnchors: true,
+				afterLoad: (origin:any, destination:any, direction:any) => {
+				
+				},
+				onLeave: (origin:any, destination:any, direction:any) => {
+					let currentSection = $(document).find(".section")[destination - 1];
+					$(currentSection).find("section>div").css("display", "none");
+					setTimeout(()=>{
+						$(currentSection).find("section>div").css("display", "table");
+					}, 10)
+				}
+			});
+		}
 	}
 	$(document).on("click", "#left-menu .nav-item a", () => {
 		console.log("click");
@@ -183,125 +202,6 @@ const initFullpage = () => {
 	})
 }
 
-function loadUtilitiesDetail () {
-	interface utilitiesInterface {
-		name : string,
-		images: string[],
-		anchor?: string
-	}
-	const location: utilitiesInterface =
-			{
-				'name': "Sảnh đón Hetia",
-				'images': [
-					"./assets/img/utilities-detail/u-11.jpg",
-					"./assets/img/utilities-detail/u-12.jpg",
-					"./assets/img/utilities-detail/u-13.jpg",
-					"./assets/img/utilities-detail/u-14.jpg"
-					]
-				}
-	const Data = Array.from({length: 20}, (i) => {return location});
-	const locations = Data.map((item, index) => {
-		const anchor = index < 9 ? "0" + (index + 1) : (index + 1);
-		return {...item, anchor: anchor.toString()};
-	})
-	// locations.forEach((item, index) => {
-	// 	const locationEl = `<li class="location-item" data-anchor="${item.anchor}"><span>${item.anchor}</span><span>${item.name}</span></li>`;
-	// 	$('.location-list').append(locationEl);
-	// })
-	
-	$("#utilities-detail svg>g>g").each((index:number,item:any)=>{
-		$(item).on("click", (event:any)=>{
-			const anchor = $(event.currentTarget).find("text").text();
-			const item = $("ul.location-list ").find(`li.location-item[data-anchor="${anchor}"]`);
-			if(item.length > 0){
-				$(item).click();
-			}
-		})
-	});
-
-	$(document).on("click", "ul.location-list li.location-item", (event:any) => {
-		const anchor = $(event.currentTarget).attr("data-anchor");
-		const detail = locations.find(item => item.anchor === anchor);
-		
-		if(detail) {
-			if(detail.images.length > 0) { 
-				const slides = detail.images.reduce((arr, item) => arr + `<div class="swiper-slide" style="background-image:url(${item})"></div>`, '');
-				$("#utilities-popup .gallery-top .swiper-wrapper").append(`${slides}`)
-				$("#utilities-popup .gallery-thumbs .swiper-wrapper").append(`${slides}`)
-				$("#utilities-popup").css({"opacity" : "1" , "pointer-events" : "auto" })
-				var galleryThumbs = new Swiper('.gallery-thumbs', {
-					spaceBetween: 10,
-					slidesPerView: 2,
-					loop: true,
-					freeMode: true,
-					loopedSlides: 5, 
-					watchSlidesVisibility: true,
-					watchSlidesProgress: true,
-					breakpoints: {
-						768: {
-							slidesPerView: 3,
-						}
-					}
-				  });
-				  var galleryTop = new Swiper('.gallery-top', {
-					spaceBetween: 10,
-					loop: true,
-					loopedSlides: 5, 
-					navigation: {
-					  nextEl: '.swiper-button-next',
-					  prevEl: '.swiper-button-prev',
-					},
-					thumbs: {
-					  swiper: galleryThumbs,
-					},
-				  });
-				  $("#utilities-popup .btn-close").click(()=>{
-					$("#utilities-popup").css({"opacity" : "0" , "pointer-events" : "none" })
-				  })
-			}
-		}
-	})
-
-	$("#utilities-detail svg>g").mousemove(function(event:any){
-		var relX = (event.pageX - $(this).offset().left) - 40;
-		var relY = (event.pageY - $(this).offset().top) - 180;
-		if(event.target.tagName === "circle"){
-			const anchor = $($(event.target).closest("g").find("text")[0]).text();
-			const detail = locations.find(item => item.anchor === anchor);
-			
-			const items = $("ul.location-list").find(`li.location-item[data-anchor="${anchor}"]`);
-			if(items.length > 0){
-				$(items).addClass("active");
-			}
-			
-			const activeItems = $("ul.location-list").find(`li.location-item.active`);
-			if(activeItems.length > 0){
-				$(activeItems).each((index:number, item:any) => {
-					const anchorActive = $(item).attr("data-anchor");
-					if(anchorActive !== anchor) {
-						$(item).removeClass("active");
-					}
-				})
-			}
-
-			if(detail) {
-				if(detail.images.length > 0) { 
-					$("#utilities-detail svg foreignObject").attr("transform", `translate(${relX.toFixed()} ${relY.toFixed()})`);
-					$($("#utilities-detail svg foreignObject").find("img")[0]).attr("src", detail.images[0]);
-				} else {
-					$($("#utilities-detail svg foreignObject").find("img")[0]).css("display", "none");
-				}
-				$($("#utilities-detail svg foreignObject").find("label")[0]).text(detail.name || '');
-				$("#utilities-detail svg foreignObject").css("opacity", "1");
-				$("#utilities-detail svg foreignObject").css("pointer-events", "auto");
-			}
-		} else {
-			$("#utilities-detail svg foreignObject").css("opacity", "0");
-			$("#utilities-detail svg foreignObject").css("pointer-events", "none");
-			$($("#utilities-detail svg foreignObject").find("img")[0]).css("display", "block");
-		}
-	});
-}
 
 function showPattern (currentIndex:Number) { 
 	var dotsGridPatternEl = document.querySelectorAll('.block-animation-grid');
@@ -733,19 +633,179 @@ const generateDots = () => {
 	if ($(window).width() > 1100) {
 		if ($(".fp-dots").length === 0) {
 			let dotItemString = "";
-			$("#fullpage .section").each((idx:number, item:any)=>{
-				dotItemString += `<li class="fp-dot-item" data-menuanchor="slider-${$(item).attr("id")}">
-					<a href="#slider-${$(item).attr("id")}">
-						<span class="fp-number">0${idx}</span>
-						<span class="fp-title">${$(item).attr("fp-title")}</span>
-					</a>
-				</li>`;
-			}) 
-			let dotEl = `<ul class="fp-dots" id="menu">${dotItemString}</ul>`;
-			$('.fp-container').append(dotEl);
+			let utilitiesItemString = "";
+			
+			if(document.querySelector("#fullpage")) {
+				$("#fullpage .section").each((idx:number, item:any)=>{
+					dotItemString += `<li class="fp-dot-item" data-menuanchor="slider-${$(item).attr("id")}">
+						<a href="#slider-${$(item).attr("id")}">
+							<span class="fp-number">0${idx}</span>
+							<span class="fp-title">${$(item).attr("fp-title")}</span>
+						</a>
+					</li>`;
+				}) 
+				//Index
+				let dotEl = `<ul class="fp-dots fp-dots-index" id="menu">${dotItemString}</ul>`;
+				$('.fp-container').append(dotEl);
+			}
+			
+			if(document.querySelector("#fullpage-utilities-detail")) {
+				$("#fullpage-utilities-detail .section").each((idx:number, item:any)=>{
+					utilitiesItemString += `<li class="fp-dot-item" data-menuanchor="${$(item).attr("data-anchor")}">
+						<a href="#${$(item).attr("data-anchor")}">
+							<span class="fp-floor">${$(item).attr("fp-title")}</span>
+						</a>
+					</li>`;
+				}) 
+				//Utilities
+				let dotUtil = `<ul class="fp-dots fp-dots-utilities" id="menu">${utilitiesItemString}</ul>`;
+				$('.fp-container').append(dotUtil);
+			}
+			
 		}
 	}
 }
+
+
+function loadUtilitiesDetail () {
+	interface utilitiesInterface {
+		name : string,
+		images: string[],
+		anchor?: string
+	}
+	const location: utilitiesInterface =
+			{
+				'name': "Sảnh đón Hetia",
+				'images': [
+					"./assets/img/utilities-detail/u-11.jpg",
+					"./assets/img/utilities-detail/u-12.jpg",
+					"./assets/img/utilities-detail/u-13.jpg",
+					"./assets/img/utilities-detail/u-14.jpg"
+					]
+				}
+	const Data = Array.from({length: 20}, (i) => {return location});
+	const locations = Data.map((item, index) => {
+		const anchor = index < 9 ? "0" + (index + 1) : (index + 1);
+		return {...item, anchor: anchor.toString()};
+	})
+	// locations.forEach((item, index) => {
+	// 	const locationEl = `<li class="location-item" data-anchor="${item.anchor}"><span>${item.anchor}</span><span>${item.name}</span></li>`;
+	// 	$('.location-list').append(locationEl);
+	// })
+	
+	$("#utilities-detail svg>g>g").each((index:number,item:any)=>{
+		$(item).on("click", (event:any)=>{
+			const anchor = $(event.currentTarget).find("text").text();
+			const item = $("ul.location-list ").find(`li.location-item[data-anchor="${anchor}"]`);
+			if(item.length > 0){
+				$(item).click();
+			}
+		})
+	});
+
+	$(document).on("click", "ul.location-list li.location-item", (event:any) => {
+		const anchor = $(event.currentTarget).attr("data-anchor");
+		let detail:HTMLElement;
+		
+		$(".location-item").each(function(item:any ) {
+			if($(this).find("span")[0].innerHTML == anchor) {
+				detail = this
+			}
+		});
+		if(detail) {
+				// const slides = detail.images.reduce((arr, item) => arr + `<div class="swiper-slide" style="background-image:url(${item})"></div>`, '');
+				const slides = detail.querySelector(".d-none").innerHTML;
+				const title = detail.querySelectorAll("span")[1].innerHTML;
+				console.log(title);
+				
+				$("#utilities-popup .gallery-top .swiper-wrapper").append(`${slides.toString()}`)
+				$("#utilities-popup .gallery-thumbs .swiper-wrapper").append(`${slides.toString()}`)
+				$("#utilities-popup .title")[0].innerHTML = `${title}`
+				$("#utilities-popup").css({"opacity" : "1" , "pointer-events" : "auto" })
+				var galleryThumbs = new Swiper('.gallery-thumbs', {
+					spaceBetween: 10,
+					slidesPerView: 2,
+					loop: true,
+					freeMode: true,
+					loopedSlides: 5, 
+					watchSlidesVisibility: true,
+					watchSlidesProgress: true,
+					breakpoints: {
+						768: {
+							slidesPerView: 3,
+						}
+					}
+				  });
+				  var galleryTop = new Swiper('.gallery-top', {
+					spaceBetween: 10,
+					loop: true,
+					loopedSlides: 5, 
+					navigation: {
+					  nextEl: '.swiper-button-next',
+					  prevEl: '.swiper-button-prev',
+					},
+					thumbs: {
+					  swiper: galleryThumbs,
+					},
+				  });
+				  $("#utilities-popup .btn-close").click(()=>{
+					$("#utilities-popup").css({"opacity" : "0" , "pointer-events" : "none" })
+				  })
+		}
+	})
+
+	$("#utilities-detail svg>g").mousemove(function(event:any){
+		var relX = (event.pageX - $(this).offset().left) - 200;
+		var relY = (event.pageY - $(this).offset().top) - 180;
+		if(event.target.tagName === "circle"){
+			const anchor = $($(event.target).closest("g").find("text")[0]).text();
+			let detail:HTMLElement;
+			
+			$(".location-item").each(function(item:any ) {
+				
+				if($(this).find("span")[0].innerHTML == anchor) {
+					detail = this;
+				}
+			})
+
+			
+			const slides = detail.querySelectorAll(".swiper-slide");
+			
+			const title = detail.querySelectorAll("span")[1].innerHTML;
+			const items = $("ul.location-list").find(`li.location-item[data-anchor="${anchor}"]`);
+			if(items.length > 0){
+				$(items).addClass("active");
+			}
+			
+			const activeItems = $("ul.location-list").find(`li.location-item.active`);
+			if(activeItems.length > 0){
+				$(activeItems).each((index:number, item:any) => {
+					const anchorActive = $(item).attr("data-anchor");
+					if(anchorActive !== anchor) {
+						$(item).removeClass("active");
+					}
+				})
+			}
+
+			if(detail) {
+				if(slides.length > 0) {
+					$(this).parent().parent().find(".object").css("transform", `translate(${relX.toFixed()}px,${relY.toFixed()}px)`);
+					$($(this).parent().parent().find(".object").find("img")[0]).attr("src", `${slides[0].getAttribute("data-bg")}`);
+				} else {
+					$($(this).parent().parent().find(".object").find("img")[0]).css("display", "none");
+				}
+				$($(this).parent().parent().find(".object").find("label")[0]).text( `${title}`|| '');
+				$(this).parent().parent().find(".object").css("opacity", "1");
+				// $(this).parent().parent().find(".object").css("pointer-events", "auto");
+			}
+		} else {
+			$(this).parent().parent().find(".object").css("opacity", "0");
+			// $(this).parent().parent().find(".object").css("pointer-events", "none");
+			$($(this).parent().parent().find(".object").find("img")[0]).css("display", "block");
+		}
+	});
+}
+
 
 const swiperRoomDetail = () => {
 	const roomDetail = new Swiper(".image-house .swiper-container" , {

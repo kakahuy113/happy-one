@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1254" height="705" viewBox="0 0 1254 705">
+  <defs>
+    <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 1367 768">
+      <image width="1367" height="768" xlink:href="./assets/img/utilities-detail/util-3-image.png"/>
+    </pattern>
+    <pattern id="pattern-2" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 977 556">
+      <image width="977" height="556" xlink:href="./assets/img/utilities-detail/util-3-image2.png"/>
+    </pattern>
+    <pattern id="pattern-3" width="1" height="1" viewBox="5.617 31.33 844.765 426.33">
+      <image preserveAspectRatio="xMidYMid slice" width="856" height="488.99" xlink:href="./assets/img/utilities-detail/util-3-image3.png"/>
+    </pattern>
+    <pattern id="pattern-4" width="1" height="1" viewBox="41.811 50.394 745.239 390.234">
+      <image preserveAspectRatio="xMidYMid slice" width="825" height="477.994" xlink:href="./assets/img/utilities-detail/util-3-image4.png"/>
+    </pattern>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0.166" stop-color="#f1be78"/>
+      <stop offset="0.999" stop-color="#795932"/>
+    </linearGradient>
+  </defs>
+  <g id="util-3" transform="translate(-349 -24)">
+    <rect id="TIỆN_ÍCH_TẦNG_1-background" data-name="TIỆN ÍCH TẦNG 1-background" width="1254" height="705" transform="translate(349 24)" opacity="0.55" fill="url(#pattern)"/>
+    <rect id="cv" width="975" height="556" transform="translate(480 105)" fill="url(#pattern-2)"/>
+    <path id="Path_10922" data-name="Path 10922" d="M5044.9,4372.7v107.347l-33.566,33.48h-127.41v-56.855h-3.478v-55.229h-95.718v82.971h-4.3v6.357h4.945v25.944h-4.945v10.789h-1.542v91.7H4635.954v162.666h-4.517v5.94h76.212v-17.194h389.31v-93.679h4.463l-.161-31.018,33.3-33.458H5308.99l16.715,16.826v2.89h-8.027v35.994h8.027V4682.5h4.624V4734.8h102.236V4367.473h-10.339v-1.284H5257.7v1.268h-10.692v4.736Z" transform="translate(-4048.272 -4200.858)" fill="#fff"/>
+    <rect id="MB_T3" width="856" height="432" transform="translate(556 160)" fill="url(#pattern-3)"/>
+    <path id="Path_10921" data-name="Path 10921" d="M5422.127,4372.526H5034.6" transform="translate(-4037.187 -4200.683)" fill="none" stroke="#707070" stroke-width="1"/>
+    <path id="Path_10920" data-name="Path 10920" d="M3458.595,5103.617a35.961,35.961,0,0,0-14.146-30.228c-15.935-12.121-21.625-10.25-21.625-10.25s1.957-5.344-8.125-13-49.71-19.3-73.125-13.875-46.809,2.552-70.875,0-80.547-6.328-124.125-2.5-59.478,8.721-93.625,7.125-46.011-12.016-68.125-14.25-85.636-7.964-135.393,13.089-117.526,14.78-136.714,14.143-57.557-.221-58.857,36.143-19.021,40.4-15.769,77.719-9.106,30.941-32.846,29.666-46.18-11.164-90.408-6.379-32.521,33.493-29.919,35.726,4.179,5.587,9.057,5.269,13,68,13,68-28.151,33.443-26.2,59.6,14,76.4,14,76.4,5.515,43.888,20.8,59.2,24.8,22,24.8,22,5.883,22.331,6.534,34.133,5.715,31.3,21,30.667,26.333-16.463,52.333-11.4,31.509,9.25,61.753,4.466,17.035-6.229,48.58-2.4,48.8,14.193,94.333,3.667,60.584-14.67,110.667-7.333,78.251-6.083,101.667-15.333,16.341-6.77,43.333-1.667,44.463-3.445,63-13.333,42.723-12.753,71.667-14.667,214.083-23,214.083-23a50.758,50.758,0,0,0,22.75-17.75,43.288,43.288,0,0,0,7.3-27.867V5268.932Z" transform="translate(-2004.574 -4920.014)" fill="#08152e" opacity="0.6"/>
+    <path id="Path_10924" data-name="Path 10924" d="M7185.5,4547.75V4593h-19.875v-2.687H7157v16.25h8.625v-1.437H7185.5V4649.2H6898.938v-.984H6779.125v2.281h-3.375v15.734h-7.8v2.328h-39.578v-22.719h-2.281V4523.469h3.344V4500.75h38.594v1.375h9.406v59.719h12.281v-21.281h51.031v-1.047h45.266v-15.578h18.172v-6.25h-37.5V4342.313h-10.5v-62.687h41.438V4288h13.125v33.563h12.375v-43.25H6968.5v234.75h-6.562v34.563h13.5v-1.812h39.75V4549h167.938v-1.25Z" transform="translate(-6134 -4080)" fill="#fff"/>
+    <path id="Path_10923" data-name="Path 10923" d="M7513.281,4256.7l-41.875-.016h-.062l-17.437-.016h-2.219l-53.031.016h-2.016l-18.922.031h0l-81.562-.078h-20.969l-39.109.047H7216v-9.719l-63.875,3.656h0l-21.781-.156-.031,39.563h26.906v10.656h5.469l-.016,13.547h-32.3l-.062,42.641,42,.042h0l29.563.052h2.094l78.438-.062h22.406v4l39.813-.031h0l31.031-.031v12h10.875l-.031,20.188h21.094l.031,36.344h4.063l-.094,22.156h0v2.031h0l.344,61.688h-8.375v33.875h8v29.594h0v39.406h56.156v2.5h42.969v-43.937h0l.063-42.391h0v-2.2h0v-37h0v-2.2h0l1.125-18.3h0l.063-63.656h0v-18.859h0v-2.109h0l-.094-77.437h0v-2.094h0v-9.687h1.453Z" transform="translate(-6134 -4080)" fill="#fff"/>
+    <rect id="MB_T20" width="825" height="432" transform="translate(572 161)" fill="url(#pattern-4)"/>
+    <g id="Group_4600" data-name="Group 4600" transform="translate(-173 -105)">
+      <circle id="Ellipse_63" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_49" data-name="49" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">49</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4602" data-name="Group 4602" transform="translate(-310 36)">
+      <circle id="Ellipse_63-2" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-2" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-2" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-2" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_44" data-name="44" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">44</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4603" data-name="Group 4603" transform="translate(-327 156)">
+      <circle id="Ellipse_63-3" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-3" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-3" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-3" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_46" data-name="46" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">46</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4607" data-name="Group 4607" transform="translate(-227 155)">
+      <circle id="Ellipse_63-4" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-4" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-4" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-4" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_45" data-name="45" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">45</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4601" data-name="Group 4601" transform="translate(-132 -81)">
+      <circle id="Ellipse_63-5" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-5" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-5" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-5" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_49-2" data-name="49" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">49</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4687" data-name="Group 4687" transform="translate(-199 -64)">
+      <circle id="Ellipse_63-6" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-6" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-6" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-6" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_44-2" data-name="44" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">44</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4604" data-name="Group 4604" transform="translate(-58 96)">
+      <circle id="Ellipse_63-7" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-7" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-7" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-7" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_48" data-name="48" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">48</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4605" data-name="Group 4605" transform="translate(-32 74)">
+      <circle id="Ellipse_63-8" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-8" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-8" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-8" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_44-3" data-name="44" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">44</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4606" data-name="Group 4606" transform="translate(72 80)">
+      <circle id="Ellipse_63-9" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-9" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-9" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-9" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_48-2" data-name="48" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">48</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4608" data-name="Group 4608" transform="translate(410 79)">
+      <circle id="Ellipse_63-10" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-10" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-10" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-10" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_51" data-name="51" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">51</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4609" data-name="Group 4609" transform="translate(367 -8)">
+      <circle id="Ellipse_63-11" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-11" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-11" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-11" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_51-2" data-name="51" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">51</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4686" data-name="Group 4686" transform="translate(350 65)">
+      <circle id="Ellipse_63-12" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-12" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-12" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-12" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_44-4" data-name="44" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">44</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4610" data-name="Group 4610" transform="translate(238 -197)">
+      <circle id="Ellipse_63-13" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-13" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-13" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-13" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_50" data-name="50" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">50</tspan></text>
+      </g>
+    </g>
+    <g id="Group_4611" data-name="Group 4611" transform="translate(185 -153)">
+      <circle id="Ellipse_63-14" data-name="Ellipse 63" cx="17" cy="17" r="17" transform="translate(922 385)" fill="#caa262" opacity="0.48"/>
+      <g id="Group_4517-14" data-name="Group 4517" transform="translate(926.435 388.696)">
+        <circle id="Ellipse_60-14" data-name="Ellipse 60" cx="13" cy="13" r="13" transform="translate(-0.435 0.304)" fill="url(#linear-gradient)"/>
+        <g id="Ellipse_61-14" data-name="Ellipse 61" transform="translate(-0.435 0.304)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3">
+          <circle cx="13" cy="13" r="13" stroke="none"/>
+          <circle cx="13" cy="13" r="12.5" fill="none"/>
+        </g>
+        <text id="_50-2" data-name="50" transform="translate(18.565 16.304)" fill="#fff" font-size="10" font-family="Avenir-Black, Avenir" font-weight="800"><tspan x="-11.84" y="0">50</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

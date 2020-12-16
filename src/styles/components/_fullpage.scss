@@ -56,6 +56,36 @@
 		transform: translateY(-50%);
 		font-family: Avenir-Black;
 		min-width: fit-content;
+		&.fp-dots-index {
+			.fp-dot-item {
+				&:first-child {
+					display: none;
+				}
+			}
+		}
+		&.fp-dots-utilities {
+				max-width: 200px;
+				width: 100%;
+				left: 5%;
+				.fp-dot-item {
+					&.active {
+						padding-bottom: unset;
+						border-bottom: unset;
+						.fp-floor {
+							font-size: 4.5rem;
+							opacity: 1 !important;
+							transition: .3s all ease-in-out;
+						}
+					}
+				}
+			.fp-floor {
+				font-size: 2.5rem;
+				transition: .3s all ease-in-out;
+				font-family: Avenir-Black;
+				color: #ffffff;
+				opacity: .2;
+			}
+		}
 		.fp-dot-item {
 			max-width: fit-content;
 			cursor: pointer;
@@ -70,9 +100,7 @@
 				display: flex;
 				align-items: center;
 			}
-			&:first-child {
-				display: none;
-			}
+		
 			.fp-number {
 				display: flex;
 				justify-content: center;

@@ -7,7 +7,6 @@
 		"node_modules/swiper/js/swiper.js",
 		"node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js",
 		"node_modules/animejs/lib/anime.min.js",
-		"node_modules/gsap/dist/gsap.min.js",
 		"vendors/moment.min.js"
 	],
 	"css": [
