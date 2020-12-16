@@ -790,7 +790,7 @@ function loadUtilitiesDetail () {
 			if(detail) {
 				if(slides.length > 0) {
 					$(this).parent().parent().find(".object").css("transform", `translate(${relX.toFixed()}px,${relY.toFixed()}px)`);
-					$($(this).parent().parent().find(".object").find("img")[0]).attr("src", `${slides[0].getAttribute("data-bg")}`);
+					$($(this).parent().parent().find(".object").find("img")[0]).attr("src", `${slides[0].querySelector("img").getAttribute("src")}`);
 				} else {
 					$($(this).parent().parent().find(".object").find("img")[0]).css("display", "none");
 				}
