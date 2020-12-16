@@ -1,5 +1,8 @@
 #utilities-detail {
 	height: 100vh;
+	@media (max-width: 1100px) {
+		height: unset;
+	}
 	.setting-section {
 		background: #08152e;
 		.container {
@@ -62,20 +65,21 @@
 				}
 				@media (max-width: 1100px) {
 					transform: scale(1.1);
-					top: -10%;
+					position: relative;
 					foreignObject{
 						display: none!important;
 					}
 				}
 				@media (max-width: 500px) {
 					transform: scale(1.2);
-					top: -20%;
-					left: -5%;
 				}
 			}
 			.map-svg {
 				position: relative;
 				height: 100%;
+				@media (max-width: 1100px) {
+					height: auto;
+				}
 			}
 			.object {
 				width: 240px;
@@ -103,6 +107,9 @@
 						color: #fff;
 					}
 				}
+				@media (max-width: 1100px) {
+					display: none;
+				}
 			}
 			ul.location-list {
 				position: absolute;
@@ -119,7 +126,18 @@
 				li.location-item {
 					display: flex;
 					align-items: center;
+					flex-direction: column;
 					cursor: pointer;
+					.img {
+						display: none;
+						@media (max-width: 1100px) {
+							display: block;
+						}
+					}
+					.desc {
+						display: flex;
+						align-items: center;
+					}
 					span {
 						&:first-of-type {
 							background-color: #caa262;
@@ -173,6 +191,10 @@
 				}
 				@media (max-width: 1100px) {
 					grid-template-columns: repeat(4, 1fr);
+					position: relative;
+					bottom: unset;
+					left: unset;
+					transform: unset;
 				}
 				@media (max-width: 768px) {
 					grid-template-columns: repeat(3, 1fr);
