@@ -155,9 +155,6 @@ const initFullpage = () => {
 					}, 10)
 				}
 			});
-			$(document).on("click", ".fp-dots" , function() {
-				$.fn.fullpage.moveTo(3)
-			})
 		}
 		if(document.querySelector("#fullpage-introduce")) {
 			$('#fullpage-introduce').fullpage({
@@ -200,6 +197,11 @@ const initFullpage = () => {
 			});
 		}
 	}
+	$(document).on("click", ".fp-dots .fp-dot-item" , function() {
+		const anchor = $(this).attr("data-menuanchor")
+		$.fn.fullpage.moveTo(`${anchor}`)
+	})
+
 	$(document).on("click", "#left-menu .nav-item a", () => {
 		console.log("click");
 		$(".hambuger--menu").click(); 
