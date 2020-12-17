@@ -111,7 +111,7 @@
 					display: none;
 				}
 			}
-			ul.location-list {
+			.location-list {
 				position: absolute;
 				left: 50%;
 				transform: translateX(-50%);
@@ -123,10 +123,12 @@
 				grid-template-columns: repeat(5, 1fr);
 				grid-gap: 15px;
 				min-width: 100%;
-				li.location-item {
+				.location-item {
 					display: flex;
 					align-items: center;
-					flex-direction: column;
+					@media (max-width: 1100px) {
+						flex-direction: column;
+					}
 					cursor: pointer;
 					.img {
 						display: none;
@@ -180,7 +182,7 @@
 						}
 					}
 				}
-				li.location-item.active{
+				.location-item.active{
 					span {
 						&:last-of-type {
 							&::before {

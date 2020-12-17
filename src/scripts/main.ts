@@ -696,14 +696,14 @@ function loadUtilitiesDetail () {
 	$("#utilities-detail svg>g>g").each((index:number,item:any)=>{
 		$(item).on("click", (event:any)=>{
 			const anchor = $(event.currentTarget).find("text").text();
-			const item = $("ul.location-list ").find(`li.location-item[data-anchor="${anchor}"]`);
+			const item = $(".location-list ").find(`.location-item[data-anchor="${anchor}"]`);
 			if(item.length > 0){
 				$(item).click();
 			}
 		})
 	});
 
-	$(document).on("click", "ul.location-list li.location-item", (event:any) => {
+	$(document).on("click", ".location-list .location-item", (event:any) => {
 		const anchor = $(event.currentTarget).attr("data-anchor");
 		let detail:HTMLElement;
 		
@@ -772,12 +772,12 @@ function loadUtilitiesDetail () {
 			const slides = detail.querySelectorAll(".swiper-slide");
 			
 			const title = detail.querySelectorAll("span")[1].innerHTML;
-			const items = $("ul.location-list").find(`li.location-item[data-anchor="${anchor}"]`);
+			const items = $(".location-list").find(`.location-item[data-anchor="${anchor}"]`);
 			if(items.length > 0){
 				$(items).addClass("active");
 			}
 			
-			const activeItems = $("ul.location-list").find(`li.location-item.active`);
+			const activeItems = $(".location-list").find(`.location-item.active`);
 			if(activeItems.length > 0){
 				$(activeItems).each((index:number, item:any) => {
 					const anchorActive = $(item).attr("data-anchor");
