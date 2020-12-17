@@ -570,7 +570,7 @@ const loadApartmentSvg = () => {
 	var height = window.innerHeight;
 	if (document.querySelector("#apartment-svg")){
 		if(width > 575.98) {
-			document.querySelector("#apartment-svg").setAttribute("viewBox", `0 0 ${width} ${height}`)
+			document.querySelector("#apartment-svg").setAttribute("viewBox", `${width < 1600? 250 : 0} ${height < 900 ? 100 : 0} ${width} ${height}`)
 		}
 		if(width < 575.98) {
 			document.querySelector("#apartment-svg").setAttribute("viewBox", `${width - 200} 0 ${width} ${height}`)
