@@ -1,11 +1,12 @@
 import { getSVGs, Loading } from "./utilities/util";
 import { commonController } from "./libraries/CommonController";
 declare var Swiper:any;
-declare var $:any;
+declare var $: any;
 declare var YT:any;
 declare var moment:any;
 declare var anime:any;
 declare var grecaptcha:any;
+declare var fullpage_api:any;
 
 
 const initFullpage = () => {
@@ -154,6 +155,9 @@ const initFullpage = () => {
 					}, 10)
 				}
 			});
+			$(document).on("click", ".fp-dots" , function() {
+				$.fn.fullpage.moveTo(3)
+			})
 		}
 		if(document.querySelector("#fullpage-introduce")) {
 			$('#fullpage-introduce').fullpage({
@@ -433,7 +437,6 @@ const gridPattern = (sectionEl: any, col:Number, row:Number) => {
 	}
 }
 
-
 const hoverLocationDot = () =>
 {
 	if (1100 < $(window).width()) {
@@ -638,7 +641,7 @@ const generateDots = () => {
 			if(document.querySelector("#fullpage")) {
 				$("#fullpage .section").each((idx:number, item:any)=>{
 					dotItemString += `<li class="fp-dot-item" data-menuanchor="slider-${$(item).attr("id")}">
-						<a href="#slider-${$(item).attr("id")}">
+						<a href="javascript:;">
 							<span class="fp-number">0${idx}</span>
 							<span class="fp-title">${$(item).attr("fp-title")}</span>
 						</a>
@@ -716,7 +719,6 @@ function loadUtilitiesDetail () {
 				// const slides = detail.images.reduce((arr, item) => arr + `<div class="swiper-slide" style="background-image:url(${item})"></div>`, '');
 				const slides = detail.querySelector(".d-none").innerHTML;
 				const title = detail.querySelectorAll("span")[1].innerHTML;
-				console.log(title);
 				
 				$("#utilities-popup .gallery-top .swiper-wrapper").append(`${slides.toString()}`)
 				$("#utilities-popup .gallery-thumbs .swiper-wrapper").append(`${slides.toString()}`)
@@ -769,7 +771,7 @@ function loadUtilitiesDetail () {
 			})
 
 			
-			const slides = detail.querySelectorAll(".swiper-slide");
+			const Images = detail.querySelector(".img img");
 			
 			const title = detail.querySelectorAll("span")[1].innerHTML;
 			const items = $(".location-list").find(`.location-item[data-anchor="${anchor}"]`);
@@ -788,10 +790,11 @@ function loadUtilitiesDetail () {
 			}
 
 			if(detail) {
-				if(slides.length > 0) {
+				if(Images) {
 					$(this).parent().parent().find(".object").css("transform", `translate(${relX.toFixed()}px,${relY.toFixed()}px)`);
-					$($(this).parent().parent().find(".object").find("img")[0]).attr("src", `${slides[0].querySelector("img").getAttribute("src")}`);
+					$($(this).parent().parent().find(".object").find("img")[0]).attr("src", `${Images.getAttribute("src")}`);
 				} else {
+					$(this).parent().parent().find(".object").css("transform", `translate(${relX.toFixed()}px,${relY.toFixed()}px)`);
 					$($(this).parent().parent().find(".object").find("img")[0]).css("display", "none");
 				}
 				$($(this).parent().parent().find(".object").find("label")[0]).text( `${title}`|| '');

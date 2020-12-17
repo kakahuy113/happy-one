@@ -19,7 +19,7 @@ export default class Tab {
 		this.navigationItems.forEach((element: HTMLElement, index: number) => {
 			element.addEventListener("click", (e) => {
 				e.preventDefault();
-				const tabTarget = element.attributes["toggle-for"].value;
+				const tabTarget = element.getAttribute("toggle-for");
 				const targetDOM = Array.from(
 					this.selector.querySelectorAll(`[tab-id='${tabTarget}']`),
 				);
@@ -32,7 +32,7 @@ export default class Tab {
 				);
 				this.contentList.forEach((tabContentElement: HTMLElement) => {
 					if (
-						tabContentElement.attributes["tab-id"].value !=
+						tabContentElement.getAttribute("tab-id") !=
 						tabTarget
 					) {
 						tabContentElement.style.display = "none";
