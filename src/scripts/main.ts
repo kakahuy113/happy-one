@@ -944,10 +944,10 @@ window.onload = function () {
 }
 window.addEventListener('resize', function () {
 	// Loading()
-	initFullpage();
+	// initFullpage();
 	loadApartmentSvg();
 	loadDetailLocationSvg();
-	generateDots();
+	// generateDots();
 });
 
 document.addEventListener("DOMContentLoaded", async () => {
