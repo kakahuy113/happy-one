@@ -117,10 +117,20 @@ const initFullpage = () => {
 					} else {
 						document.querySelector(".fp-dots").classList.remove("hide")
 						document.querySelector(".fp-dots").classList.add("show")
+					
 					}
+					if(destination == 7 || destination == 1) {
+						//Show logo
+						document.querySelector('.header__wrapper .menu .logo').classList.remove("show")
+						document.querySelector('.header__wrapper .menu .logo').classList.add("hide")
+					} else {
+						document.querySelector('.header__wrapper .menu .logo').classList.remove("hide")
+					}
+					// play video
 					if(destination == 3 ) {
 						player.playVideo();
 					}
+					// Change text Color section introduce
 					if(destination == 2) {
 						document.querySelector("header").classList.add("changed")
 						document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
@@ -138,9 +148,20 @@ const initFullpage = () => {
 						document.querySelector(".fp-dots").classList.remove("hide")
 						document.querySelector(".fp-dots").classList.add("show")
 					}
+
+					if(destination == 7 || destination == 1) {
+						//Show logo
+						document.querySelector('.header__wrapper .menu .logo').classList.remove("show")
+						document.querySelector('.header__wrapper .menu .logo').classList.add("hide")
+					}else {
+						document.querySelector('.header__wrapper .menu .logo').classList.remove("hide")
+					}
+					// playvideo
 					if(destination == 3 ) {
 						player.playVideo();
 					}
+					// Change text Color section introduce
+
 					if(destination == 2) {
 						document.querySelector("header").classList.add("changed")
 						document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
@@ -148,6 +169,7 @@ const initFullpage = () => {
 						document.querySelector("header").classList.remove("changed")
 						document.querySelector(".fp-socials .fp-links__wrapper").classList.remove("changed")
 					}
+					// Reset Animation
 					let currentSection = $(document).find(".section")[destination - 1];
 					$(currentSection).find("section>div").css("display", "none");
 					setTimeout(()=>{
@@ -156,6 +178,7 @@ const initFullpage = () => {
 				}
 			});
 		}
+		// introduce Fullpage
 		if(document.querySelector("#fullpage-introduce")) {
 			$('#fullpage-introduce').fullpage({
 				anchors: ['introduce--1' , 'introduce--2', 'introduce--3'],
@@ -176,6 +199,7 @@ const initFullpage = () => {
 				}
 			});
 		}
+		// utilities detail Fullpage
 		if(document.querySelector("#fullpage-utilities-detail")) {
 			$('#fullpage-utilities-detail').fullpage({
 				anchors: ['utilities-1' , 'utilities-2', 'utilities-3' ,'utilities-4'],
@@ -197,11 +221,12 @@ const initFullpage = () => {
 			});
 		}
 	}
+	//click to slide
 	$(document).on("click", ".fp-dots .fp-dot-item" , function() {
 		const anchor = $(this).attr("data-menuanchor")
 		$.fn.fullpage.moveTo(`${anchor}`)
 	})
-
+	//click to opent menu
 	$(document).on("click", "#left-menu .nav-item a", () => {
 		console.log("click");
 		$(".hambuger--menu").click(); 
@@ -498,7 +523,6 @@ const hoverApartment = () => {
 		var dataActive = element.getAttribute("data-active");
 		if (dataActive != null) {
 			// Only PC has hover animation
-			if (1100 < $(window).width()) {
 				$("#apartment-svg g[data-active=" + dataActive + "]").hover(
 					// Hover in
 					function() {
@@ -512,7 +536,6 @@ const hoverApartment = () => {
 						$("#apartment-svg g .area").css("animation","unset")
 						$("#apartment-svg g.info[data-active=" + dataActive + "] .box").css("opacity","0.5")
 					})
-			}
 			// Click event
 			element.addEventListener('click', function() {
 				window.location.href = $("#apartment .link p")[Number(dataActive) - 1].innerHTML
@@ -569,11 +592,17 @@ const loadApartmentSvg = () => {
 	var width = window.innerWidth;
 	var height = window.innerHeight;
 	if (document.querySelector("#apartment-svg")){
-		if(width > 575.98) {
+		if(width > 1100) {
 			document.querySelector("#apartment-svg").setAttribute("viewBox", `${width < 1600? 250 : 0} ${height < 900 ? 100 : 0} ${width} ${height}`)
 		}
+		if(width < 1100) {
+			document.querySelector("#apartment-svg").setAttribute("viewBox", `0 0 1920 1080`)
+		}
+		if(width < 1100) {
+			document.querySelector("#apartment-svg").setAttribute("viewBox", `250 0 1500 1080`)
+		}
 		if(width < 575.98) {
-			document.querySelector("#apartment-svg").setAttribute("viewBox", `${width - 200} 0 ${width} ${height}`)
+			document.querySelector("#apartment-svg").setAttribute("viewBox", `250 0 750 1080`)
 		}
 		
 		hoverApartment();
@@ -642,7 +671,7 @@ const generateDots = () => {
 			
 			if(document.querySelector("#fullpage")) {
 				$("#fullpage .section").each((idx:number, item:any)=>{
-					dotItemString += `<li class="fp-dot-item" data-menuanchor="slider-${$(item).attr("id")}">
+					dotItemString += `<li class="fp-dot-item" data-menuanchor="${$(item).attr("data-anchor")}">
 						<a href="javascript:;">
 							<span class="fp-number">0${idx}</span>
 							<span class="fp-title">${$(item).attr("fp-title")}</span>
