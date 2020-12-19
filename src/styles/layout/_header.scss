@@ -230,11 +230,13 @@ header {
 						background-color: #FFFFFF;
 						transition: width 0.4s linear;
 					}
-					&:hover{
-						padding-left: 34px;
-					}
-					&:hover::before{
-						width: 26px;
+					@media (min-width: 1025px) {
+						&:hover{
+							padding-left: 34px;
+						}
+						&:hover::before{
+							width: 26px;
+						}
 					}
 				}
 				&.active {

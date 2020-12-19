@@ -53,10 +53,12 @@
 					stroke-dashoffset: 0;
 					animation: StrokeLine 10s infinite linear;
 	
-					&:hover {
-						fill:#daa244;
-						stroke-opacity:0;
-						animation-play-state:paused
+					@media (min-width: 1025px) {
+						&:hover {
+							fill:#daa244;
+							stroke-opacity:0;
+							animation-play-state:paused
+						}
 					}
 				}
 

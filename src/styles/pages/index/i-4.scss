@@ -108,8 +108,10 @@
 							max-height: 100px;
 							padding-bottom: 5px;
 							cursor: default;
-							&:hover{								
-								animation: shake 0.4s ease-out; 
+							@media (min-width: 1025px) {
+								&:hover{								
+									animation: shake 0.4s ease-out; 
+								}
 							}
 							.desc-slide {
 								padding-left: 40px;

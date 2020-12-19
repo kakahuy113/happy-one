@@ -291,6 +291,7 @@ const swiperIntro = () => {
 		  },
 		  loop: true,
 		speed: 1500,
+		lazy: true,
 		breakpoints: {
 			300: {
 				slidesPerView: 1,
@@ -320,6 +321,7 @@ const swiperNews = () => {
 		speed: 2000,
 		loop: true,
 		spaceBetween: 20,
+		lazy: true,
 		breakpoints:{
 			300: {
 				centeredSlides: true,

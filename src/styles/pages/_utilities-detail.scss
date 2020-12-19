@@ -156,11 +156,13 @@
 							}
 						}
 					}
-					&:hover {
-						span {
-							&:last-of-type {
-								&::before {
-									opacity: 1;
+					@media (min-width: 1025px) {
+						&:hover {
+							span {
+								&:last-of-type {
+									&::before {
+										opacity: 1;
+									}
 								}
 							}
 						}
