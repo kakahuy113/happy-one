@@ -789,7 +789,7 @@ function loadUtilitiesDetail () {
 
 	$("#utilities-detail svg>g").mousemove(function(event:any){
 		var relX = (event.pageX - $(this).offset().left) - 200;
-		var relY = (event.pageY - $(this).offset().top) - 180;
+		var relY = (event.pageY - $(this).offset().top) - 150;
 		if(event.target.tagName === "circle"){
 			const anchor = $($(event.target).closest("g").find("text")[0]).text();
 			let detail:HTMLElement;
@@ -803,7 +803,6 @@ function loadUtilitiesDetail () {
 
 			
 			const Images = detail.querySelector(".img img");
-			
 			const title = detail.querySelectorAll("span")[1].innerHTML;
 			const items = $(".location-list").find(`.location-item[data-anchor="${anchor}"]`);
 			if(items.length > 0){
@@ -822,8 +821,15 @@ function loadUtilitiesDetail () {
 
 			if(detail) {
 				if(Images) {
-					$(this).parent().parent().find(".object").css("transform", `translate(${relX.toFixed()}px,${relY.toFixed()}px)`);
-					$($(this).parent().parent().find(".object").find("img")[0]).attr("src", `${Images.getAttribute("src")}`);
+					
+					if(Images.getAttribute("src") != "") {
+						$(this).parent().parent().find(".object").css("transform", `translate(${relX.toFixed()}px,${relY.toFixed()}px)`);
+						$($(this).parent().parent().find(".object").find("img")[0]).css("display" , "block")
+						$($(this).parent().parent().find(".object").find("img")[0]).attr("src", `${Images.getAttribute("src")}`);
+					} else {
+						$(this).parent().parent().find(".object").css("transform", `translate(${relX.toFixed()}px,${relY + 126}px)`);
+						$($(this).parent().parent().find(".object").find("img")[0]).css("display" , "none")
+					}
 				} else {
 					$(this).parent().parent().find(".object").css("transform", `translate(${relX.toFixed()}px,${relY.toFixed()}px)`);
 					$($(this).parent().parent().find(".object").find("img")[0]).css("display", "none");

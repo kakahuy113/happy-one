@@ -9,11 +9,11 @@
 								p Tin Tức
 								p Sự Kiện
 		.news-swiper
-			.news-swiper__wrapper.animate__slideInRight.animate__animated.animate__delay-2s
+			.news-swiper__wrapper
 				.swiper-container
 					.swiper-wrapper
 						-for(var i = 0; i < 3 ; i ++)
-							.swiper-slide
+							.swiper-slide.animate__slideInRight.animate__animated.animate__delay-2s
 								.wrapper
 									.img
 										img.object-cover.fullsize(src=`./assets/img/index/news-${i + 1}.png`, alt="")
