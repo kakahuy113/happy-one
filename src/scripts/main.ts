@@ -26,11 +26,10 @@ const initFullpage = () => {
 	
 	(<any>window).YT.ready(function() {
 		player = new (<any>window).YT.Player("VYT", {
-	
 		  videoId: `${youtuID}`,
 		  playerVars: {
             // playlist: 'z1Ev1Z0cCG4,FG0fTKAqZ5g',
-            // autoplay: 1,
+            autoplay: 1,
 			controls: 0,
 			playsinline: 1,
 			loop: 0,
@@ -80,7 +79,6 @@ const initFullpage = () => {
 		}
       }
 	  $('#play-big').on('click', function () {
-	
 		player.playVideo();
 	});
 	  $('#play').on('click', function () {
@@ -110,6 +108,7 @@ const initFullpage = () => {
 				keyboardScrolling: true,
 				recordHistory: false,
 				lockAnchors: true,
+				lazyLoading: true,
 				afterLoad: (origin:any, destination:any, direction:any) => {
 					if(destination == 1) {
 						document.querySelector(".fp-dots").classList.remove("show")
