@@ -702,26 +702,7 @@ const generateDots = () => {
 
 
 function loadUtilitiesDetail () {
-	interface utilitiesInterface {
-		name : string,
-		images: string[],
-		anchor?: string
-	}
-	const location: utilitiesInterface =
-			{
-				'name': "Sảnh đón Hetia",
-				'images': [
-					"./assets/img/utilities-detail/u-11.jpg",
-					"./assets/img/utilities-detail/u-12.jpg",
-					"./assets/img/utilities-detail/u-13.jpg",
-					"./assets/img/utilities-detail/u-14.jpg"
-					]
-				}
-	const Data = Array.from({length: 20}, (i) => {return location});
-	const locations = Data.map((item, index) => {
-		const anchor = index < 9 ? "0" + (index + 1) : (index + 1);
-		return {...item, anchor: anchor.toString()};
-	})
+	
 	// locations.forEach((item, index) => {
 	// 	const locationEl = `<li class="location-item" data-anchor="${item.anchor}"><span>${item.anchor}</span><span>${item.name}</span></li>`;
 	// 	$('.location-list').append(locationEl);
