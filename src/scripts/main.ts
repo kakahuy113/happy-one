@@ -128,6 +128,8 @@ const initFullpage = () => {
 					// play video
 					if(destination == 3 ) {
 						player.playVideo();
+					} else {
+						player.pauseVideo();
 					}
 					// Change text Color section introduce
 					if(destination == 2) {
@@ -158,6 +160,8 @@ const initFullpage = () => {
 					// playvideo
 					if(destination == 3 ) {
 						player.playVideo();
+					} else {
+						player.pauseVideo();
 					}
 					// Change text Color section introduce
 
