@@ -29,7 +29,7 @@ const initFullpage = () => {
 		  videoId: `${youtuID}`,
 		  playerVars: {
             // playlist: 'z1Ev1Z0cCG4,FG0fTKAqZ5g',
-            autoplay: 1,
+            // autoplay: 1,
 			controls: 0,
 			playsinline: 1,
 			loop: 0,
@@ -128,9 +128,7 @@ const initFullpage = () => {
 					// play video
 					if(destination == 3 ) {
 						player.playVideo();
-					} else {
-						player.pauseVideo();
-					}
+					} 
 					// Change text Color section introduce
 					if(destination == 2) {
 						document.querySelector("header").classList.add("changed")
@@ -160,9 +158,7 @@ const initFullpage = () => {
 					// playvideo
 					if(destination == 3 ) {
 						player.playVideo();
-					} else {
-						player.pauseVideo();
-					}
+					} 
 					// Change text Color section introduce
 
 					if(destination == 2) {
