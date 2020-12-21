@@ -18,7 +18,13 @@
 						position: absolute;
 						left: 0;
 						color: #FCCB81;
+						@media (max-width: 1439.98px) {
+							content: none;
+						}
 					}
+				}
+				@media (max-width: 1100px) {
+					font-size: 5rem;
 				}
 			}
 		}
@@ -69,7 +75,7 @@
 		overflow: hidden;
 		max-height: 575px;
 		.swiper-slide {
-			transition: width 0.6s linear;
+			transition: .5s all ease-in-out;
 			cursor: pointer;
 			.desc {
 				position: absolute;
@@ -111,6 +117,7 @@
 			}
 			@media (min-width: 1100px) {
 				&:hover{
+					transition: .5s all ease-in-out;
 					width: 400px!important;
 					.img {
 						position: relative;
@@ -138,6 +145,25 @@
 						opacity: 0;
 						display: none;
 					}
+				}
+			}
+			@media (max-width: 1100px) {
+				.img {
+					position: relative;
+					
+				}
+				.sub-title {
+					display: block !important;
+					opacity: 1 !important;
+				}
+				.btn--see-more {
+					width: auto !important;
+					opacity: 1 !important;
+					display: inline-flex !important;
+				}
+				.btn-arrow {
+					opacity: 0;
+					display: none;
 				}
 			}
 		}

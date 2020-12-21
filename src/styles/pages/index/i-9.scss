@@ -18,6 +18,11 @@
 		max-width: 820px;
 		margin: 0 auto;
 		padding-top: 80px;
+		@media (max-height:900px) {
+			padding-top: 0;
+			justify-content: center;
+			padding-bottom: 50px;
+		}
 	}
 	.logo--contact {
 		margin-bottom: 35px;
@@ -28,11 +33,21 @@
 				height: 220px;
 			}
 		}
+		@media (max-height: 768.98px) {
+			margin-bottom: 5px;
+			svg {
+				width: 170px;
+				height: 220px;
+			}
+		}
 	}
 	.title {
 		padding-bottom: 20px;
 		margin-bottom: 15px;
 		position: relative;
+		@media (max-height: 768.98px) {
+			margin-bottom: 5px;
+		}
 		&::after {
 			content: "";
 			position: absolute;
@@ -53,8 +68,11 @@
 		position: relative;
 		padding-bottom: 20px;
 		margin-bottom: 20px;
+		@media (max-height: 768.98px) {
+			margin-bottom: 5px;
+		}
 		p {
-			margin-bottom: 10px;
+			line-height: 1.7;
 		}
 		&::after {
 			content: "";
@@ -71,6 +89,9 @@
 		max-width: 405px;
 		text-align: left;
 		margin-bottom: 25px;
+		@media (max-height: 768.98px) {
+			margin-bottom: 5px;
+		}
 	}
 	.info,
 	.project {

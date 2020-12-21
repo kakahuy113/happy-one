@@ -222,6 +222,9 @@ textarea.input-validation-error {
 		flex-wrap: wrap;
 		justify-content: center;;
 		.show-box {
+			&:first-child {
+				display: none;
+			}
 			width: unset !important;
 			pointer-events: auto;
 			-ms-flex: 0 0 20%;

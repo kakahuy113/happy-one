@@ -32,6 +32,11 @@
 							height: 1px;
 							background: #FCCB81;
 						}
+						@media (max-width: 1439.98px) {
+							&::after {
+								content: none;
+							}
+						}
 					}
 					.sub-title {
 						margin-bottom: 20px;
