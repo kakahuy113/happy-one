@@ -177,3 +177,15 @@
 		}
 	}
 }
+
+.section-location-detail {
+	.sub-title {
+		@media (max-width: 1100px) {
+			overflow: unset;
+			text-overflow: unset;
+			display: unset;
+			-webkit-box-orient: unset;
+			-webkit-line-clamp: unset !important;
+		}
+	}
+}

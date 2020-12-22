@@ -10,6 +10,18 @@
 		}
 		.container {
 			position: relative;
+			.title {
+				display: none;
+				text-align: center;
+				h3 {
+					font-family: Avenir-Black;
+					font-size: 5vw;
+				}
+				@media (max-width: 1100px) {
+					display: block;
+				}
+			}
+
 			svg {
 				width: 100%;
 				position: absolute;
@@ -54,6 +66,7 @@
 					transform: scale(1.2);
 				}
 			}
+
 			.map-svg {
 				position: relative;
 				height: 100%;
@@ -61,6 +74,7 @@
 					height: auto;
 				}
 			}
+		
 			.object {
 				width: 240px;
 				height: 280px;
@@ -100,42 +114,51 @@
 				left: 50%;
 				transform: translateX(-50%);
 				bottom: 10%;
-				margin: 0px;
+				margin: 0px auto;
 				padding: 0px;
 				list-style: none;
 				display: grid;
 				grid-template-columns: repeat(5, 1fr);
-				grid-gap: 15px;
-				min-width: 100%;
+				grid-gap: 5px;
+				max-width: 80%;
+				width: 100%;
 				.location-item {
 					display: flex;
-					align-items: center;
-					@media (max-width: 1100px) {
-						flex-direction: column;
-					}
+					
 					cursor: pointer;
 					.img {
 						display: none;
-						@media (max-width: 1100px) {
-							display: block;
-						}
 					}
 					.desc {
 						display: flex;
 						align-items: center;
+						span {
+							overflow: hidden;
+							text-overflow: ellipsis;
+							display: -webkit-box;
+							-webkit-box-orient: vertical;
+							-webkit-line-clamp: 1;
+						}
 					}
 					span {
 						&:first-of-type {
 							background-color: #caa262;
 							min-width: 30px;
 							height: 30px;
-							display: block;
+							display: inline-block;
+							vertical-align: middle;
 							border-radius: 50%;
 							text-align: center;
 							line-height: 29px;
 							font-weight: bold;
 							color: #fff;
 							margin-right: 12px;
+							@media (max-width: 1100px) {
+								line-height: 20px;
+								min-width: 20px;
+								height: 20px;
+								font-size: 10px;
+							}
 						}
 						&:last-of-type {
 							font-size: 14px;
@@ -153,6 +176,9 @@
 								border-radius: 36px;
 								opacity: 0;
 								transition: opacity 0.3s linear;
+							}
+							@media (max-width: 1100px) {
+								font-size: 10px;
 							}
 						}
 					}

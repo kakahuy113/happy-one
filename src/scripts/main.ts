@@ -322,6 +322,10 @@ const swiperNews = () => {
 		loop: true,
 		spaceBetween: 20,
 		lazy: true,
+		autoplay: {
+			delay: 2000,
+			disableOnInteraction: false,
+		  },
 		breakpoints:{
 			300: {
 				centeredSlides: true,
@@ -769,7 +773,7 @@ function loadUtilitiesDetail () {
 		}
 	})
 
-	$("#utilities-detail svg>g").mousemove(function(event:any){
+	$("#utilities-detail svg>g").mouseover(function(event:any){
 		var relX = (event.pageX - $(this).offset().left) - 200;
 		var relY = (event.pageY - $(this).offset().top) - 150;
 		if(event.target.tagName === "circle"){
@@ -803,8 +807,7 @@ function loadUtilitiesDetail () {
 
 			if(detail) {
 				if(Images) {
-					
-					if(Images.getAttribute("src") != "") {
+					if(Images.getAttribute("src") != undefined || Images.getAttribute("src") != "null") {
 						$(this).parent().parent().find(".object").css("transform", `translate(${relX.toFixed()}px,${relY.toFixed()}px)`);
 						$($(this).parent().parent().find(".object").find("img")[0]).css("display" , "block")
 						$($(this).parent().parent().find(".object").find("img")[0]).attr("src", `${Images.getAttribute("src")}`);

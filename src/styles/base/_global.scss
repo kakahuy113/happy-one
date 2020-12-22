@@ -24,11 +24,13 @@
 }
 
 .blur-up {
-	filter: blur(10px);
-	transition: filter 1s;
+	@media (max-width: 1100px) {
+		filter: blur(10px);
+		transition: filter 1s;
 
-	&.lazyloaded {
-		filter: blur(0);
+		&.lazyloaded {
+			filter: blur(0);
+		}
 	}
 }
 
