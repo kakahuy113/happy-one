@@ -390,6 +390,7 @@ const swiperIntro = () => {
 		  loop: true,
 		speed: 1500,
 		lazy: true,
+		slidesPerView: 3,
 		breakpoints: {
 			300: {
 				slidesPerView: 1,
@@ -905,7 +906,7 @@ function loadUtilitiesDetail () {
 
 			if(detail) {
 				if(Images) {
-					if(Images.getAttribute("src") != undefined || Images.getAttribute("src") != "null") {
+					if(Images.getAttribute("src") != undefined || Images.getAttribute("src") != null) {
 						$(this).parent().parent().find(".object").css("transform", `translate(${relX.toFixed()}px,${relY.toFixed()}px)`);
 						$($(this).parent().parent().find(".object").find("img")[0]).css("display" , "block")
 						$($(this).parent().parent().find(".object").find("img")[0]).attr("src", `${Images.getAttribute("src")}`);
