@@ -54,7 +54,6 @@
 		left: 20px;
 		top: 50%;
 		transform: translateY(-50%);
-		font-family: Montserat-Black;
 		min-width: fit-content;
 		&.fp-dots-index {
 			.fp-dot-item {
@@ -81,7 +80,7 @@
 			.fp-floor {
 				font-size: 2.5rem;
 				transition: .3s all ease-in-out;
-				font-family: Montserat-Black;
+				font-family: Montserrat-Bold;
 				color: #ffffff;
 				opacity: .2;
 			}
@@ -116,8 +115,7 @@
 			}
 
 			.fp-title {
-				font-family: Montserat-Black;
-				font-weight: 700;
+				font-family: Montserrat-Bold;
 				color: map-get($color, x-white);
 				margin-right: 5px;
 				white-space: nowrap;
@@ -137,12 +135,11 @@
 			&.active {
 				transition: .3s all ease;
 				padding-bottom: 5px;
-				border-bottom: 1px solid #FFFFFF;
+				border-bottom: .5px solid #FFFFFF;
 				.fp-number {
 					opacity: 1;
 					transition: all .3s ease;
 					font-family: Montserat-Black;
-					font-weight: 700;
 				}
 				.fp-title {
 					opacity: 1;

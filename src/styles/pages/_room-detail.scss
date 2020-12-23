@@ -22,7 +22,11 @@
 				
 				align-self: flex-end;
 				.statistics {
+					width: 100%;
 					margin-bottom: 70px;
+					@media (min-width: 1100px) {
+						max-width: 250px;
+					}
 					h3 {
 						font-size: 2rem;
 						font-family: MyriaPro-Bold;
@@ -40,14 +44,32 @@
 					.sub {
 						display: inline-block;
 						padding: 10px 0;
-						border: dotted 4px #707070;
+						border: dotted 2px #707070;
 						border-left: unset;
 						border-right: unset;
+						@media (min-width: 1110px) {
+							display: block;
+						}
+						p {
+							span:last-child {
+								@media (min-width: 1100px) {
+									float: right;
+								&::after {
+									content: "";
+									display: table;
+									clear: both;
+								}
+								}
+							}
+						}
 					}
 				}
 				.desc {
-					font-family: Montserrat-Light;
-					font-size: 1.2rem;
+					p {
+						font-family: Montserrat-Light;
+						font-size: 1.2rem;
+						line-height: 16px;
+					}
 					p:not(:last-child) {
 						margin-bottom: 20px;
 					}

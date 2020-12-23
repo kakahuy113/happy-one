@@ -18,7 +18,7 @@
 						position: absolute;
 						left: 0;
 						color: #FCCB81;
-						@media (max-width: 1439.98px) {
+						@media (max-width: 1440px) {
 							content: none;
 						}
 					}
@@ -75,6 +75,9 @@
 			height: 100%;
 			overflow: hidden;
 			max-height: 575px;
+			@media (max-height: 750px) {
+				height: 65%;
+			}
 			.swiper-slide {
 				transition: .5s all ease-in-out;
 				cursor: pointer;
