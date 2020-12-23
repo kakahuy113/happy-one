@@ -1,5 +1,22 @@
 .section-news {
 	background: #08152E !important;
+	.grid-pattern {
+		.block-animation-grid{
+			z-index: 1 !important;
+			bottom: 20%;
+			left: 15%;
+			width: 310px;
+			height: 165px;
+			top: unset;
+			display: grid;
+			grid-template-columns: repeat(40, 1fr);
+			grid-template-rows: repeat(20, 1fr);
+			.square{
+				width: 10px;
+				height: 10px;
+			}
+		}
+	}
 	.content-main {
 		padding-left: 105px;
 		position: absolute;

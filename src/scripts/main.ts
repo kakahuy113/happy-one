@@ -111,8 +111,9 @@ const initFullpage = () => {
 				lockAnchors: true,
 				lazyLoading: true,
 				afterLoad: (origin:any, destination:any, direction:any) => {
+					showPattern(destination);
 					if(destination == 1) {
-						gridPattern(document.querySelector("#home"), 60, 30);
+						
 						document.querySelector(".fp-dots").classList.remove("show")
 						document.querySelector(".fp-dots").classList.add("hide")
 					} else {
@@ -133,8 +134,6 @@ const initFullpage = () => {
 					} 
 					// Change text Color section introduce
 					if(destination == 2) {
-						gridPattern(document.querySelector("#introduce"), 32, 15);
-
 						document.querySelector("header").classList.add("changed")
 						document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
 					} else {
@@ -191,7 +190,9 @@ const initFullpage = () => {
 				recordHistory: false,
 				lockAnchors: true,
 				afterLoad: (origin:any, destination:any, direction:any) => {
-				
+					gridPattern(document.querySelector("#introduce-detail--1"), 30, 60);
+					gridPattern(document.querySelector("#introduce-detail--2"), 30, 60);
+					gridPattern(document.querySelector("#introduce-detail--3"), 30, 60);
 				},
 				onLeave: (origin:any, destination:any, direction:any) => {
 					let currentSection = $(document).find(".section")[destination - 1];
@@ -255,32 +256,40 @@ $.fn.isInViewport = function() {
 
 
 function showPattern (currentIndex:Number) { 
+	
 	var dotsGridPatternEl = document.querySelectorAll('.block-animation-grid');
 	
 	[].forEach.call(dotsGridPatternEl, function(grid:any) {
 		grid.innerHTML = '';
 	});
-
+	
 	switch (currentIndex) {
-		case 0:					
+		case 1:
 			let homePattern = document.querySelector("#home");
 			if(homePattern){
-				gridPattern(homePattern, 40, 20);
+				gridPattern(homePattern, 60, 30);
 			}
+			
 			break;
-		case 1:					
+		case 2:
 			let introducePattern = document.querySelector("#introduce");
 			if(introducePattern){
 				gridPattern(introducePattern, 40, 20);
 			}
 			break;
-		case 4:					
+		case 5:	
 			let utilitiesPattern = document.querySelector("#utilities");
 			if(utilitiesPattern){
 				gridPattern(utilitiesPattern, 40, 20);
 			}
 			break;
-		case 7:					
+		case 6:	
+			let newsPattern = document.querySelector("#news");
+			if(newsPattern){
+				gridPattern(newsPattern, 40, 20);
+			}
+			break;
+		case 8:					
 			let contactPattern = document.querySelector("#contact");
 			if(contactPattern){
 				gridPattern(contactPattern, 40, 20);
@@ -327,13 +336,6 @@ const swiperIntro = () => {
 			}
 		}
 	});
-
-	// $('.intro--swiper .swiper-container').on('mouseenter', function () {
-	// 	newsSlider.autoplay.stop();
-	// })
-	// $('.intro--swiper .swiper-container').on('mouseleave', function () {
-	// 	newsSlider.autoplay.start();
-	// })
 }
 
 const swiperNews = () => {

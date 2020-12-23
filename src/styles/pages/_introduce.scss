@@ -1,4 +1,26 @@
+#fullpage-introduce {
+	.block-animation-grid{
+		bottom: 0;
+		top: 0;
+		left: unset;
+		transform: unset;
+		right: 0;
+		opacity: .25;
+		height: 100%;
+		width: 30%;
+		display: grid;
+		grid-template-columns: repeat(30, 1fr);
+		grid-template-rows: repeat(60, 1fr);
+		.square{
+			width: 10px;
+			height: 10px;
+		}
+	}
+}
 #introduce-detail--1 {
+	.container {
+		z-index: 1;
+	}
 	.setting-section {
 		background: #08152E;
 		.section-introduce--1__wrapper {
@@ -75,9 +97,13 @@
 			}
 		}
 	}
+	
 }
 
 #introduce-detail--2 {
+	.container {
+		z-index: 1;
+	}
 	.setting-section {
 		background: #08152E;
 	}
@@ -143,6 +169,9 @@
 }
 
 #introduce-detail--3 {
+	.container {
+		z-index: 1;
+	}
 	.setting-section {
 		background: #08152E;
 	}
