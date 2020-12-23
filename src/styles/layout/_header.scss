@@ -98,7 +98,7 @@ header {
 				&.active {
 					a {
 						opacity: 1;
-						font-family: Avenir-Black;
+						font-family: Montserat-Black;
 						font-weight: 700;
 					}
 				}
@@ -159,6 +159,7 @@ header {
 		top: calc(-100% - 87px);
 		opacity: 0;
 		p { 
+			font-family: Montserat-Black;
 			color: map-get($color, x-white);
 			writing-mode: vertical-rl;
 			text-orientation: upright;
@@ -214,6 +215,7 @@ header {
 				opacity: 0;
 				margin-bottom: 10px;
 				a {
+					font-family: Montserat-Regular;
 					color: map-get($color, x-white);
 					font-size: 2.5rem;
 					transition: .3s all ease-in;
@@ -241,7 +243,7 @@ header {
 				}
 				&.active {
 					a {
-						font-family: Avenir-Black;
+						font-family: Montserat-Black;
 						color: #FCCB81;
 						font-weight: bold;
 					}
@@ -278,7 +280,7 @@ header {
 				&.active {
 					a {
 						opacity: 1;
-						font-family: Avenir-Black;
+						font-family: Montserat-Black;
 						font-weight: 700;
 					}
 				}

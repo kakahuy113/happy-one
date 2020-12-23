@@ -4,6 +4,33 @@
 }
 
 @font-face {
+	font-family: Montserat-Black;
+	src: url('../fonts/Montserrat-Black.ttf');
+}
+
+@font-face {
+	font-family: Montserrat-Light;
+	src: url('../fonts/Montserrat-Light.ttf');
+}
+
+@font-face {
+	font-family:Montserrat-MediumItalic;
+	src: url('../fonts/Montserrat-MediumItalic.ttf');
+}
+
+@font-face {
+	font-family: Montserat-Regular;
+	src: url('../fonts/Montserrat-Regular.ttf');
+}
+
+
+@font-face {
+	font-family:Montserrat-LightItalic;
+	src: url('../fonts/Montserrat-LightItalic.ttf');
+}
+
+//Avenir
+@font-face {
 	font-family: Avenir-Black;
 	src: url('../fonts/Montserrat-Black.ttf');
 }
@@ -14,53 +41,11 @@
 }
 
 @font-face {
-	font-family: Avenir-Book-Oblique;
-	src: url('../fonts/Montserrat-MediumItalic.ttf');
-}
-
-@font-face {
-	font-family:Avenir-Heavy;
-	src: url('../fonts/Avenir-Heavy.otf');
-}
-
-@font-face {
-	font-family:Avenir-Heavy-Oblique;
-	src: url('../fonts/AvenirHeavyOblique.otf');
-}
-
-@font-face {
 	font-family: Avenir-Light;
 	src: url('../fonts/AvenirLight.otf');
 }
 
 @font-face {
-	font-family: Avenir-Light-Oblique;
-	src: url('../fonts/AvenirLightOblique.otf');
-}
-
-
-@font-face {
 	font-family: Avenir-Medium;
 	src: url('../fonts/AvenirMedium.otf');
-}
-
-@font-face {
-	font-family: Avenir-Medium-Oblique;
-	src: url('../fonts/AvenirMediumOblique.otf');
-}
-
-
-@font-face {
-	font-family: Avenir-Oblique;
-	src: url('../fonts/AvenirOblique.otf');
-}
-
-@font-face {
-	font-family: Avenir-Roman;
-	src: url('../fonts/AvenirRoman.otf');
-}
-
-@font-face {
-	font-family:Avenir-Light-Italic;
-	src: url('../fonts/Montserrat-LightItalic.ttf');
 }
