@@ -110,7 +110,6 @@ const initFullpage = () => {
 				if( checkScriptExist > 1) {
 					return
 				}
-				console.log(checkScriptExist);
 		})
 		// Init Youtube Video API
 		if(checkScriptExist < 1) {
