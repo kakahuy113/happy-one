@@ -8,6 +8,11 @@ declare var anime:any;
 declare var grecaptcha:any;
 declare var fullpage_api:any;
 var checkScriptExist: number;
+declare global {
+    interface Window {
+        onloadCallback:any;
+    }
+}
 		 
 
 const initFullpage = () => {
@@ -964,11 +969,14 @@ const recaptcha = () => {
 	};
 	if(document.querySelector(".g-recaptcha")) {
 		const sitekey = document.querySelector(".g-recaptcha").getAttribute("data-sitekey");
-		script.src = `https://www.google.com/recaptcha/api.js?render=${sitekey}`;
+		script.src = `https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=${sitekey}`;
 		script.setAttribute("async", "");
 		script.setAttribute("defer", "");
 		document.getElementsByTagName('head')[0].appendChild(script);
 	}
+}
+
+window.onloadCallback = function() {
 	var button = document.createElement("button")
 	button.classList.add("fake-button-recaptcha")
 	button.onclick = (e:any) => {
@@ -982,6 +990,7 @@ const recaptcha = () => {
 		});
 	}
 	document.querySelector('#popup-info form').appendChild(button);
+	button.click();
 }
 
 const ajaxSubcribe = () => {
@@ -1031,8 +1040,6 @@ const toogle360 = () => {
 }
 
 window.onload = function () {
-	const button: HTMLElement = document.querySelector(".fake-button-recaptcha");
-	button.click();
 	loadApartmentSvg();
 	loadDetailLocationSvg();
 	loadUtilitiesDetail();
@@ -1056,7 +1063,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 		document.querySelector(".apartment-detail__wrapper .info-room .box-circle").remove();
 	}
 	initFullpage();
-	recaptcha();
 	loadApartmentSvg();
 	loadDetailLocationSvg();
 	setBackgroundImageSection();
@@ -1070,4 +1076,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	swiperRoomDetail();
 	ajaxSubcribe();
 	toogle360();
+	document.querySelector("a[data-src='#popup-info']").addEventListener("click", function() {
+		recaptcha();
+	})
 });
