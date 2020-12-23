@@ -112,6 +112,7 @@ const initFullpage = () => {
 				lazyLoading: true,
 				afterLoad: (origin:any, destination:any, direction:any) => {
 					if(destination == 1) {
+						gridPattern(document.querySelector("#home"), 60, 30);
 						document.querySelector(".fp-dots").classList.remove("show")
 						document.querySelector(".fp-dots").classList.add("hide")
 					} else {
@@ -132,6 +133,8 @@ const initFullpage = () => {
 					} 
 					// Change text Color section introduce
 					if(destination == 2) {
+						gridPattern(document.querySelector("#introduce"), 32, 15);
+
 						document.querySelector("header").classList.add("changed")
 						document.querySelector(".fp-socials .fp-links__wrapper").classList.add("changed")
 					} else {
@@ -388,39 +391,6 @@ const swiperDetailNews = () => {
 		speed: 1000,
 		slidesPerView: 5
 	})
-}
-
-const translateHomeText = () => {
-	if(document.querySelector("#home .title")){
-		anime.timeline({
-			easing: 'easeOutExpo',
-		})
-			.add({
-				targets: '#home .title',
-				opacity: [0,1],
-				duration: 1000,
-				easing: "easeOutExpo",
-				delay: 400
-			})
-			.add({
-				targets: '#home .title p:first-child',
-				translateX: [-40,40],
-				translateZ: 0,
-				opacity: [0,1],
-				easing: "easeOutExpo",
-				duration: 1200,
-				delay: 400
-			})
-			.add({
-				targets: '#home .title p:last-child',
-				translateX: [-40,40],
-				translateZ: 0,
-				opacity: [0,1],
-				easing: "easeOutExpo",
-				duration: 1000,
-				delay: 100
-			})
-	}
 }
 
 const gridPattern = (sectionEl: any, col:Number, row:Number) => {  

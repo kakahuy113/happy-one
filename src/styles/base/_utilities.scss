@@ -132,16 +132,12 @@ textarea.input-validation-error {
 }
 
 .block-animation-grid  {
-	display: flex;
-	flex-wrap: wrap;
 	position: absolute;
 	top: 50%;
 	left: 15px;
 	transform: translateY(-50%);
 	z-index: 0;
 	overflow: hidden;
-	mix-blend-mode: overlay;
-	display: none;
 	.square {
 		width: 20px;
 		height: 20px;

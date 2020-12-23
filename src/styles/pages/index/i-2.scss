@@ -120,4 +120,18 @@
 			}
 		}
 	}
+	.grid-pattern {
+		.block-animation-grid{
+			width: 600px;
+			left: 20%;
+			mix-blend-mode: unset;
+			grid-template-columns: repeat(60, 1fr);
+			grid-template-rows: repeat(30, 1fr);
+			.square{
+				width: 15px;
+				height: 15px;
+			}
+		}
+	}
+
 }
