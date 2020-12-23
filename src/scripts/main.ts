@@ -100,101 +100,86 @@ const initFullpage = () => {
 	// function formatTime(time: any) {
 	// 	return moment(0).add(moment.duration({'seconds': time})).format('mm:ss');
 	// }
-	checkScriptExist = 0;
 	const playerYoutube = () => {
 		var player: any;
-		document.querySelectorAll("head script").forEach((el:HTMLElement) => {
-				if(el.getAttribute("src") == `https://www.youtube.com/iframe_api`) {
-					++checkScriptExist;
-				}
-				if( checkScriptExist > 1) {
-					return
-				}
-				console.log(checkScriptExist);
-		})
 		// Init Youtube Video API
-		if(checkScriptExist < 1) {
+		if(!document.querySelector("#VYT iframe")) {
 			var script = document.createElement('script');
 		
-		if(document.querySelector(".youtube-video")) {
-			script.src = `https://www.youtube.com/iframe_api`;
-			script.setAttribute("async", "");
-			script.setAttribute("defer", "");
-			document.getElementsByTagName('head')[0].appendChild(script);
-		}
-		var youtuID = document.querySelector(".youtube-video").getAttribute("data-youtube-id");
+			if(document.querySelector(".youtube-video")) {
+				script.src = `https://www.youtube.com/iframe_api`;
+				script.setAttribute("async", "");
+				script.setAttribute("defer", "");
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+			var youtuID = document.querySelector(".youtube-video").getAttribute("data-youtube-id");
 		
-		(<any>window).YT.ready(function() {
-			player = new (<any>window).YT.Player("VYT", {
-			videoId: `${youtuID}`,
-			playerVars: {
-				// playlist: 'z1Ev1Z0cCG4,FG0fTKAqZ5g',
-				autoplay: 1,
-				controls: 0,
-				playsinline: 1,
-				loop: 0,
-				cc_load_policy: 1,
-				color: "white",
-				rel: 0,
-			},
-			events: {
-				'onReady': function(event:any) {
-					var time_update_interval:any;   
-					// Update the controls on load
-					// Update current time text display.
-					$('#current-time').text(moment(0).add(moment.duration({'seconds': player.getCurrentTime()})).format('mm:ss'));
-					$('#duration').text(moment(0).add(moment.duration({'seconds': player.getDuration()})).format('mm:ss'));
-				
-					// Clear any old interval.
-					clearInterval(time_update_interval);
-				
-					// Start interval to update elapsed time display and
-					// the elapsed part of the progress bar every second.
-					time_update_interval = setInterval(function () {
+			(<any>window).YT.ready(function() {
+				player = new (<any>window).YT.Player("VYT", {
+				videoId: `${youtuID}`,
+				playerVars: {
+					// playlist: 'z1Ev1Z0cCG4,FG0fTKAqZ5g',
+					autoplay: 1,
+					controls: 0,
+					playsinline: 1,
+					loop: 0,
+					cc_load_policy: 1,
+					color: "white",
+					rel: 0,
+				},
+				events: {
+					'onReady': function(event:any) {
+						event.target.playVideo();
+
+						$('#play-big').on('click', function () {
+							event.target.playVideo();
+						});
+						$('#play').on('click', function () {
+							event.target.playVideo();
+						});
+						
+						$('#pause').on('click', function () {
+							event.target.pauseVideo();
+						});
+
+						var time_update_interval:any;   
+						// Update the controls on load
 						// Update current time text display.
 						$('#current-time').text(moment(0).add(moment.duration({'seconds': player.getCurrentTime()})).format('mm:ss'));
 						$('#duration').text(moment(0).add(moment.duration({'seconds': player.getDuration()})).format('mm:ss'));
-					}, 1000)
-				},
-				'onStateChange': function(event:any) {
-					if (event.data == YT.PlayerState.PLAYING ) {
-						$(".youtube-video").on("click" , function() {
-							player.pauseVideo();
-						})
-					document.querySelector(".bg-video").classList.add("hide")
-					document.querySelector(".control-youtube .play-button").classList.remove("show")
-					document.querySelector(".control-youtube .play-button").classList.add("hide")
-					} else {
-						$(".youtube-video").on("click" , function() {
-							player.playVideo();
-						})
-						document.querySelector(".bg-video").classList.remove("hide")
-						document.querySelector(".control-youtube .play-button").classList.remove("hide")
-						document.querySelector(".control-youtube .play-button").classList.add("show")
 					
+						// Clear any old interval.
+						clearInterval(time_update_interval);
+					
+						// Start interval to update elapsed time display and
+						// the elapsed part of the progress bar every second.
+						time_update_interval = setInterval(function () {
+							// Update current time text display.
+							$('#current-time').text(moment(0).add(moment.duration({'seconds': player.getCurrentTime()})).format('mm:ss'));
+							$('#duration').text(moment(0).add(moment.duration({'seconds': player.getDuration()})).format('mm:ss'));
+						}, 1000)
+					},
+					'onStateChange': function(event:any) {
+						if (event.data == YT.PlayerState.PLAYING ) {
+							$(".youtube-video").on("click" , function() {
+								player.pauseVideo();
+							})
+						document.querySelector(".bg-video").classList.add("hide")
+						document.querySelector(".control-youtube .play-button").classList.remove("show")
+						document.querySelector(".control-youtube .play-button").classList.add("hide")
+						} else {
+							$(".youtube-video").on("click" , function() {
+								player.playVideo();
+							})
+							document.querySelector(".bg-video").classList.remove("hide")
+							document.querySelector(".control-youtube .play-button").classList.remove("hide")
+							document.querySelector(".control-youtube .play-button").classList.add("show")
+						
+						}
 					}
 				}
-			}
+				});
 			});
-		});
-		
-		setTimeout(() => {
-			$('#play-big').on('click', function () {
-				player.playVideo();
-			});
-			$('#play').on('click', function () {
-			
-				player.playVideo();
-			});
-			
-			$('#pause').on('click', function () {
-				player.pauseVideo();
-			});
-		}, 4000);
-		}
-		if(checkScriptExist > 0) {
-			
-			$('#play').trigger("click")
 		}
 	}
 	if ($(window).width() > 1100) {
@@ -318,6 +303,16 @@ const initFullpage = () => {
 			});
 		}
 	}
+	else {
+		if ($('#VYT').isInViewport()) {
+			playerYoutube()
+		}
+		$(window).on('resize scroll', function() {
+			if ($('#VYT').isInViewport()) {
+				playerYoutube()
+			}
+		});
+	}
 	//click to slide
 	$(document).on("click", ".fp-dots .fp-dot-item" , function() {
 		const anchor = $(this).attr("data-menuanchor")
@@ -329,6 +324,16 @@ const initFullpage = () => {
 		$(".hambuger--menu").click(); 
 	})
 }
+
+$.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+};
 
 
 function showPattern (currentIndex:Number) { 
