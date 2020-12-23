@@ -413,7 +413,6 @@ const swiperIntro = () => {
 	// })
 }
 
-
 const swiperNews = () => {
 	const swiper = new Swiper(".news-swiper .swiper-container" , {
 		slidesPerView: 3.5,
@@ -524,47 +523,47 @@ const gridPattern = (sectionEl: any, col:Number, row:Number) => {
 	  
 		dotsGridPatternEl.appendChild(squareFragment);
 	  
-		var index = anime.random(0, numberOfElements-1);
-		var nextIndex = 0;
+		// var index = anime.random(0, numberOfElements-1);
+		// var nextIndex = 0;
 	  
-		const play = () => {
+		// const play = () => {
 	  
-		  paused = false;
-		  if (animation) animation.pause();
+		//   paused = false;
+		//   if (animation) animation.pause();
 	  
-		  nextIndex = anime.random(0, numberOfElements-1);
+		//   nextIndex = anime.random(0, numberOfElements-1);
 	  
-		  animation = anime.timeline({
-			easing: 'easeInOutQuad',
-			complete: play
-		  })
-		  .add({
-			targets: `#${elementID} .block-animation-grid .square`,
-			keyframes: [
-			  {
-				translateX: anime.stagger('-2px', {grid: grid, from: index, axis: 'x'}),
-				translateY: anime.stagger('-2px', {grid: grid, from: index, axis: 'y'}),
-				duration: 100
-			  }, {
-				translateX: anime.stagger('4px', {grid: grid, from: index, axis: 'x'}),
-				translateY: anime.stagger('4px', {grid: grid, from: index, axis: 'y'}),
-				scale: anime.stagger([1.8, 1], {grid: grid, from: index}),
-				duration: 225
-			  }, {
-				translateX: 0,
-				translateY: 0,
-				scale: 1,
-				duration: 1200,
-			  }
-			],
-			delay: anime.stagger(80, {grid: grid, from: index})
-		  }, 30)
+		//   animation = anime.timeline({
+		// 	easing: 'easeInOutQuad',
+		// 	complete: play
+		//   })
+		//   .add({
+		// 	targets: `#${elementID} .block-animation-grid .square`,
+		// 	keyframes: [
+		// 	  {
+		// 		translateX: anime.stagger('-2px', {grid: grid, from: index, axis: 'x'}),
+		// 		translateY: anime.stagger('-2px', {grid: grid, from: index, axis: 'y'}),
+		// 		duration: 100
+		// 	  }, {
+		// 		translateX: anime.stagger('4px', {grid: grid, from: index, axis: 'x'}),
+		// 		translateY: anime.stagger('4px', {grid: grid, from: index, axis: 'y'}),
+		// 		scale: anime.stagger([1.8, 1], {grid: grid, from: index}),
+		// 		duration: 225
+		// 	  }, {
+		// 		translateX: 0,
+		// 		translateY: 0,
+		// 		scale: 1,
+		// 		duration: 1200,
+		// 	  }
+		// 	],
+		// 	delay: anime.stagger(80, {grid: grid, from: index})
+		//   }, 30)
 	  
-		  index = nextIndex;
+		//   index = nextIndex;
 	  
-		}
+		// }
 	  
-		play();
+		// play();
 	}
 }
 
@@ -804,7 +803,6 @@ const generateDots = () => {
 	}
 }
 
-
 function loadUtilitiesDetail () {
 	
 	// locations.forEach((item, index) => {
@@ -930,7 +928,6 @@ function loadUtilitiesDetail () {
 	});
 }
 
-
 const swiperRoomDetail = () => {
 	const roomDetail = new Swiper(".image-house .swiper-container" , {
 		speed: 1000,
@@ -1032,6 +1029,7 @@ window.onload = function () {
 	loadDetailLocationSvg();
 	loadUtilitiesDetail();
 }
+
 window.addEventListener('resize', function () {
 	// Loading()
 	// initFullpage();
