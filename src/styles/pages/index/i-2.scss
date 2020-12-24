@@ -21,6 +21,7 @@
 				display: grid;
 				grid-template-columns: repeat(60, 1fr);
 				grid-template-rows: repeat(30, 1fr);
+				top: 45%;
 				.square{
 					width: 15px;
 					height: 15px;

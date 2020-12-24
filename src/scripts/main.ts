@@ -34,7 +34,7 @@ const initFullpage = () => {
 				player = new (<any>window).YT.Player("VYT", {
 				videoId: `${youtuID}`,
 				playerVars: {
-					autoplay: 1,
+					// autoplay: 1,
 					controls: 0,
 					playsinline: 1,
 					loop: 0,
@@ -45,7 +45,6 @@ const initFullpage = () => {
 				events: {
 					'onReady': function(event:any) {
 						event.target.playVideo();
-
 						$('#play-big').on('click', function () {
 							event.target.playVideo();
 						});
