@@ -720,7 +720,8 @@ function loadUtilitiesDetail () {
 				detail = this
 			}
 		});
-		if(detail) {
+		
+		if(detail.querySelectorAll(".swiper-slide").length > 0) {
 				// const slides = detail.images.reduce((arr, item) => arr + `<div class="swiper-slide" style="background-image:url(${item})"></div>`, '');
 				const slides = detail.querySelector(".d-none").innerHTML;
 				const title = detail.querySelectorAll("span")[1].innerHTML;
