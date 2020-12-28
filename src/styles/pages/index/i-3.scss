@@ -24,23 +24,50 @@
 			left: 0;
 			#Union_2 {
 				animation: pointer 2s infinite;
+				@media (max-width: 1100px) {
+					animation: unset;
+				}
 			}
 
 			#Path_10561 {
 				animation: pointerCircle1 2s infinite;
+				@media (max-width: 1100px) {
+					animation: unset;
+					
+					pointer-events: none;
+				}
 			}
 			#Path_10562 {
 				animation: pointerCircle2 2s infinite;
+				@media (max-width: 1100px) {
+					animation: unset;
+					
+					pointer-events: none;
+				}
 			}
 			#Path_10563 {
 				animation: pointerCircle3 2s infinite;
+				@media (max-width: 1100px) {
+					animation: unset;
+					
+					pointer-events: none;
+				}
 			}
 			#Path_10564 {
 				animation: pointerCircle4 2s infinite;
+				@media (max-width: 1100px) {
+					animation: unset;
+					
+					pointer-events: none;
+				}
 			}
 
 			#Ellipse_65, #Ellipse_66 {
 				animation: StrokeLine 5s infinite linear;
+				@media (max-width: 1100px) {
+					
+					pointer-events: none;
+				}
 			}
 
 			g[id^="Point_Hover_"] 
