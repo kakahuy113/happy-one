@@ -275,6 +275,11 @@
 		width: 100%;
 		backface-visibility: hidden;
 		float: unset !important;
+		&:last-child {
+			section {
+				padding-bottom: 60px;
+			}
+		}
 	}
 }
 

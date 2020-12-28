@@ -414,47 +414,6 @@ const gridPattern = (sectionEl: any, col:Number, row:Number) => {
 	  
 		dotsGridPatternEl.appendChild(squareFragment);
 	  
-		// var index = anime.random(0, numberOfElements-1);
-		// var nextIndex = 0;
-	  
-		// const play = () => {
-	  
-		//   paused = false;
-		//   if (animation) animation.pause();
-	  
-		//   nextIndex = anime.random(0, numberOfElements-1);
-	  
-		//   animation = anime.timeline({
-		// 	easing: 'easeInOutQuad',
-		// 	complete: play
-		//   })
-		//   .add({
-		// 	targets: `#${elementID} .block-animation-grid .square`,
-		// 	keyframes: [
-		// 	  {
-		// 		translateX: anime.stagger('-2px', {grid: grid, from: index, axis: 'x'}),
-		// 		translateY: anime.stagger('-2px', {grid: grid, from: index, axis: 'y'}),
-		// 		duration: 100
-		// 	  }, {
-		// 		translateX: anime.stagger('4px', {grid: grid, from: index, axis: 'x'}),
-		// 		translateY: anime.stagger('4px', {grid: grid, from: index, axis: 'y'}),
-		// 		scale: anime.stagger([1.8, 1], {grid: grid, from: index}),
-		// 		duration: 225
-		// 	  }, {
-		// 		translateX: 0,
-		// 		translateY: 0,
-		// 		scale: 1,
-		// 		duration: 1200,
-		// 	  }
-		// 	],
-		// 	delay: anime.stagger(80, {grid: grid, from: index})
-		//   }, 30)
-	  
-		//   index = nextIndex;
-	  
-		// }
-	  
-		// play();
 	}
 }
 
@@ -918,6 +877,26 @@ const toogle360 = () => {
 	})
 }
 
+const scrollMobile = () => {
+	if(window.innerWidth < 1100) {
+		var lastScrollTop = 0, delta = 5;
+		$(window).scroll(function(){
+			var nowScrollTop = $(this).scrollTop();
+			console.log(Math.abs(lastScrollTop - nowScrollTop));
+			if(Math.abs(lastScrollTop - nowScrollTop) >= delta){
+				if (nowScrollTop > lastScrollTop){
+					document.querySelector("footer").classList.add("fixed")
+				} else {
+					document.querySelector("footer").classList.remove("fixed")
+					// ACTION ON
+					// SCROLLING UP
+			}
+			lastScrollTop = nowScrollTop;
+			}
+		});	
+	}
+}
+
 window.onload = function () {
 	loadApartmentSvg();
 	loadDetailLocationSvg();
@@ -956,6 +935,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	swiperRoomDetail();
 	ajaxSubcribe();
 	toogle360();
+	scrollMobile();
 	document.querySelector("a[data-src='#popup-info']").addEventListener("click", function() {
 		recaptcha();
 	})
