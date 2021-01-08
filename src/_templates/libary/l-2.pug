@@ -1,0 +1,30 @@
+.fp-slide.section#libary-image(fp-title="THƯ VIỆN HÌNH ẢNH" data-anchor="image")
+	section.setting-section.section-image.w-100
+		.container.h-100.w-100
+			.contaienr-custom.container-1365px.h-100.w-100
+				.libary__wrapper.image-libary.w-100
+					.swiper-container.w-100
+						.swiper-wrapper.w-100
+							-for(var i = 0; i < 12;i++)
+								.swiper-slide
+									.block-item
+										.img
+											img.object-cover.blur-up.lazyload.fullsize(data-src="./assets/img/libary/item-1.png", alt="")
+										.desc
+											p Lorem ipsum dolor sit, sit amet adipiscing consectetuer elit.
+										.d-none
+											-for(var j =0;j <5;j++)
+												.swiper-slide
+													.img
+														img.object-cover.fullsize(src=`./assets/img/libary/item-${j+1}.png`, alt="")
+					.swiper-button-next
+					.swiper-button-prev
+	.d-none
+		#popup-image
+			.popup-image__wrapper
+				.swiper-container.gallery-top
+					.swiper-wrapper
+				.swiper-button-next
+				.swiper-button-prev
+				.swiper.container.gallery-thumbs
+					.swiper-wrapper

@@ -223,6 +223,38 @@ const initFullpage = () => {
 				}
 			});
 		}
+		// libary fullpage
+		if(document.querySelector("#fullpage-libary")) {
+			$('#fullpage-libary').fullpage({
+				anchors: ['video' , 'image', 'file'],
+				menu: '#menu',
+				lazyLoad: true,
+				keyboardScrolling: true,
+				recordHistory: false,
+				lockAnchors: true,
+				afterLoad: (origin:any, destination:any, direction:any) => {
+					if(destination ==1 ) {
+					libaryVideo();
+						
+					}
+					if(destination ==2 ) {
+						libaryImage();
+
+					}
+					if(destination ==3 ) {
+						libaryFile();
+
+					}
+				},
+				onLeave: (origin:any, destination:any, direction:any) => {
+					// let currentSection = $(document).find(".section")[destination - 1];
+					// $(currentSection).find("section>div").css("display", "none");
+					// setTimeout(()=>{
+					// 	$(currentSection).find("section>div").css("display", "table");
+					// }, 10)
+				}
+			});
+		}
 	}
 	else {
 		if ($('#VYT').isInViewport()) {
@@ -649,6 +681,18 @@ const generateDots = () => {
 				$('.fp-container').append(dotUtil);
 			}
 			
+			if(document.querySelector("#fullpage-libary")) {
+				$("#fullpage-libary .section").each((idx:number, item:any)=>{
+					utilitiesItemString += `<li class="fp-dot-item" data-menuanchor="${$(item).attr("data-anchor")}">
+						<a href="#${$(item).attr("data-anchor")}">
+							<span class="fp-libary-title">${$(item).attr("fp-title")}</span>
+						</a>
+					</li>`;
+				})  
+				let dotUtil = `<ul class="fp-dots fp-dots-libary" id="menu">${utilitiesItemString}</ul>`;
+				$('.fp-container').append(dotUtil);
+			}
+			
 		}
 	}
 }
@@ -897,6 +941,232 @@ const scrollMobile = () => {
 	}
 }
 
+const libaryVideo = () => {
+	var swiper = new Swiper("#libary-video .section-video .swiper-container", {
+		spaceBetween: 20,
+		slidesPerView: 3,
+		slidesPerColumn: 2,
+		breakpoints: {
+			// 300: {
+			// 	slidesPerView: 1,
+			// },
+			// 500: {
+			// 	slidesPerView: 2,
+			// 	slidesPerGroup: 1,
+			// },
+			// 700: {
+			// 	slidesPerView: 3,
+			// 	slidesPerGroup: 1,
+			// },
+			// 1025: {
+			// 	slidesPerView: 2,
+			// 	slidesPerColumn: 2,
+			// },
+		},
+		navigation: {
+			nextEl: "#libary-video .section-video .swiper-button-next",
+			prevEl: "#libary-video .section-video .swiper-button-prev",
+		},
+	});
+}
+
+const libaryImage = () => {
+	var swiper = new Swiper("#libary-image .section-image .swiper-container", {
+		spaceBetween: 20,
+		slidesPerView: 3,
+		slidesPerColumn: 2,
+		breakpoints: {
+			// 300: {
+			// 	slidesPerView: 1,
+			// },
+			// 500: {
+			// 	slidesPerView: 2,
+			// 	slidesPerGroup: 1,
+			// },
+			// 700: {
+			// 	slidesPerView: 3,
+			// 	slidesPerGroup: 1,
+			// },
+			// 1025: {
+			// 	slidesPerView: 2,
+			// 	slidesPerColumn: 2,
+			// },
+		},
+		navigation: {
+			nextEl: "#libary-image .section-image .swiper-button-next",
+			prevEl: "#libary-image .section-image .swiper-button-prev",
+		},
+	});
+}
+
+const libaryFile = () => {
+	var swiper = new Swiper("#libary-file .section-file .swiper-container", {
+		slidesPerView: 2,
+		slidesPerColumn: 5,
+		breakpoints: {
+			// 300: {
+			// 	slidesPerView: 1,
+			// },
+			// 500: {
+			// 	slidesPerView: 2,
+			// 	slidesPerGroup: 1,
+			// },
+			// 700: {
+			// 	slidesPerView: 3,
+			// 	slidesPerGroup: 1,
+			// },
+			// 1025: {
+			// 	slidesPerView: 2,
+			// 	slidesPerColumn: 2,
+			// },
+		},
+		navigation: {
+			nextEl: "#libary-file .section-file .swiper-button-next",
+			prevEl: "#libary-file .section-file .swiper-button-prev",
+		},
+	});
+}
+
+const popupVideo = () => {
+	if(!document.querySelector("#fullpage-libary")) {
+		var script = document.createElement('script');
+	
+		if(document.querySelector(".youtube-video")) {
+			script.src = `https://www.youtube.com/iframe_api`;
+			script.setAttribute("async", "");
+			script.setAttribute("defer", "");
+			document.getElementsByTagName('head')[0].appendChild(script);
+		}
+	}
+	const playerYoutube = (youtuId:any) => {
+		var player: any;
+		// Init Youtube Video API
+			(<any>window).YT.ready(function() {
+				player = new (<any>window).YT.Player("VYT", {
+				videoId: `${youtuId}`,
+				playerVars: {
+					// autoplay: 1,
+					controls: 0,
+					playsinline: 1,
+					loop: 0,
+					cc_load_policy: 1,
+					color: "white",
+					rel: 0,
+				},
+				events: {
+					'onReady': function(event:any) {
+						event.target.playVideo();
+						$('#play-big').on('click', function () {
+							event.target.playVideo();
+						});
+						$('#play').on('click', function () {
+							event.target.playVideo();
+						});
+						
+						$('#pause').on('click', function () {
+							event.target.pauseVideo();
+						});
+
+						var time_update_interval:any;   
+						// Update the controls on load
+						// Update current time text display.
+						$('#current-time').text(moment(0).add(moment.duration({'seconds': player.getCurrentTime()})).format('mm:ss'));
+						$('#duration').text(moment(0).add(moment.duration({'seconds': player.getDuration()})).format('mm:ss'));
+					
+						// Clear any old interval.
+						clearInterval(time_update_interval);
+					
+						// Start interval to update elapsed time display and
+						// the elapsed part of the progress bar every second.
+						time_update_interval = setInterval(function () {
+							// Update current time text display.
+							$('#current-time').text(moment(0).add(moment.duration({'seconds': player.getCurrentTime()})).format('mm:ss'));
+							$('#duration').text(moment(0).add(moment.duration({'seconds': player.getDuration()})).format('mm:ss'));
+						}, 1000)
+					},
+					'onStateChange': function(event:any) {
+						if (event.data == YT.PlayerState.PLAYING ) {
+							$(".youtube-video").on("click" , function() {
+								event.target.pauseVideo();
+							})
+						document.querySelector(".bg-video").classList.add("hide")
+						document.querySelector(".control-youtube .play-button").classList.remove("show")
+						document.querySelector(".control-youtube .play-button").classList.add("hide")
+						} else {
+							$(".youtube-video").on("click" , function() {
+								event.target.playVideo();
+							})
+							document.querySelector(".bg-video").classList.remove("hide")
+							document.querySelector(".control-youtube .play-button").classList.remove("hide")
+							document.querySelector(".control-youtube .play-button").classList.add("show")
+						
+						}
+					}
+				}
+				});
+			});
+	}
+	$("#libary-video .block-item").on("click" , function(e:number) {
+		const youtubeId = $(this).attr("youtubeId");
+		$.fancybox.open({
+			src: "#popup-video",
+			type: "inline",
+			opts : {
+				afterShow : function( ) {
+					playerYoutube(youtubeId);
+				},
+				afterClose: function() {
+					console.log(123);
+					
+					$("#popup-video .youtube-video").html("<div id='VYT'></div>")
+				}
+			}
+		})
+	})
+}
+
+const popupImage = () => {
+	$("#libary-image .block-item").on("click" , function(e:number) {
+	const slide = $(this).find(".d-none")[0].innerHTML
+	const temp = 	new Promise<void>(function(resolve, reject) {
+		$("#popup-image .gallery-top .swiper-wrapper").html(slide);
+		$("#popup-image .gallery-thumbs .swiper-wrapper").html(slide);
+		resolve();
+		}).then(() => {
+				$.fancybox.open({
+					src: "#popup-image",
+					type: "inline",
+					opts: {
+						afterShow : function() {
+							const galleryThumbs = new Swiper('#popup-image .gallery-thumbs', {
+								spaceBetween: 10,
+								slidesPerView: 4,
+								direction: 'vertical',
+								// loop: true,
+								// loopedSlides: 5, //looped slides should be the same
+								freeMode: true,
+								watchSlidesVisibility: true,
+								watchSlidesProgress: true,
+							});
+						
+							const galleryTop = new Swiper('#popup-image .gallery-top', {
+								spaceBetween: 10,
+								// loop:true,
+								// loopedSlides: 5, //looped slides should be the same
+								navigation: {
+								nextEl: '#popup-image .swiper-button-next',
+								prevEl: '#popup-image .swiper-button-prev',
+								},
+								thumbs: {
+								swiper: galleryThumbs,
+								},
+							});
+						}
+					}
+				})
+			})
+		})
+}
 window.onload = function () {
 	loadApartmentSvg();
 	loadDetailLocationSvg();
@@ -936,6 +1206,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 	ajaxSubcribe();
 	toogle360();
 	scrollMobile();
+	popupVideo();
+	popupImage();
 	document.querySelector("a[data-src='#popup-info']").addEventListener("click", function() {
 		recaptcha();
 	})

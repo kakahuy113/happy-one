@@ -85,6 +85,7 @@
 				opacity: .2;
 			}
 		}
+		
 		.fp-dot-item {
 			max-width: fit-content;
 			cursor: pointer;
@@ -162,6 +163,38 @@
 			opacity: 1;
 			transition: .3s all ease-in;
 
+		}
+		&.fp-dots-libary {
+			width: 210px;
+			left: 13%;
+			@media (max-width: 1599.98px) {
+				left: 5%;
+			}
+			@media (max-width: 1199.98px) {
+				left: 20px;
+			}
+			.fp-dot-item {
+				border-bottom: unset;
+				height: 35px;
+				width: 100%;
+				max-width: unset;
+				&.active {
+					background: #F1BE78;
+					border-radius: 3px;
+					padding-bottom: unset;
+				}
+			}
+			.fp-dot-item+.fp-dot-item {
+				margin-top: 45px;
+			}
+			a {
+				justify-content: center;
+			}
+			.fp-libary-title {
+				font-family: MyriaPro-Bold;
+				font-size: 1.8rem;
+				color: map-get($color, x-white);
+			}
 		}
 	}
 	.fp-buttons {
@@ -274,7 +307,7 @@
 		// transform: translate(0,0)!important;
 		width: 100%;
 		backface-visibility: hidden;
-		float: unset !important;
+		float: unset !important;d
 		&:last-child {
 			section {
 				padding-bottom: 60px;
