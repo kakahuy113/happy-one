@@ -1032,6 +1032,7 @@ const libaryFile = () => {
 }
 
 const popupVideo = () => {
+	var player: any;
 	if(!document.querySelector("#fullpage-libary")) {
 		var script = document.createElement('script');
 	
@@ -1043,7 +1044,6 @@ const popupVideo = () => {
 		}
 	}
 	const playerYoutube = (youtuId:any) => {
-		var player: any;
 		// Init Youtube Video API
 			(<any>window).YT.ready(function() {
 				player = new (<any>window).YT.Player("VYT", {
@@ -1120,9 +1120,7 @@ const popupVideo = () => {
 					playerYoutube(youtubeId);
 				},
 				afterClose: function() {
-					console.log(123);
-					
-					$("#popup-video .youtube-video").html("<div id='VYT'></div>")
+					player.destroy();
 				}
 			}
 		})
@@ -1148,6 +1146,20 @@ const popupImage = () => {
 								direction: 'vertical',
 								// loop: true,
 								// loopedSlides: 5, //looped slides should be the same
+								breakpoints: {
+									300: {
+										slidesPerView: 2,
+										direction: 'horizontal',
+									},
+									430: {
+										slidesPerView: 3,
+										direction: 'horizontal',
+									},
+									768: {
+										slidesPerView: 4,
+										direction: 'vertical',
+									}
+								},
 								freeMode: true,
 								watchSlidesVisibility: true,
 								watchSlidesProgress: true,
