@@ -6,8 +6,6 @@ declare var YT:any;
 declare var moment:any;
 declare var anime:any;
 declare var grecaptcha:any;
-declare var fullpage_api:any;
-var checkScriptExist: number;
 // declare global {
 //     interface Window {
 //         onloadCallback:any;
@@ -947,21 +945,24 @@ const libaryVideo = () => {
 		slidesPerView: 3,
 		slidesPerColumn: 2,
 		breakpoints: {
-			// 300: {
-			// 	slidesPerView: 1,
-			// },
-			// 500: {
-			// 	slidesPerView: 2,
-			// 	slidesPerGroup: 1,
-			// },
-			// 700: {
-			// 	slidesPerView: 3,
-			// 	slidesPerGroup: 1,
-			// },
-			// 1025: {
-			// 	slidesPerView: 2,
-			// 	slidesPerColumn: 2,
-			// },
+			300: {
+				slidesPerView: 2,
+				spaceBetween: 10,
+			},
+			500: {
+				slidesPerView: 2,
+				slidesPerGroup: 2,
+				spaceBetween: 10,
+			},
+			700: {
+				slidesPerView: 3,
+				slidesPerColumn: 2,
+				spaceBetween: 20,
+			},
+			1100: {
+				slidesPerView: 3,
+				slidesPerColumn: 2,
+			},
 		},
 		navigation: {
 			nextEl: "#libary-video .section-video .swiper-button-next",
@@ -976,21 +977,24 @@ const libaryImage = () => {
 		slidesPerView: 3,
 		slidesPerColumn: 2,
 		breakpoints: {
-			// 300: {
-			// 	slidesPerView: 1,
-			// },
-			// 500: {
-			// 	slidesPerView: 2,
-			// 	slidesPerGroup: 1,
-			// },
-			// 700: {
-			// 	slidesPerView: 3,
-			// 	slidesPerGroup: 1,
-			// },
-			// 1025: {
-			// 	slidesPerView: 2,
-			// 	slidesPerColumn: 2,
-			// },
+			300: {
+				slidesPerView: 2,
+				spaceBetween: 10,
+			},
+			500: {
+				slidesPerView: 2,
+				slidesPerGroup: 2,
+				spaceBetween: 10,
+			},
+			700: {
+				slidesPerView: 3,
+				slidesPerColumn: 2,
+				spaceBetween: 20,
+			},
+			1100: {
+				slidesPerView: 3,
+				slidesPerColumn: 2,
+			},
 		},
 		navigation: {
 			nextEl: "#libary-image .section-image .swiper-button-next",
@@ -1003,22 +1007,22 @@ const libaryFile = () => {
 	var swiper = new Swiper("#libary-file .section-file .swiper-container", {
 		slidesPerView: 2,
 		slidesPerColumn: 5,
+		spaceBetween: 20,
 		breakpoints: {
-			// 300: {
-			// 	slidesPerView: 1,
-			// },
-			// 500: {
-			// 	slidesPerView: 2,
-			// 	slidesPerGroup: 1,
-			// },
-			// 700: {
-			// 	slidesPerView: 3,
-			// 	slidesPerGroup: 1,
-			// },
-			// 1025: {
-			// 	slidesPerView: 2,
-			// 	slidesPerColumn: 2,
-			// },
+			300: {
+				spaceBetween: 10,
+				slidesPerView: 1,
+			},
+			500: {
+				slidesPerView: 1,
+				spaceBetween: 10,
+			},
+			700: {
+				slidesPerView: 2,
+				spaceBetween: 20,
+			},
+			1100: {
+			},
 		},
 		navigation: {
 			nextEl: "#libary-file .section-file .swiper-button-next",
@@ -1206,8 +1210,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 	ajaxSubcribe();
 	toogle360();
 	scrollMobile();
+	libaryImage();
+	libaryFile();
+	libaryVideo();
 	popupVideo();
 	popupImage();
+			
 	document.querySelector("a[data-src='#popup-info']").addEventListener("click", function() {
 		recaptcha();
 	})

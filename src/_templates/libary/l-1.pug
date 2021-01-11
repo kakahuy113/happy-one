@@ -1,9 +1,11 @@
 .fp-slide.section#libary-video(fp-title="DANH SÁCH VIDEO" data-anchor="video")
-	section.setting-section.section-video
-		.container.h-100
-			.contaienr-custom.container-1365px.h-100
-				.libary__wrapper.video-libary
-					.swiper-container
+	section.setting-section.section-video.w-100
+		.container.h-100.w-100
+			.contaienr-custom.container-1365px.h-100.w-100
+				.libary__wrapper.video-libary.w-100
+					.head-title
+						h3 DANH SÁCH VIDEO
+					.swiper-container.w-100
 						.swiper-wrapper
 							-for(var i = 0; i < 12;i++)
 								.swiper-slide
@@ -20,22 +22,22 @@
 										p Lorem ipsum dolor sit, sit amet adipiscing consectetuer elit.
 					.swiper-button-next
 					.swiper-button-prev
-	.d-none
-		#popup-video
-			.box-video-center
-				.title
-					p Lorem ipsum dolor sit, sit amet adipiscing consectetuer elit.
-				.video-youtube-full.playing
-					.control-youtube
-						a(href="javascript:;")#play-big.play-button.show
-						a(href="javascript:;")#pause-big.pause-button
-					.bg-video(fp-bg="./assets/img/index/bg-video.png")
-					.youtube-video(data-youtube-id="jgZkrA8E5do")
-						div#VYT
-					.control.show
-						span#current-time 4:04
-						span /
-						span#duration 5:43
-						button#play(type="button")
-						button#pause(type="button")
-						button#fullscreen(type="button")
+		.d-none
+			#popup-video
+				.box-video-center
+					.title
+						p Lorem ipsum dolor sit, sit amet adipiscing consectetuer elit.
+					.video-youtube-full.playing
+						.control-youtube
+							a(href="javascript:;")#play-big.play-button.show
+							a(href="javascript:;")#pause-big.pause-button
+						.bg-video(fp-bg="./assets/img/index/bg-video.png")
+						.youtube-video(data-youtube-id="jgZkrA8E5do")
+							div#VYT
+						.control.show
+							span#current-time 4:04
+							span /
+							span#duration 5:43
+							button#play(type="button")
+							button#pause(type="button")
+							button#fullscreen(type="button")
