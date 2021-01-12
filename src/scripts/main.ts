@@ -416,11 +416,16 @@ const toogleMenu = () => {
 }
 
 const swiperDetailNews = () => {
-	const swiper = new Swiper(".content--slide .swiper-container" , {
+	const swiper = new Swiper("#news-detail--1 .content--slide .swiper-container" , {
 		direction: 'vertical',
 		spaceBetween: 20,
-		speed: 1000,
-		slidesPerView: 5
+		// slidesPerColumn: 5,
+		slidesPerView: 5,
+		mousewheel: true,
+		navigation: {
+			nextEl: '#news-detail--1 .content--slide .swiper-button-next',
+			prevEl: '#news-detail--1 .content--slide .swiper-button-prev',
+			},
 	})
 }
 
@@ -944,6 +949,7 @@ const libaryVideo = () => {
 		spaceBetween: 20,
 		slidesPerView: 3,
 		slidesPerColumn: 2,
+		mousewheel: true,
 		breakpoints: {
 			300: {
 				slidesPerView: 2,
@@ -976,6 +982,7 @@ const libaryImage = () => {
 		spaceBetween: 20,
 		slidesPerView: 3,
 		slidesPerColumn: 2,
+		mousewheel: true,
 		breakpoints: {
 			300: {
 				slidesPerView: 2,
@@ -1008,6 +1015,7 @@ const libaryFile = () => {
 		slidesPerView: 2,
 		slidesPerColumn: 5,
 		spaceBetween: 20,
+		mousewheel: true,
 		breakpoints: {
 			300: {
 				spaceBetween: 10,
@@ -1144,6 +1152,7 @@ const popupImage = () => {
 								spaceBetween: 10,
 								slidesPerView: 4,
 								direction: 'vertical',
+								mousewheel: true,
 								// loop: true,
 								// loopedSlides: 5, //looped slides should be the same
 								breakpoints: {
