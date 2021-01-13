@@ -1152,7 +1152,7 @@ const popupImage = () => {
 					opts: {
 						afterShow : function() {
 							const galleryThumbs = new Swiper('#popup-image .gallery-thumbs', {
-								spaceBetween: 10,
+								spaceBetween: 5,
 								slidesPerView: 4,
 								direction: 'vertical',
 								mousewheel: true,
