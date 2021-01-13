@@ -949,7 +949,6 @@ const libaryVideo = () => {
 		spaceBetween: 20,
 		slidesPerView: 3,
 		slidesPerColumn: 2,
-		mousewheel: true,
 		breakpoints: {
 			300: {
 				slidesPerView: 2,
@@ -982,7 +981,6 @@ const libaryImage = () => {
 		spaceBetween: 20,
 		slidesPerView: 3,
 		slidesPerColumn: 2,
-		mousewheel: true,
 		breakpoints: {
 			300: {
 				slidesPerView: 2,
@@ -1015,7 +1013,6 @@ const libaryFile = () => {
 		slidesPerView: 2,
 		slidesPerColumn: 5,
 		spaceBetween: 20,
-		mousewheel: true,
 		breakpoints: {
 			300: {
 				spaceBetween: 10,
@@ -1120,10 +1117,14 @@ const popupVideo = () => {
 	}
 	$("#libary-video .block-item").on("click" , function(e:number) {
 		const youtubeId = $(this).attr("youtubeId");
+		const title = $(this).find(".desc p")[0].innerHTML;
 		$.fancybox.open({
 			src: "#popup-video",
 			type: "inline",
 			opts : {
+				beforeShow: function() {
+					document.querySelector("#popup-video .title p").innerHTML = title;
+				},
 				afterShow : function( ) {
 					playerYoutube(youtubeId);
 				},
@@ -1143,9 +1144,11 @@ const popupImage = () => {
 		$("#popup-image .gallery-thumbs .swiper-wrapper").html(slide);
 		resolve();
 		}).then(() => {
+				$.fn.fullpage.setMouseWheelScrolling(false);
+				$.fn.fullpage.setAllowScrolling(false);
 				$.fancybox.open({
 					src: "#popup-image",
-					type: "inline",
+					type: "inline", 
 					opts: {
 						afterShow : function() {
 							const galleryThumbs = new Swiper('#popup-image .gallery-thumbs', {
@@ -1186,6 +1189,10 @@ const popupImage = () => {
 								swiper: galleryThumbs,
 								},
 							});
+						},
+						afterClose: function() {
+							$.fn.fullpage.setMouseWheelScrolling(true);
+							$.fn.fullpage.setAllowScrolling(true);
 						}
 					}
 				})
