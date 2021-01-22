@@ -36,6 +36,10 @@ footer {
 		&.fixed {
 			bottom: 0;
 		}
+		&.footer-apartment {
+			position: relative !important;
+			bottom: unset !important;
+		}
 		.fp-socials {
 			position: relative;
 			bottom: unset;

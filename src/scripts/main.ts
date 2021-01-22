@@ -1199,6 +1199,12 @@ const popupImage = () => {
 			})
 		})
 }
+
+const checkApartment = () => {
+	if(document.querySelector(".section-apartment")) {
+		document.querySelector("footer").classList.add("footer-apartment");
+	}
+}
 window.onload = function () {
 	loadApartmentSvg();
 	loadDetailLocationSvg();
@@ -1243,7 +1249,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 	libaryVideo();
 	popupVideo();
 	popupImage();
-			
+	checkApartment();
 	document.querySelector("a[data-src='#popup-info']").addEventListener("click", function() {
 		recaptcha();
 	})
